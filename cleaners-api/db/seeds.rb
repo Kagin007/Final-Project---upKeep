@@ -8,15 +8,32 @@ require 'faker'
 #   Character.create(name: "Luke", movie: movies.first)
 
 User.destroy_all
+Location.destroy_all
 
 puts "starting seeds..."
 
+puts "seeding users"
+
 10.times do
-    first_name = Faker::Name.first_name
-    last_name = Faker::Name.last_name
-    password_digest = "123"
-    is_admin =  true
-    email =  Faker::Internet.unique.email
-    picture_url = Faker::Avatar.image(slug: "my-own-slug", size: "50x50", format: "jpg")
-    User.create(first_name: first_name, last_name: last_name, password_digest: password_digest, is_admin: is_admin, email: email, picture_url: picture_url)
+  User.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    password_digest: "123",
+    is_admin:  true,
+    email:  Faker::Internet.unique.email,
+    picture_url: Faker::Avatar.image(slug: "my-own-slug", size: "50x50", format: "jpg")
+  )
 end
+
+puts "seeding locations"
+
+10.times do
+  Location.create(
+    address: Faker::Address.street_address,
+    city: "Toronto",
+    province: "Ontario",
+    longitude: Faker::Address.longitude,
+    latitude: Faker::Address.latitude
+  )
+end
+
