@@ -22,3 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+cleaners
+get all cleaners by day
+get all reservations by owner id 

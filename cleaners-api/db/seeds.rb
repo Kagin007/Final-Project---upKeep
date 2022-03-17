@@ -1,4 +1,5 @@
 require 'faker'
+require 'money'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -7,8 +8,10 @@ require 'faker'
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+Cleaner.destroy_all
 User.destroy_all
 Location.destroy_all
+
 
 puts "starting seeds..."
 
@@ -37,3 +40,17 @@ puts "seeding locations"
   )
 end
 
+puts "seeding cleaners"
+
+users = User.all
+locations = Location.all
+
+users.each do |user| 
+  puts user.inspect
+  Cleaner.create(
+    is_active: true,
+    pay_rate: 10000,
+    location_id: locations.sample.id,
+    user_id: user.id
+  )
+  end

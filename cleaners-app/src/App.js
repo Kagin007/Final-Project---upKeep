@@ -18,12 +18,15 @@ function App() {
   return (
     <div className="App">
       <h1>Cleaners APP</h1>
+      <button>
+        Click for cleaners
+      </button>
       <h2>User Names</h2>
       <div>
         {users.map((user,_) => {
           return (
             <div>
-              {user.id}. {user.name}
+              {user.id}. {user.last_name}
             </div>
           )
         })}
