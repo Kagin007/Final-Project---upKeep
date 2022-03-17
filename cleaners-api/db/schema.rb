@@ -10,18 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_16_191044) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_17_184249) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "cleaners", force: :cascade do |t|
-    t.boolean "is_active"
-    t.integer "pay_rate"
-    t.bigint "user_id"
-    t.bigint "location_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "locations", force: :cascade do |t|
     t.string "address"
@@ -33,6 +24,35 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_16_191044) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "properties", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "location_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_properties_on_location_id"
+    t.index ["user_id"], name: "index_properties_on_user_id"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer "rating"
+    t.text "message"
+    t.bigint "reservation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reservation_id"], name: "index_ratings_on_reservation_id"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "property_id", null: false
+    t.date "booking_date"
+    t.boolean "is_complete", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["property_id"], name: "index_reservations_on_property_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.datetime "created_at", null: false
@@ -41,9 +61,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_16_191044) do
     t.string "password_digest"
     t.string "email"
     t.string "picture_url"
-    t.boolean "is_admin", default: false
+    t.string "role"
+    t.integer "pay_rate"
+    t.text "list_of_properties", default: [], array: true
+    t.integer "location_id"
   end
 
-  add_foreign_key "cleaners", "locations"
-  add_foreign_key "cleaners", "users"
+  add_foreign_key "properties", "locations"
+  add_foreign_key "properties", "users"
+  add_foreign_key "ratings", "reservations"
+  add_foreign_key "reservations", "properties"
+  add_foreign_key "reservations", "users"
+  add_foreign_key "users", "locations"
 end

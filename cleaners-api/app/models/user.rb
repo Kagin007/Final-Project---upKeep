@@ -1,3 +1,4 @@
 class User < ApplicationRecord
-  has_one :cleaner
+  has_one :location
+  has_many :reservations
 end
