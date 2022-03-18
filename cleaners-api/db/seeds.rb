@@ -1,5 +1,6 @@
 require 'faker'
 require 'money'
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -7,73 +8,87 @@ require 'money'
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-
-Rating.destroy_all
 Reservation.destroy_all
+Timeslot.destroy_all
 Property.destroy_all
-User.destroy_all
 Location.destroy_all
-
+User.destroy_all
 
 puts "starting seeds..."
 
-puts "seeding locations"
-
-100.times do
-  Location.create(
-    address: Faker::Address.street_address,
-    city: "Toronto",
-    province: "Ontario",
-    longitude: Faker::Address.longitude,
-    latitude: Faker::Address.latitude
-  )
-end
-
-locations = Location.all
-puts "seeding users"
-locations.each do |location|
+puts 'seeding users'
+50.times do
   User.create(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    password_digest: "123456789",
-    email: Faker::Internet.unique.email,
-    picture_url: Faker::Avatar.image(slug: "my-own-slug", size: "50x50", format: "jpg"),
-    role: ['cleaner', 'owner', 'both', 'admin'][rand(0..3)],
-    pay_rate: [3000,4000,5000,6000,7000,8000,9000,10000][rand(0..7)],
-    list_of_properties: "[]",
-    location_id: location.id
-  )
-end
-
-users = User.all
-puts "seeding properties"
-users.each do |user|
-  if user.role == 'owner'
-  Property.create(
-    user_id: user.id,
-    location_id: locations.sample.id
-  )
-  end
-end
-
-properties = Property.all
-puts "seeding reservations"
-200.times do
-  fakeDate = Faker::Date.unique.between(from: '2021-12-01', to: '2022-09-01')
-Reservation.create(
-  user_id: users.sample.id,
-  property_id: properties.sample.id,
-  booking_date: fakeDate,
-  is_complete: fakeDate > Date.current ? false : true
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  password_digest: "123456789",
+  email: Faker::Internet.unique.email,
+  picture_url: Faker::Avatar.image(slug: "my-own-slug", size: "50x50", format: "jpg"),
+  role: ['cleaner', 'owner', 'both', 'admin'][rand(0..3)],
+  pay_rate: [3000,4000,5000,6000,7000,8000,9000,10000][rand(0..7)],
+  list_of_properties: "[]"
 )
 end
 
-reservations = Reservation.all
-puts "seeding ratings"
-reservations.each do |reservation|
-  Rating.create(
-    rating: rand(1..5),
-    message: Faker::Lorem.sentence,
-    reservation_id: reservation.id
+users = User.all
+puts "seeding locations"
+users.each do |user|
+  Location.create(
+    address: Faker::Address.street_address,
+    city: ['Toronto', 'London', 'Vancouver', 'Montreal','Calgary','Saskatoon','Ottawa'][rand(0..6)],
+    country: "Canada",
+    longitude: Faker::Address.longitude,
+    latitude: Faker::Address.latitude,
+    user_id: user.id
   )
 end
+
+
+puts "seeding properties"
+users.each do |user|
+  if user.role == 'owner'
+    num_properties = rand(1..3)
+    num_properties.times do 
+      Property.create(
+        address: Faker::Address.street_address,
+        city: ['Toronto', 'London', 'Vancouver', 'Montreal','Calgary','Saskatoon','Ottawa'][rand(0..6)],
+        country: "Canada",
+        longitude: Faker::Address.longitude,
+        latitude: Faker::Address.latitude,
+        user_id: user.id,
+      )
+    end
+  end
+end
+cleaners = User.where(:role => ['cleaner','both'])
+
+puts "seeding timeslots"
+cleaners.each do |cleaner|
+    start_date = Date.parse('20220301')
+    end_date = Date.parse('20220430')
+    date_range = (start_date..end_date).to_a
+    date_range.each do |date|
+      Timeslot.create(
+        date: date,
+        user_id: cleaner.id
+      )
+    end
+end
+
+
+puts 'seeding reservations'
+users.each do |user|
+  if user.role == 'owner'
+    chosenCleaner = cleaners.sample
+    chosenTimeSlot = chosenCleaner.timeslots.sample
+    chosenTimeSlot.slots -= 1
+    Reservation.create(
+      booking_date: chosenTimeSlot.date,
+      user_id: user.id,
+      cleaner_id: chosenCleaner.id,
+      property_id: user.properties.sample
+    )
+  end
+end
+
+

@@ -3,11 +3,10 @@ class Api::V1::UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.all
-
-    render json: @users
+    @cleaners = User.where(:role => ['cleaner','both'])
+    @bylocation = @cleaners.select {|cleaner| cleaner.location.city == "Calgary"}
+    render json: @bylocation.first.properties
   end
-
   # GET /users/1
   def show
     render json: @user
@@ -46,6 +45,6 @@ class Api::V1::UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name)
+      params.fetch(:user, {})
     end
 end

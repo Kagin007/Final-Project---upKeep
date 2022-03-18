@@ -1,6 +1,6 @@
 require "test_helper"
 
-class CleanersControllerTest < ActionDispatch::IntegrationTest
+class TimeslotTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
