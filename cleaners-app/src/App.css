@@ -38,3 +38,53 @@
 .nav__options--link:hover {
   color: var(--primary-color);
 }
+
+.searchform {
+  padding: 1em 2em 3em;
+  background-color: var(--tertiary-color);
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 2em;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: rgba(73, 83, 113, 0.5) 0px 13.5px 36px 0px;
+  color: var(--light-color-text);
+}
+
+.primary-input {
+  margin: 0 5px;
+  background: rgba(73, 83, 113, 0.2);
+  border-style: none;
+  color: var(--light-color-text);
+}
+.primary-input {
+  margin: 0 1em;
+  background: rgba(73, 83, 113, 0.2);
+  border-style: none;
+  height: 2em;
+  padding: 0.1em 1em;
+  border-radius: 20px;
+}
+
+.primary-input::placeholder {
+  color: var(--light-color-text);
+}
+.primary-input:focus {
+  outline: none;
+}
+
+.primary-btn {
+  background-color: var(--primary-color);
+  border-style: none;
+  opacity: 0.8;
+  border-radius: 20px;
+  height: 2em;
+  padding: 0.1em 1em;
+  color: var(--light-color-text);
+}
+
+.primary-btn:hover {
+  background-color: rgba(73, 83, 113, 0.7);
+}
