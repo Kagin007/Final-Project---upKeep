@@ -4,12 +4,17 @@ class Api::V1::UsersController < ApplicationController
   # GET /users
   def index
     @cleaners = User.where(:role => ['cleaner','both'])
-    @bylocation = @cleaners.select {|cleaner| cleaner.location.city == "Calgary"}
-    render json: @bylocation.first.properties
+    @bylocation = @cleaners.select {|cleaner| cleaner.location.city == "Calgary"} #city query here
+    @byavailability = @bylocation.select do |cleaner| 
+      cleaner.timeslots.find_by(date: "20220328").slots > 0 #user date seach query here
+    end
+    render json: @byavailability
   end
   # GET /users/1
   def show
-    render json: @user
+    @user = User.where(id: params['id'].to_i)[0]
+    @available_times  = @user.timeslots.select {|date| date.slots > 0}
+    render json: {user:@user, available_times: @available_times}
   end
 
   # POST /users
