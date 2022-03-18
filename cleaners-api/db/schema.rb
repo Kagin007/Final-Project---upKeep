@@ -39,8 +39,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_18_144515) do
   end
 
   create_table "ratings", force: :cascade do |t|
+    t.integer "rating"
+    t.bigint "reservation_id"
+    t.text "review"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["reservation_id"], name: "index_ratings_on_reservation_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "reservations", force: :cascade do |t|

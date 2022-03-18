@@ -3,4 +3,5 @@ class User < ApplicationRecord
   has_many :properties
   has_many :timeslots
   has_many :reservations
+  has_many :ratings
 end
