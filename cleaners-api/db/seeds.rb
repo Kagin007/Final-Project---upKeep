@@ -43,10 +43,11 @@ users.each do |user|
   )
 end
 
+owners = User.where(:role => ['owner','both'])
+cleaners = User.where(:role => ['cleaner','both'])
 
 puts "seeding properties"
-users.each do |user|
-  if user.role == 'owner'
+owners.each do |owner|
     num_properties = rand(1..3)
     num_properties.times do 
       Property.create(
@@ -55,12 +56,11 @@ users.each do |user|
         country: "Canada",
         longitude: Faker::Address.longitude,
         latitude: Faker::Address.latitude,
-        user_id: user.id,
+        user_id: owner.id,
       )
     end
-  end
 end
-cleaners = User.where(:role => ['cleaner','both'])
+
 
 puts "seeding timeslots"
 cleaners.each do |cleaner|
@@ -75,20 +75,17 @@ cleaners.each do |cleaner|
     end
 end
 
-
 puts 'seeding reservations'
-users.each do |user|
-  if user.role == 'owner'
+owners.each do |owner|
     chosenCleaner = cleaners.sample
     chosenTimeSlot = chosenCleaner.timeslots.sample
     chosenTimeSlot.slots -= 1
     Reservation.create(
       booking_date: chosenTimeSlot.date,
-      user_id: user.id,
+      user_id: owner.id,
       cleaner_id: chosenCleaner.id,
-      property_id: user.properties.sample
+      property_id: owner.properties.sample.id
     )
-  end
 end
 
 
