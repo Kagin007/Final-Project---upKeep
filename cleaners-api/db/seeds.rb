@@ -88,4 +88,16 @@ owners.each do |owner|
     )
 end
 
+puts "seeding ratings"
+reservations = Reservation.all
+
+reservations.each do |reservation|
+  Rating.create(
+    rating: rand(30..100),
+    reservation_id: reservation.id,
+    review: Faker::Lorem.paragraph,
+    user_id: reservation.cleaner_id
+  )
+end
+
 
