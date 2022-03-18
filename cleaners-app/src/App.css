@@ -1,0 +1,36 @@
+:root {
+  --primary-color: #495371;
+  --secondary-color: #74959a;
+  --tertiary-color: #98b4aa;
+  --light-color-bg: #f9e2b6;
+  --light-color-text: #f3e9dd;
+}
+
+.App {
+  margin: 0;
+}
+.nav__bar {
+  background: var(--light-color-bg);
+}
+
+.nav__logo {
+  text-align: center;
+  padding: 0.8em;
+  margin: 0;
+  font-family: "Julius Sans One", sans-serif;
+  font-size: 3.5em;
+  color: var(--primary-color);
+  letter-spacing: 0.2em;
+}
+.nav__options {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: var(--tertiary-color);
+  padding: 1em 0;
+  color: var(--light-color-text);
+}
+.nav__options--link {
+  list-style-type: none;
+}
