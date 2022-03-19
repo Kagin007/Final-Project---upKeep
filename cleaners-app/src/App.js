@@ -3,6 +3,7 @@ import axios from "axios";
 import "./App.css";
 import Navigation from "./components/Navigation";
 import SearchForm from "./components/SearchForm";
+import CleanerCard from "./components/CleanerCard";
 
 function App() {
   const backend_url = "http://127.0.0.1:3000/api/v1/users";
@@ -20,17 +21,7 @@ function App() {
     <div className="App">
       <Navigation />
       <SearchForm />
-      <button>Click for cleaners</button>
-      <h2>User Names</h2>
-      <div>
-        {users.map((user, _) => {
-          return (
-            <div>
-              {user.id}. {user.last_name}
-            </div>
-          );
-        })}
-      </div>
+      <CleanerCard imgURL="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU" />
     </div>
   );
 }
