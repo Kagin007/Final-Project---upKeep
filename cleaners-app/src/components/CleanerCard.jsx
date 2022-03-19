@@ -1,4 +1,5 @@
 import Button from "./Button";
+import Star from "./Star";
 
 const CleanerCard = props => {
   return (
@@ -13,8 +14,23 @@ const CleanerCard = props => {
           </figure>
           <h2>Winona Williams</h2>
         </header>
+        <div>
+          <h5>Top Review</h5>
+          <h6 className="cleaner__card--review-user">
+            James Dean{" "}
+            {[...Array(props.rating || 5)].map((e, i) => (
+              <Star size="12px" />
+            ))}
+          </h6>
+          <p className="cleaner__card--review">
+            Winona is spectacular and very efficient at her job. We always use
+            her service to clean our apartment when we don't have time to do it
+            ourselves. She responds quickly and is always on time!
+          </p>
+        </div>
+
         <main>
-          <h3>$40 CAD / hr</h3>
+          <h3>${props.payRate || 40} CAD / hr</h3>
           <figure className="cleaner__card--message">
             <i className="fa-solid fa-message"></i>
           </figure>
@@ -22,26 +38,9 @@ const CleanerCard = props => {
       </div>
       <br />
       <div className="cleaner__card__bottom">
-        <a>
+        <a href="#">
           4.5
-          <svg
-            width="16px"
-            height="16px"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-label="Rating: 5 out of 5 stars"
-            className="cleaner__card--star"
-            role="img"
-            version="1.1"
-          >
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="m10.102 5.665 3.937.274c.603.042.85.797.388 1.188l-3.013 2.557.918 3.814a.674.674 0 0 1-1.01.732L8 12.167 4.678 14.23a.674.674 0 0 1-1.01-.732l.92-3.814-3.012-2.552a.675.675 0 0 1 .38-1.191l3.937-.276 1.484-3.582a.673.673 0 0 1 1.244 0l1.48 3.582Z"
-              fill="#495371"
-            ></path>
-          </svg>
+          <Star size="16px" />
           (20 reviews)
         </a>
 

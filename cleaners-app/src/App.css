@@ -177,3 +177,13 @@
 .cleaner__card--star {
   transform: translateY(2px);
 }
+
+.cleaner__card--review-user {
+  margin: 0;
+}
+.cleaner__card--review {
+  max-width: 50ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.9em;
+}
