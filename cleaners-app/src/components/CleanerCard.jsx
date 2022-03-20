@@ -1,4 +1,5 @@
 import Button from "./Button";
+import Review from "./Review";
 import Star from "./Star";
 
 const CleanerCard = props => {
@@ -9,39 +10,44 @@ const CleanerCard = props => {
           <figure className="user">
             <a href="#">
               <img class="user-photo" src={props.imgURL} alt="user_photo" />
-              <figcaption className="user-caption">Winona's Profile</figcaption>
+              <figcaption className="user-caption">
+                {props.firstName || "Winona"}'s Profile
+              </figcaption>
             </a>
           </figure>
           <h2>Winona Williams</h2>
         </header>
-        <div>
+        <div className="cleaner__card__middle">
           <h5>Top Review</h5>
-          <h6 className="cleaner__card--review-user">
-            James Dean{" "}
-            {[...Array(props.rating || 5)].map((e, i) => (
-              <Star size="12px" />
-            ))}
-          </h6>
-          <p className="cleaner__card--review">
-            Winona is spectacular and very efficient at her job. We always use
-            her service to clean our apartment when we don't have time to do it
-            ourselves. She responds quickly and is always on time!
-          </p>
+          <Review
+            reviewMessage="Winona is spectacular and very efficient at her job. We always use her
+        service to clean our apartment when we don't have time to do it
+        ourselves. She responds quickly and is always on time!"
+            rating={5}
+            reviewerName="James Dean"
+          />
         </div>
 
         <main>
-          <h3>${props.payRate || 40} CAD / hr</h3>
+          <div>
+            <h3 className="cleaner__card--payrate">
+              ${props.payRate || 60} CAD / hr
+            </h3>
+            <p className="cleaner__card--transport">
+              <strong>Mode of Transportation:</strong>{" "}
+              {props.tranportMode || "Vehicle"}
+            </p>
+          </div>
           <figure className="cleaner__card--message">
-            <i className="fa-solid fa-message"></i>
+            <i className="fa-solid fa-message"></i> Message
           </figure>
         </main>
       </div>
       <br />
       <div className="cleaner__card__bottom">
         <a href="#">
-          4.5
-          <Star size="16px" />
-          (20 reviews)
+          {props.avgRating || 4.5}
+          <Star size="16px" />({props.numRatings || 20} reviews)
         </a>
 
         <Button onClick={() => props.onClick()}>Book Now!</Button>
