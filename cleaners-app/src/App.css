@@ -208,3 +208,8 @@ a:active {
 .cleaner__card--payrate {
   text-align: center;
 }
+
+.cleaner__card--review-date {
+  font-size: 0.6em;
+  color: var(--primary-color);
+}
