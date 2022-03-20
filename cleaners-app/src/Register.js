@@ -43,6 +43,7 @@ export default function Register() {
             <CleaningServicesIcon />
           </Avatar>
           <h2>Sign Up</h2>
+          <h3>I am a...</h3>
         </Grid>
         <RadioGroup
           row
@@ -50,6 +51,7 @@ export default function Register() {
           name="row-radio-buttons-group"
           style={radioStyle}
         >
+          
           <FormControlLabel
             value="cleaner"
             control={<Radio />}
@@ -99,7 +101,7 @@ export default function Register() {
         </Button>
         <Typography>
           Already have an account?
-          <Link href="#">Sign in here.</Link>
+          <Link href="/login">Sign in here.</Link>
         </Typography>
       </Paper>
     </Grid>
