@@ -5,14 +5,15 @@ import Navigation from "./components/Navigation";
 import SearchForm from "./components/SearchForm";
 import CleanerCard from "./components/CleanerCard";
 
+
 function App() {
   const backend_url = "http://127.0.0.1:3000/api/v1/users";
 
   useEffect(() => {
     axios
       .get(backend_url)
-      .then(res => setUsers(res.data))
-      .catch(error => console.log(error));
+      .then((res) => setUsers(res.data))
+      .catch((error) => console.log(error));
   }, []);
 
   const [users, setUsers] = useState([]);
