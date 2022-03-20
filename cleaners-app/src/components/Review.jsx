@@ -11,6 +11,7 @@ const Review = props => {
           <Star size="12px" />
         ))}
       </h6>
+      <p className="cleaner__card--review-date">{props.date}</p>
       <p className="cleaner__card--review">{props.reviewMessage}</p>
     </Fragment>
   );

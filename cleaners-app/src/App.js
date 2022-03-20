@@ -3,7 +3,7 @@ import axios from "axios";
 import "./App.css";
 import Navigation from "./components/Navigation";
 import SearchForm from "./components/SearchForm";
-import CleanerCard from "./components/CleanerCard";
+import CleanersList from "./components/CleanersList";
 
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
     <div className="App">
       <Navigation />
       <SearchForm />
-      <CleanerCard imgURL="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU" />
+      <CleanersList />
     </div>
   );
 }

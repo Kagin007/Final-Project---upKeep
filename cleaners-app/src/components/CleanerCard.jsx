@@ -4,34 +4,30 @@ import Star from "./Star";
 
 const CleanerCard = props => {
   return (
-    <section className="cleaner__card">
+    <article className="cleaner__card">
       <div className="cleaner__card__top">
         <header>
           <figure className="user">
             <a href="#">
               <img class="user-photo" src={props.imgURL} alt="user_photo" />
               <figcaption className="user-caption">
-                {props.firstName || "Winona"}'s Profile
+                {props.firstName}'s Profile
               </figcaption>
             </a>
           </figure>
-          <h2>Winona Williams</h2>
+          <h2>
+            {props.firstName} {props.lastName}
+          </h2>
         </header>
         <div className="cleaner__card__middle">
           <h5>Top Review</h5>
-          <Review
-            reviewMessage="Winona is spectacular and very efficient at her job. We always use her
-        service to clean our apartment when we don't have time to do it
-        ourselves. She responds quickly and is always on time!"
-            rating={5}
-            reviewerName="James Dean"
-          />
+          <Review {...props.topReview} />
         </div>
 
         <main>
           <div>
             <h3 className="cleaner__card--payrate">
-              ${props.payRate || 60} CAD / hr
+              ${props.payRate} CAD / hr
             </h3>
             <p className="cleaner__card--transport">
               <strong>Mode of Transportation:</strong>{" "}
@@ -44,15 +40,15 @@ const CleanerCard = props => {
         </main>
       </div>
       <br />
-      <div className="cleaner__card__bottom">
+      <footer className="cleaner__card__bottom">
         <a href="#">
-          {props.avgRating || 4.5}
-          <Star size="16px" />({props.numRatings || 20} reviews)
+          {props.avgRating}
+          <Star size="16px" />({props.numRatings} reviews)
         </a>
 
         <Button onClick={() => props.onClick()}>Book Now!</Button>
-      </div>
-    </section>
+      </footer>
+    </article>
   );
 };
 export default CleanerCard;
