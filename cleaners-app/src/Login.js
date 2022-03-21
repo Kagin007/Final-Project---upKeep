@@ -44,7 +44,7 @@ export default function Login() {
         <Typography>
           {" "}
           Don't have an account yet?
-          <Link href="#">Sign up here.</Link>
+          <Link href="/register">Sign up here.</Link>
         </Typography>
       </Paper>
     </Grid>
