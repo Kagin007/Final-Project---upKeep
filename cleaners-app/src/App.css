@@ -9,6 +9,43 @@
 .App {
   margin: 0;
 }
+.backdrop {
+  position: fixed;
+  z-index: 1;
+  background-color: rgba(73, 83, 113, 0.7);
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+.modal {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  background-color: var(--light-color-text);
+  padding: 2em;
+  text-align: center;
+  width: 65%;
+  max-height: 80%;
+  z-index: 10;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: auto;
+}
+.modal-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.modal-exit {
+  position: absolute;
+  top: 1.5em;
+  left: 2em;
+  z-index: 11;
+  color: var(--primary-color);
+}
+
 .nav__bar {
   background: var(--light-color-bg);
 }
@@ -50,6 +87,7 @@ a:active {
   width: 60%;
   margin: 0 auto;
   margin-top: 2em;
+  margin-bottom: 2em;
   border-radius: 10px;
   display: flex;
   flex-direction: column;

@@ -41,7 +41,7 @@ const CleanersList = props => {
   return (
     <section>
       {sampleData.map(cleaner => (
-        <CleanerCard {...cleaner} />
+        <CleanerCard {...cleaner} onOpen={props.onOpen} />
       ))}
     </section>
   );

@@ -41,7 +41,7 @@ const CleanerCard = props => {
       </div>
       <br />
       <footer className="cleaner__card__bottom">
-        <a href="#">
+        <a href="#" onClick={props.onOpen}>
           {props.avgRating}
           <Star size="16px" />({props.numRatings} reviews)
         </a>
