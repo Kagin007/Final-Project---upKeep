@@ -5,6 +5,7 @@ import Review from "./Review";
 const ReviewsModal = props => {
   const sampleDataReviews = [
     {
+      id: 1,
       date: "Jan 23, 2022",
       reviewerName: "James Dean",
       rating: 5,
@@ -14,18 +15,21 @@ const ReviewsModal = props => {
     },
     ,
     {
+      id: 2,
       date: "Feb 2, 2022",
       reviewerName: "Margot Lin",
       rating: 5,
       reviewMessage: `David is on time! Highly communicative and willing to come to our aid on last minute notice. We highly recommend him for cleaning your property.`,
     },
     {
+      id: 3,
       date: "June 22, 2021",
       reviewerName: "Jerry Macguire",
       rating: 4,
       reviewMessage: `Great job! David comes cleans our apartment every week and we will continue to use his services.`,
     },
     {
+      id: 4,
       date: "April 1, 2021",
       reviewerName: "Karen",
       rating: 1,
@@ -44,7 +48,7 @@ const ReviewsModal = props => {
       </header>
       <main class="modal-content">
         {sampleDataReviews.map(review => (
-          <Review {...review} />
+          <Review key={review.id} {...review} />
         ))}
       </main>
     </section>

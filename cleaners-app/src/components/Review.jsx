@@ -8,7 +8,7 @@ const Review = props => {
       <h6 className="cleaner__card--review-user">
         {props.reviewerName}{" "}
         {[...Array(props.rating)].map((e, i) => (
-          <Star size="12px" />
+          <Star key={i} size="12px" />
         ))}
       </h6>
       <p className="cleaner__card--review-date">{props.date}</p>

@@ -3,6 +3,7 @@ import CleanerCard from "./CleanerCard";
 const CleanersList = props => {
   const sampleData = [
     {
+      id: 1,
       firstName: "Winona",
       lastName: "Williams",
       imgURL:
@@ -12,6 +13,7 @@ const CleanersList = props => {
       avgRating: 4.5,
       numRatings: 20,
       topReview: {
+        id: 1,
         date: "Jan 23, 2022",
         reviewerName: "James Dean",
         rating: 5,
@@ -21,6 +23,7 @@ const CleanersList = props => {
       },
     },
     {
+      id: 2,
       firstName: "David",
       lastName: "Salmone",
       imgURL:
@@ -30,6 +33,7 @@ const CleanersList = props => {
       avgRating: 4.9,
       numRatings: 120,
       topReview: {
+        id: 2,
         date: "Feb 2, 2022",
         reviewerName: "Margot Lin",
         rating: 5,
@@ -41,7 +45,7 @@ const CleanersList = props => {
   return (
     <section>
       {sampleData.map(cleaner => (
-        <CleanerCard {...cleaner} onOpen={props.onOpen} />
+        <CleanerCard key={cleaner.id} {...cleaner} onOpen={props.onOpen} />
       ))}
     </section>
   );
