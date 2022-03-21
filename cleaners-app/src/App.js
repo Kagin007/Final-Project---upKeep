@@ -4,6 +4,7 @@ import SearchForm from "./components/SearchForm";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Register from "./Register";
 import Login from "./Login";
+import Home from "./Home"
 
 
 
