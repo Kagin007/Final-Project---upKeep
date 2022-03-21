@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./App.css";
+import "./Home.css";
 import Navigation from "./components/Navigation";
 import SearchForm from "./components/SearchForm";
 import CleanersList from "./components/CleanersList";
@@ -8,7 +8,7 @@ import Backdrop from "./components/Backddrop";
 import ReviewsModal from "./components/ReviewsModal";
 import useModal from "./hooks/useReviewsModal";
 
-function App() {
+function Home() {
   const backend_url = "http://127.0.0.1:3000/api/v1/users";
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function App() {
   const [users, setUsers] = useState([]);
 
   return (
-    <div className="App">
+    <div className="Home">
       <Navigation />
       <SearchForm />
       <CleanersList onOpen={toggleReviewModal} />
@@ -31,4 +31,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
