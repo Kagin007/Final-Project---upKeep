@@ -9,7 +9,7 @@ const CleanerCard = props => {
         <header>
           <figure className="user">
             <a href="#">
-              <img class="user-photo" src={props.imgURL} alt="user_photo" />
+              <img className="user-photo" src={props.imgURL} alt="user_photo" />
               <figcaption className="user-caption">
                 {props.firstName}'s Profile
               </figcaption>
@@ -21,7 +21,7 @@ const CleanerCard = props => {
         </header>
         <div className="cleaner__card__middle">
           <h5>Top Review</h5>
-          <Review {...props.topReview} />
+          <Review key={props.topReview.id} {...props.topReview} />
         </div>
 
         <main>
@@ -41,7 +41,7 @@ const CleanerCard = props => {
       </div>
       <br />
       <footer className="cleaner__card__bottom">
-        <a href="#">
+        <a href="#" onClick={props.onOpen}>
           {props.avgRating}
           <Star size="16px" />({props.numRatings} reviews)
         </a>
