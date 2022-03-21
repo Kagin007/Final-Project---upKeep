@@ -22,7 +22,6 @@ function Home() {
 
   return (
     <div className="Home">
-      <Navigation />
       <SearchForm />
       <CleanersList onOpen={toggleReviewModal} />
       {reviewModalOpen && <Backdrop onClose={toggleReviewModal} />}
