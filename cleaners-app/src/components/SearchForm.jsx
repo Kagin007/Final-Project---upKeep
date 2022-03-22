@@ -14,8 +14,11 @@ const SearchForm = props => {
 
   const submitHandler = e => {
     e.preventDefault();
-    console.log(e);
+    const date = e.target.date.value;
+    const city = e.target.city.value;
+    // in this submit handler create the get request to /users and get querys for the city and date
   };
+
   return (
     <section className="searchform">
       <header>
@@ -26,11 +29,12 @@ const SearchForm = props => {
           placeholder="City"
           onChange={onSearchHandler}
           inputValue={inputValue}
+          name="city"
         />
         {citySearch && (
           <CitySuggestions suggestions={suggestions} onClick={onClickHandler} />
         )}
-        <InputForm placeholder="Date" type="date" />
+        <InputForm placeholder="Date" type="date" name="date" />
         <Button>Search</Button>
       </form>
     </section>
