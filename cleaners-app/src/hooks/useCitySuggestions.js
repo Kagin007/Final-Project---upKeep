@@ -1,29 +1,7 @@
 import { useState } from "react";
+import canadianCities from "../static/canadianCities";
+
 const useCitySuggestions = () => {
-  const canadianCities = [
-    "Toronto",
-    "Vancouver",
-    "Calgary",
-    "Edmonton",
-    "Ottawa",
-    "Montreal",
-    "Windsor",
-    "Sarnia",
-    "London",
-    "Victoria",
-    "St.Johns",
-    "Moncton",
-    "Fredericton",
-    "Halifax",
-    "Quebec City",
-    "Winnipeg",
-    "Hamilton",
-    "Kingston",
-    "Charlottetown",
-    "Regina",
-    "Thunder Bay",
-    "Surrey",
-  ];
   const [inputValue, setInputValue] = useState("");
   const [citySearch, setCitySearch] = useState("");
   const [suggestions, setSuggestions] = useState([]);
