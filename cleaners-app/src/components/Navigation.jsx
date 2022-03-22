@@ -8,7 +8,6 @@ const Navigation = props => {
         <h1 className="nav__logo">upKeeper</h1>
       </nav>
       <ul className="nav__options">
-      <Link to="/" className="nav__options--link">Home</Link>
         <Link to="#" className="nav__options--link">My Reservations</Link>
         <Link to="#" className="nav__options--link">My Profile</Link>
         <Link to="/login" className="nav__options--link">Login</Link>
