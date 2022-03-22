@@ -1,5 +1,5 @@
 import { useState } from "react";
-import canadianCities from "../static/canadianCities";
+import canadianCities from "./canadianCities";
 
 const useCitySuggestions = () => {
   const [inputValue, setInputValue] = useState("");
