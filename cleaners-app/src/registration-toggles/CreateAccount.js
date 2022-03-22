@@ -62,7 +62,9 @@ export default function CreateAccount() {
         <TextField id="outlined-basic" label="Email" variant="outlined" fullWidth required style={fieldStyle}/>
         <TextField id="outlined-basic" label="Password" type="password" variant="outlined" fullWidth required style={fieldStyle} />
         <TextField id="outlined-basic" label="Confirm Password" type="password" variant="outlined" fullWidth required style={fieldStyle} />
-
+        <Button type="submit" fullWidth style={buttonStyle} color="primary">
+          BACK
+        </Button>
         <Button type="submit" fullWidth style={buttonStyle} color="primary">
           NEXT
         </Button>

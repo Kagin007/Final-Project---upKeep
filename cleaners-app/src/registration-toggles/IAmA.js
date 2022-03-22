@@ -15,7 +15,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 export default function IAmA() {
   const paperStyle = {
     padding: 20,
-    height: "50vh",
+    height: "80vh",
     width: 600,
     margin: "20px auto",
   };

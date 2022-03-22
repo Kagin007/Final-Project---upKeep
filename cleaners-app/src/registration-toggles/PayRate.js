@@ -82,6 +82,9 @@ export default function CreateAccount() {
           </div>
         </Box>
         <Button type="submit" fullWidth style={buttonStyle} color="primary">
+          BACK
+        </Button>
+        <Button type="submit" fullWidth style={buttonStyle} color="primary">
           NEXT
         </Button>
         <Typography align="center">

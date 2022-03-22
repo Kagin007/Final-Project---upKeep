@@ -14,7 +14,7 @@ import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 export default function IAmA() {
   const paperStyle = {
     padding: 20,
-    height: "50vh",
+    height: "80vh",
     width: 600,
     margin: "20px auto",
   };
@@ -55,7 +55,7 @@ export default function IAmA() {
           <h1>Your property listing has been created!</h1>
           <u>View it here</u>
         </Grid>
-    
+       
         <Button type="submit" fullWidth style={buttonStyle} color="primary">
           CLOSE
         </Button>

@@ -13,7 +13,7 @@ import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 export default function IAmA() {
   const paperStyle = {
     padding: 20,
-    height: "50vh",
+    height: "80vh",
     width: 600,
     margin: "20px auto",
   };
@@ -56,6 +56,9 @@ export default function IAmA() {
         <DriveFolderUploadIcon style={iconStyle}/>
         </Grid>
     
+        <Button type="submit" fullWidth style={buttonStyle} color="primary">
+          BACK
+        </Button>
         <Button type="submit" fullWidth style={buttonStyle} color="primary">
           NEXT
         </Button>

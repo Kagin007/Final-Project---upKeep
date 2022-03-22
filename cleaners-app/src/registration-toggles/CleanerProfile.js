@@ -14,7 +14,7 @@ import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 export default function IAmA() {
   const paperStyle = {
     padding: 20,
-    height: "50vh",
+    height: "80vh",
     width: 600,
     margin: "20px auto",
   };
@@ -26,7 +26,7 @@ export default function IAmA() {
   };
 
   const buttonStyle = {
-    margin: "25px 0",
+    margin: "15px 0",
     backgroundColor: "#98b4aa",
     color: "white",
 
@@ -55,7 +55,7 @@ export default function IAmA() {
           <h1>Your profile has been created!</h1>
           <u>View it here</u>
         </Grid>
-    
+      
         <Button type="submit" fullWidth style={buttonStyle} color="primary">
           CLOSE
         </Button>
