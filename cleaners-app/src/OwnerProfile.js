@@ -14,8 +14,8 @@ import {
 } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 
-
-export default function TEST(props) {
+// props from App.js useEffect
+export default function Profile(props) {
   const paperStyle = {
     padding: 20,
     width: 400,
@@ -32,6 +32,7 @@ export default function TEST(props) {
     color: "white",
   };
 
+  console.log('this:', props)
 
   return (
     <Grid align="center">
@@ -46,23 +47,24 @@ export default function TEST(props) {
             </h2>
             
           </Typography>
-          <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            First Name: {props.firstName}
-          </Typography>
-          <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            Last Name: {props.lastName}
-          </Typography>
-          <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            Email: {props.email}
-          </Typography>
-          <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            Pay Rate: {props.payrate}
-          </Typography>
-          <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            Joined on: {props.joinedOn}
-          </Typography>
-         
-          <ur>
+
+          {/* this is equvalent to props && props.properties && props.properties[0] */}
+          {props?.properties?.[0] ? (
+          <>
+            <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+              First Name: {props.properties[0].first_name}
+            </Typography>
+            <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+              Last Name: {props.properties[0].last_name}
+            </Typography>
+            <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+              Email: {props.properties[0].email}
+            </Typography>
+            <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+              Joined on: {props.properties[0].date_joined}
+            </Typography>
+
+            <ul>
             {props.properties.map((property, index) => {
               return (
               <div>
@@ -73,7 +75,14 @@ export default function TEST(props) {
               </div> 
               )
             })}
-          </ur>
+          </ul>
+          
+          </> )
+            : "Loading..."}
+
+                   
+
+
         </CardContent>
       </Paper>
     </Grid>
