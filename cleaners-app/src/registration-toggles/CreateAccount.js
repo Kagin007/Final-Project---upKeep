@@ -3,55 +3,72 @@ import {
   Grid,
   Paper,
   Avatar,
-  TextField,
   Typography,
   Link,
   Button,
+  TextField
 } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 
-export default function Login() {
+
+export default function CreateAccount() {
   const paperStyle = {
     padding: 20,
-    height: "70vh",
+    height: "80vh",
     width: 600,
     margin: "20px auto",
   };
 
   const avatarStyle = {
     backgroundColor: "#98b4aa",
-    size: "90px"
+    width: "100px",
+    height: "100px",
   };
 
   const buttonStyle = {
-    margin: "10px 0",
+    margin: "25px 0",
     backgroundColor: "#98b4aa",
     color: "white",
+
+  };
+
+
+  const iconStyle = {
+    fontSize: "50px",
+  };
+
+  const companyName = {
+    fontFamily: "Julius Sans One",
+    justifyContent: "center",
+    color: "#495371",
+    fontSize: "50px",
   };
 
   const fieldStyle = {
-   margin: "20px auto"
-  }
-
+    margin: "20px auto"
+   }
 
   return (
     <Grid>
       <Paper elevation={10} style={paperStyle}>
         <Grid align="center">
           <Avatar style={avatarStyle}>
-            <CleaningServicesIcon/>
+            <CleaningServicesIcon style={iconStyle} />
           </Avatar>
-          <h2>Sign In:</h2>
+          <h1 style={companyName}>upKeeper</h1>
+
+          <h3>Create An Account</h3>
         </Grid>
         <TextField id="outlined-basic" label="Email" variant="outlined" fullWidth required style={fieldStyle}/>
         <TextField id="outlined-basic" label="Password" type="password" variant="outlined" fullWidth required style={fieldStyle} />
-        <Button type="submit" style={buttonStyle} fullWidth color="primary">
-          SIGN IN
+        <TextField id="outlined-basic" label="Confirm Password" type="password" variant="outlined" fullWidth required style={fieldStyle} />
+
+        <Button type="submit" fullWidth style={buttonStyle} color="primary">
+          NEXT
         </Button>
-        <Typography>
-          {" "}
-          Don't have an account yet?
-          <Link href="/register">Sign up here.</Link>
+        <Typography align="center">
+          Already have an account?
+          <Link href="/login">Sign in here.</Link>
         </Typography>
       </Paper>
     </Grid>
