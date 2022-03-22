@@ -1,5 +1,3 @@
-import { Fragment } from "react";
-import CleanersList from "./CleanersList";
 import Review from "./Review";
 
 const ReviewsModal = props => {
@@ -11,8 +9,8 @@ const ReviewsModal = props => {
       rating: 5,
       reviewMessage: `David is spectacular and very efficient at her job. We always use his
     service to clean our apartment when we don't have time to do it
-    ourselves. He responds quickly and is always on time!`,
-    },
+    ourselves. He responds quickly and is always on time!`
+    }
     ,
     {
       id: 2,
