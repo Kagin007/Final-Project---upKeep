@@ -12,12 +12,16 @@ const SearchForm = props => {
     suggestions,
   } = useCitySuggestions();
 
+  const submitHandler = e => {
+    e.preventDefault();
+    console.log(e);
+  };
   return (
     <section className="searchform">
       <header>
         <h2>Search for Cleaners in Your Area:</h2>
       </header>
-      <main>
+      <form onSubmit={submitHandler}>
         <InputForm
           placeholder="City"
           onChange={onSearchHandler}
@@ -28,7 +32,7 @@ const SearchForm = props => {
         )}
         <InputForm placeholder="Date" type="date" />
         <Button>Search</Button>
-      </main>
+      </form>
     </section>
   );
 };
