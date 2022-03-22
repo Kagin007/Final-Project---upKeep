@@ -6,6 +6,7 @@ const InputForm = props => {
       className="primary-input"
       placeholder={props.placeholder}
       value={props.inputValue}
+      name={props.name}
     ></input>
   );
 };
