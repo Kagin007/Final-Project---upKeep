@@ -33,15 +33,22 @@ module.exports = db => {
   //     Promise.resolve(res.json(data.rows));
   //   });
   // });
-  // router.get("/", (req, res) => {
-  //   const queryStatement = `
-  //   SELECT * FROM users
-  //   JOIN properties ON user_id = users.id;
-  //   `;
-  //   db.query(queryStatement).then(data => {
-  //     Promise.resolve(res.json(data.rows));
-  //   });
-  // });
+  router.get("/", (req, res) => {
+    const queryStatement = `
+    SELECT first_name AS firstName, last_name AS lastName, city_province, picture_url AS imgURL, cleaners.payrate AS payRate, AVG(rating) AS avgRating ,COUNT(rating) AS numRatings FROM users
+    JOIN cleaners ON user_id = users.id
+    JOIN locations ON location_id = locations.id
+    JOIN reservations ON reservations.cleaner_id = cleaners.id
+    LEFT JOIN ratings ON ratings.cleaner_id = cleaners.id
+    WHERE booking_date != $1
+    GROUP BY users.id, payrate, city_province
+    HAVING city_province LIKE $2;;
+    `;
+    const queryParams = [`${req.query.date}`, `%${req.query.city}%`];
+    db.query(queryStatement, queryParams).then(data => {
+      Promise.resolve(res.json(data.rows));
+    });
+  });
 
   return router;
 };
