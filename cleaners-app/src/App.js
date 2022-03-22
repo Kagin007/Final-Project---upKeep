@@ -5,6 +5,33 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Register from "./Register";
 import Login from "./Login";
 import Home from "./Home";
+import Profile from "./OwnerProfile"
+
+const profile = {
+  firstName: 'Adam',
+  lastName: 'Schulte',
+  email: '123@hotmail.com',
+  payrate: '123',
+  joinedOn: '03-22-2022',
+  properties: [
+    {
+      address: '123 juniper st',
+      city: 'York Dale'
+    },
+    {
+      address: ' 321 rockwood road',
+      city: 'Kitchener'
+    },
+    {
+      address: ' 321 rockwood road',
+      city: 'Kitchener'
+    },
+    {
+      address: ' 321 rockwood road',
+      city: 'Kitchener'
+    }
+  ]
+}
 
 function App() {
   return (
@@ -16,6 +43,9 @@ function App() {
         </Route>
         <Route exact path="/register">
           <Register />
+        </Route>
+        <Route exact path="/profile" >
+          <Profile {...profile}/>
         </Route>
         <Route exact path="/login">
           <Login />
