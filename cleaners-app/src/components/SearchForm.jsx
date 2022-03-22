@@ -2,6 +2,7 @@ import Button from "./Button";
 import InputForm from "./InputForm";
 import useCitySuggestions from "../hooks/useCitySuggestions";
 import CitySuggestions from "./CitySuggestions";
+import axios from "axios";
 
 const SearchForm = props => {
   const {
@@ -16,7 +17,9 @@ const SearchForm = props => {
     e.preventDefault();
     const date = e.target.date.value;
     const city = e.target.city.value;
-    // in this submit handler create the get request to /users and get querys for the city and date
+    axios.get(`/api/v1/users?city=${city}&date=${date}`).then(data => {
+      console.log(data);
+    });
   };
 
   return (
