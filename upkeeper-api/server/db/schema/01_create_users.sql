@@ -6,7 +6,9 @@ CREATE TABLE users (
   first_name VARCHAR(255) NOT NULL, 
   last_name VARCHAR(255) NOT NULL, 
   email VARCHAR(255) NOT NULL,
-  password VARCHAR(300) NOT NULL, 
-  picture_url VARCHAR(1000), 
-  role VARCHAR(255)
+  password VARCHAR(255) NOT NULL,
+  first_name VARCHAR(255) NOT NULL,
+  last_name VARCHAR(255) NOT NULL,
+  picture_url VARCHAR(4000) NOT NULL,
+  role VARCHAR(30) NOT NULL
 );
