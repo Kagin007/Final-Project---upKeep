@@ -10,7 +10,7 @@ const Navigation = props => {
       <ul className="nav__options">
       <Link to="/" className="nav__options--link">Home</Link>
         <Link to="#" className="nav__options--link">My Reservations</Link>
-        <Link to="#" className="nav__options--link">My Profile</Link>
+        <Link to="/profile" className="nav__options--link">My Profile</Link>
         <Link to="/login" className="nav__options--link">Login</Link>
         <Link to="/register" className="nav__options--link">Sign Up</Link>
       </ul>
