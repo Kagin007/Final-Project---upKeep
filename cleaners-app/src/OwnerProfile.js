@@ -15,11 +15,10 @@ import {
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 
 
-export default function Profile(props) {
+export default function TEST(props) {
   const paperStyle = {
     padding: 20,
-    height: "70vh",
-    width: 300,
+    width: 400,
     margin: "20px auto",
   };
 
@@ -42,7 +41,10 @@ export default function Profile(props) {
             <CleaningServicesIcon />
           </Avatar> 
           <Typography align="center" variant="h5" component="div">
-            Profile
+            <h2>
+              Profile
+            </h2>
+            
           </Typography>
           <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             First Name: {props.firstName}
@@ -59,8 +61,19 @@ export default function Profile(props) {
           <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             Joined on: {props.joinedOn}
           </Typography>
-          <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          </Typography>        
+         
+          <ur>
+            {props.properties.map((property, index) => {
+              return (
+              <div>
+                <h4>Property {index+1}</h4>
+                <li>Address: {property.address}</li>
+                <li>City: {property.city}</li>
+                <h>...</h>           
+              </div> 
+              )
+            })}
+          </ur>
         </CardContent>
       </Paper>
     </Grid>
