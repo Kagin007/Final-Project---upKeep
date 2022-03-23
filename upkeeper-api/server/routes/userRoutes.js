@@ -45,6 +45,7 @@ module.exports = db => {
     HAVING city_province LIKE $2;;
     `;
     const queryParams = [`${req.query.date}`, `%${req.query.city}%`];
+    console.log('test', queryParams)
     db.query(queryStatement, queryParams).then(data => {
       Promise.resolve(res.json(data.rows)).catch(() => res.json([]));
     });
