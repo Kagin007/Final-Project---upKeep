@@ -46,7 +46,7 @@ module.exports = db => {
     `;
     const queryParams = [`${req.query.date}`, `%${req.query.city}%`];
     db.query(queryStatement, queryParams).then(data => {
-      Promise.resolve(res.json(data.rows));
+      Promise.resolve(res.json(data.rows)).catch(() => res.json([]));
     });
   });
 
