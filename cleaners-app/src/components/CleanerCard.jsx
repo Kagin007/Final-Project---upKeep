@@ -9,25 +9,25 @@ const CleanerCard = props => {
         <header>
           <figure className="user">
             <a href="#">
-              <img className="user-photo" src={props.imgURL} alt="user_photo" />
+              <img className="user-photo" src={props.imgurl} alt="user_photo" />
               <figcaption className="user-caption">
-                {props.firstName}'s Profile
+                {props.firstname}'s Profile
               </figcaption>
             </a>
           </figure>
           <h2>
-            {props.firstName} {props.lastName}
+            {props.firstname} {props.lastname}
           </h2>
         </header>
         <div className="cleaner__card__middle">
           <h5>Top Review</h5>
-          <Review key={props.topReview.id} {...props.topReview} />
+          {/* <Review key={props.topReview.id} {...props.topReview} /> */}
         </div>
 
         <main>
           <div>
             <h3 className="cleaner__card--payrate">
-              ${props.payRate} CAD / hr
+              ${props.payrate} CAD / hr
             </h3>
             <p className="cleaner__card--transport">
               <strong>Mode of Transportation:</strong>{" "}
@@ -41,9 +41,9 @@ const CleanerCard = props => {
       </div>
       <br />
       <footer className="cleaner__card__bottom">
-        <a href="#" onClick={props.onOpen}>
-          {props.avgRating}
-          <Star size="16px" />({props.numRatings} reviews)
+        <a href={`/users/${props.cleanerid}/reviews`} onClick={props.onOpen}>
+          {props.avgrating}
+          <Star size="16px" />({props.numratings} reviews)
         </a>
 
         <Button onClick={() => props.onClick()}>Book Now!</Button>

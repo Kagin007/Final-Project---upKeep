@@ -3,15 +3,15 @@ import CleanerCard from "./CleanerCard";
 const CleanersList = props => {
   const sampleData = [
     {
-      id: 1,
-      firstName: "Winona",
-      lastName: "Williams",
-      imgURL:
+      cleanerid: 1,
+      firstname: "Winona",
+      lastname: "Williams",
+      imgurl:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU",
-      payRate: 60,
+      payrate: 60,
       transportMode: "Vehicle",
-      avgRating: 4.5,
-      numRatings: 20,
+      avgrating: 4.5,
+      numratings: 20,
       topReview: {
         id: 1,
         date: "Jan 23, 2022",
@@ -23,15 +23,15 @@ const CleanersList = props => {
       },
     },
     {
-      id: 2,
-      firstName: "David",
-      lastName: "Salmone",
-      imgURL:
+      cleanerid: 2,
+      firstname: "David",
+      lastname: "Salmone",
+      imgurl:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI4nSX6toZdVgbLo8qsUD1GMRQk4kdH3Hshw&usqp=CAU",
-      payRate: 50,
+      payrate: 50,
       transportMode: "Electric Bicycle",
-      avgRating: 4.9,
-      numRatings: 120,
+      avgrating: 4.9,
+      numratings: 120,
       topReview: {
         id: 2,
         date: "Feb 2, 2022",
@@ -44,9 +44,13 @@ const CleanersList = props => {
 
   return (
     <section>
-      {sampleData.map(cleaner => (
-        <CleanerCard key={cleaner.id} {...cleaner} onOpen={props.onOpen} />
-      ))}
+      {/* {sampleData.map(cleaner => (
+        <CleanerCard
+          key={cleaner.cleanerid}
+          {...cleaner}
+          onOpen={props.onOpen}
+        />
+      ))} */}
     </section>
   );
 };
