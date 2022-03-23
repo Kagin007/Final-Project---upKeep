@@ -6,5 +6,5 @@ CREATE TABLE ratings (
   rating INT,
   message VARCHAR,
   reservation_id integer REFERENCES reservations(id) ON DELETE CASCADE NOT NULL,
-  user_id integer REFERENCES users(id) ON DELETE CASCADE NOT NULL
+  cleaner_id integer REFERENCES cleaners(id) ON DELETE CASCADE NOT NULL
 );
