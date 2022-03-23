@@ -5,7 +5,7 @@ import CitySuggestions from "./CitySuggestions";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const SearchForm = props => {
+const SearchForm = ({setCleaners}) => {
   const {
     onSearchHandler,
     onClickHandler,
@@ -15,17 +15,33 @@ const SearchForm = props => {
   } = useCitySuggestions();
 
   
+  const submitHandler = e => {
+    e.preventDefault();
+    const date = e.target.date.value;
+    const city = e.target.city.value;
+    if(date && city){
+      axios
+      .get(`/api/v1/users?city=${city}&date=${date}`)
+      .then(res => {
+        setCleaners(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    }
+    else {
+      alert('Please provide Location and Date for the Search.');
+    }
+   
+  };
 
-  useEffect(() => props.submitHandler, []);
-
-  
 
   return (
     <section className="searchform">
       <header>
         <h2>Search for Cleaners in Your Area:</h2>
       </header>
-      <form onSubmit={props.submitHandler}>
+      <form onSubmit={submitHandler} autoComplete='off'>
         <InputForm
           placeholder="City"
           onChange={onSearchHandler}

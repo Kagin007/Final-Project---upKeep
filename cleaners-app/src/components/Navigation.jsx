@@ -33,8 +33,8 @@ const Navigation = props => {
       {signUpWizardOpen && <Backdrop onClose={toggleSignUpWizard} />}
       {signUpWizardOpen && <SignUpWizard onClose={toggleSignUpWizard} />}
 
-      {loginOpen && <Backdrop onClose={toggleSignUpWizard} />}
-      {loginOpen && <SignUpWizard onClose={toggleSignUpWizard} />}
+      {loginOpen && <Backdrop onClose={toggleLogin} />}
+      {loginOpen && <SignUpWizard onClose={toggleLogin} />}
     </Fragment>
   );
 };

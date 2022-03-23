@@ -9,12 +9,16 @@ import useModal from "./hooks/useReviewsModal";
 
 function Home(props) {
   const { reviewModalOpen, toggleReviewModal } = useModal();
-  const [users, setUsers] = useState([]);
+
+  const [cleaners, setCleaners] = useState([]);
+
+ 
 
   return (
+   
     <div className="Home">
-      <SearchForm submitHandler={props.submitHandler} />
-      <CleanersList onOpen={toggleReviewModal} />
+      <SearchForm setCleaners={setCleaners} />
+      <CleanersList onOpen={toggleReviewModal} cleaners={cleaners}/>
       {reviewModalOpen && <Backdrop onClose={toggleReviewModal} />}
       {reviewModalOpen && <ReviewsModal onClose={toggleReviewModal} />}
     </div>

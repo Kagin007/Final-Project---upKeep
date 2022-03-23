@@ -54,37 +54,13 @@ function App() {
     []
   );
 
-  const [query, setQuery] = useState([]);
-
-  const submitHandler = e => {
-    e.preventDefault();
-    const date = e.target.date.value;
-    const city = e.target.city.value;
-    axios
-      .get(`/api/v1/users?city=${city}&date=${date}`)
-      .then(res => {
-        setQuery(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-  if (!query) return null;
-
-  const test = query.map(cleaner => (
-    <CleanerCard key={cleaner.cleanerid} {...cleaner} />
-  ));
 
   return (
     <Router>
       <Navigation />
       <Switch>
         <Route exact path="/">
-          <Home submitHandler={submitHandler} />
-          {test}
-        </Route>
-        <Route exact path="/register">
-          <Register />
+          <Home />
         </Route>
         <Route exact path="/profile">
           <Profile properties={user} />

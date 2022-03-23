@@ -41,10 +41,10 @@ const CleanerCard = props => {
       </div>
       <br />
       <footer className="cleaner__card__bottom">
-        <a href={`/users/${props.cleanerid}/reviews`} onClick={props.onOpen}>
+        <button onClick={props.onOpen}>
           {props.avgrating}
           <Star size="16px" />({props.numratings} reviews)
-        </a>
+        </button>
 
         <Button onClick={() => props.onClick()}>Book Now!</Button>
       </footer>

@@ -7,6 +7,7 @@ const InputForm = props => {
       placeholder={props.placeholder}
       value={props.inputValue}
       name={props.name}
+      autoComplete="off"
     ></input>
   );
 };
