@@ -4,6 +4,7 @@ import useSignUpModal from "../hooks/useSignUpModal"
 import useLoginModal from "../hooks/useLoginModal"
 import Backdrop from "./Backddrop";
 import SignUpWizard from "./SignUpWizard";
+import LoginModal from "./LoginModal";
 
 const Navigation = props => {
 
@@ -34,7 +35,7 @@ const Navigation = props => {
       {signUpWizardOpen && <SignUpWizard onClose={toggleSignUpWizard} />}
 
       {loginOpen && <Backdrop onClose={toggleLogin} />}
-      {loginOpen && <SignUpWizard onClose={toggleLogin} />}
+      {loginOpen && <LoginModal onClose={toggleLogin} />}
     </Fragment>
   );
 };
