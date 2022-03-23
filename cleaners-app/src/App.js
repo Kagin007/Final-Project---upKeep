@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navigation from "./components/Navigation";
 import SearchForm from "./components/SearchForm";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Register from "./Register";
+
 import Login from "./Login";
 import Home from "./Home";
 import Profile from "./OwnerProfile";
@@ -35,6 +35,7 @@ const profile = {
     },
   ],
 };
+
 
 function App() {
   const [user, setUser] = useState([]);
