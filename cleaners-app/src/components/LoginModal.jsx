@@ -8,6 +8,7 @@ import {
   TextField,
 } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
+import axios from "axios";
 
 const loginModal = props => {
 
@@ -39,6 +40,18 @@ const loginModal = props => {
         backgroundColor: "white"
       };
 
+      const submitHandler = e => {
+        e.preventDefault();
+          axios
+          .post(`/api/login`, {username: 'adam', password: 'adam'})
+          .then(res => {
+            console.log(res.data);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+        }
+
     return (
 
         <section className="modal">
@@ -57,33 +70,35 @@ const loginModal = props => {
 
         <h3>Login</h3>
       </Grid>
-      <TextField
-        id="outlined-basic"
-        label="Email"
-        variant="outlined"
-        fullWidth
-        required
-        style={fieldStyle}
-      />
-      <TextField
-        id="outlined-basic"
-        label="Password"
-        type="password"
-        variant="outlined"
-        fullWidth
-        required
-        style={fieldStyle}
-      />
+      <form onSubmit={submitHandler}>
+        <TextField
+          id="outlined-basic"
+          label="Email"
+          variant="outlined"
+          fullWidth
+          required
+          style={fieldStyle}
+        />
+        <TextField
+          id="outlined-basic"
+          label="Password"
+          type="password"
+          variant="outlined"
+          fullWidth
+          required
+          style={fieldStyle}
+        />
 
-      <Button
-        type="submit"
-        fullWidth
-        style={buttonStyle}
-        color="primary"
-        onClick={props.increment}
-      >
-        SUMBIT
-      </Button>
+        <Button
+          type="submit"
+          fullWidth
+          style={buttonStyle}
+          color="primary"
+          onClick={props.increment}
+        >
+          SUMBIT
+        </Button>
+      </form>
       <Typography align="center">
         Don't yet have an account?
         <Link href="/#">Sign up here</Link>
