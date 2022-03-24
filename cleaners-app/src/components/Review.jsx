@@ -6,7 +6,6 @@ const Review = props => {
     <Fragment>
       {" "}
       <h6 className="cleaner__card--review-user">
-        {props.reviewerName}{" "}
         {[...Array(props.rating)].map((e, i) => (
           <Star key={i} size="12px" />
         ))}
