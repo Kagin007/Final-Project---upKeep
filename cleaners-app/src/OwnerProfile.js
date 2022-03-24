@@ -18,7 +18,7 @@ import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 export default function Profile(props) {
   const paperStyle = {
     padding: 20,
-    width: 400,
+    width: '70rem',
     margin: "20px auto",
   };
 
@@ -31,8 +31,6 @@ export default function Profile(props) {
     backgroundColor: "#98b4aa",
     color: "white",
   };
-
-  console.log('this:', props)
 
   return (
     <Grid align="center">
@@ -78,7 +76,22 @@ export default function Profile(props) {
           </ul>
           
           </> )
-            : "Loading..."}
+            : 
+
+<div class="center">
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+</div>
+
+}
 
                    
 

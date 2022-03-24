@@ -62,6 +62,9 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
+        <Route exact path="/reservations">
+        
+        </Route>
         <Route exact path="/profile">
           <Profile properties={user} />
         </Route>
