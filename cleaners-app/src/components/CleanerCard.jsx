@@ -3,7 +3,7 @@ import Review from "./Review";
 import Star from "./Star";
 
 const CleanerCard = props => {
-  // console.log(props);
+  
   const {
     firstname,
     lastname,
@@ -17,20 +17,20 @@ const CleanerCard = props => {
     reviews,
   } = props;
 
-  const reviewObjects = reviews.map(review => {
-    if (reviewArray.length > 0) {
-      const reviewArray = review.split(",");
-      const reviewObj = {
-        date: reviewArray[0],
-        rating: reviewArray[1],
-        message: reviewArray[2],
-      };
-      return reviewObj;
-    }
-    return review;
-  });
+  // const reviewObjects = reviews.map(review => {
+  //   if (reviewArray.length > 0) {
+  //     const reviewArray = review.split(",");
+  //     const reviewObj = {
+  //       date: reviewArray[0],
+  //       rating: reviewArray[1],
+  //       message: reviewArray[2],
+  //     };
+  //     return reviewObj;
+  //   }
+  //   return review;
+  // });
 
-  console.log(reviewObjects);
+  // console.log(reviewObjects);
   return (
     <article className="cleaner__card">
       <div className="cleaner__card__top">
