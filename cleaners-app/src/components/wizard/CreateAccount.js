@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from 'react-router'
+import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
+
 import {
   Grid,
   Avatar,
@@ -6,9 +9,10 @@ import {
   Link,
   Button,
   TextField,
+  FormGroup,
 } from "@material-ui/core";
-import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 
+//STYLES 
 const avatarStyle = {
   backgroundColor: "#98b4aa",
   width: "100px",
@@ -34,11 +38,39 @@ const companyName = {
 
 const fieldStyle = {
   margin: "5px auto",
-  backgroundColor: "white"
+  backgroundColor: "white",
 };
+//POST REQUEST FUNCTIONALITY
+
+const history = useHistory()
+
+const storeUserDetails= async() => {
+let formField = new FormDataEvent()
+formField.append('email', email)
+formField.append('password', password)
+
+if(email !== "") {
+  formField.append('email', email)
+}
+
+await axios({
+  method: 'post',
+  url: 'http://localhost:8080"/api',
+  data: formField
+}).then((respone) => {
+  console.log(response.data)
+  history.push("/")
+})
+}
+
+const onClickEvents = () => {
+  props.increment,
+  storeUserDetails()
+}
 
 export default function CreateAccount(props) {
- 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <Grid>
@@ -50,32 +82,43 @@ export default function CreateAccount(props) {
 
         <h3>Create An Account</h3>
       </Grid>
-      <TextField
-        id="outlined-basic"
-        label="Email"
-        variant="outlined"
-        fullWidth
-        required
-        style={fieldStyle}
-      />
-      <TextField
-        id="outlined-basic"
-        label="Password"
-        type="password"
-        variant="outlined"
-        fullWidth
-        required
-        style={fieldStyle}
-      />
-      <TextField
-        id="outlined-basic"
-        label="Confirm Password"
-        type="password"
-        variant="outlined"
-        fullWidth
-        required
-        style={fieldStyle}
-      />
+      <FormGroup>
+        <TextField
+          type="text"
+          name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          label="Email"
+          variant="outlined"
+          fullWidth
+          required
+          style={fieldStyle}
+        />
+      </FormGroup>
+      <FormGroup>
+        <TextField
+          type="password"
+          name="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          label="Password"
+          variant="outlined"
+          fullWidth
+          required
+          style={fieldStyle}
+        />
+      </FormGroup>
+      <FormGroup>
+        <TextField
+          id="outlined-basic"
+          label="Confirm Password"
+          type="password"
+          variant="outlined"
+          fullWidth
+          required
+          style={fieldStyle}
+        />
+      </FormGroup>
 
       <Button
         type="submit"
@@ -92,7 +135,7 @@ export default function CreateAccount(props) {
         fullWidth
         style={buttonStyle}
         color="primary"
-        onClick={props.increment}
+        onClick={onClickEvents}
       >
         NEXT
       </Button>

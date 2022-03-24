@@ -5,6 +5,8 @@ import useLoginModal from "../hooks/useLoginModal"
 import Backdrop from "./Backddrop";
 import SignUpWizard from "./SignUpWizard";
 import LoginModal from "./LoginModal";
+import useProfileModal from "../hooks/useProfileModal";
+import OwnerProfileModal from "./OwnerProfileModal";
 
 const Navigation = props => {
 
@@ -18,6 +20,12 @@ const Navigation = props => {
     toggleLogin,
   } = useLoginModal();
 
+  const {
+    profileModalOpen,
+    toggleProfileModal,
+  } = useProfileModal();
+  
+
 
 
   return (
@@ -27,7 +35,7 @@ const Navigation = props => {
       </nav>
       <ul className="nav__options">
         <Link to="#" className="nav__options--link">My Reservations</Link>
-        <Link to="#" className="nav__options--link">My Profile</Link>
+        <div to="#" className="nav__options--link" onClick={toggleProfileModal}>My Profile</div>
         <div to="/login" className="nav__options--link" onClick={toggleLogin}>Log In</div>
         <div to="/register" className="nav__options--link" onClick={toggleSignUpWizard}>Sign Up</div>
       </ul>
@@ -36,6 +44,9 @@ const Navigation = props => {
 
       {loginOpen && <Backdrop onClose={toggleLogin} />}
       {loginOpen && <LoginModal onClose={toggleLogin} />}
+
+      {profileModalOpen && <Backdrop onClose={toggleProfileModal} />}
+      {profileModalOpen && <OwnerProfileModal onClose={toggleProfileModal} />}
     </Fragment>
   );
 };
