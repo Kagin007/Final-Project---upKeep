@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useContext} from "react";
 import {
   Grid,
   Avatar,
@@ -9,8 +9,10 @@ import {
 } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 import axios from "axios";
+import {authContext} from "../providers/AuthProvider";
 
-const loginModal = props => {
+const LoginModal = props => {
+  const { login } = useContext(authContext)
 
     const avatarStyle = {
         backgroundColor: "#98b4aa",
@@ -40,18 +42,23 @@ const loginModal = props => {
         backgroundColor: "white"
       };
 
-
       const submitHandler = e => {
         e.preventDefault();
+        const email = e.target.email.value
+        const password = e.target.password.value
+        console.log(email)
+        console.log(password)
           axios
-          .post(`/api/login`, {username: 'adam', password: 'adam'})
+          .post(`/api/login`, {username: `${email}`, password: `${password}`})
           .then(res => {
-            console.log(res.data);
+            login(res.data.username, res.data.id);
           })
           .catch(err => {
             console.log(err);
           });
         }
+
+      
 
     return (
 
@@ -61,7 +68,6 @@ const loginModal = props => {
               <i className="fa-solid fa-xmark modal-exit"></i>
             </div>
 
- 
     <Grid>
       <Grid align="center">
         <Avatar style={avatarStyle}>
@@ -73,6 +79,7 @@ const loginModal = props => {
       </Grid>
       <form onSubmit={submitHandler}>
         <TextField
+          name="email"
           id="outlined-basic"
           label="Email"
           variant="outlined"
@@ -81,6 +88,7 @@ const loginModal = props => {
           style={fieldStyle}
         />
         <TextField
+          name="password"
           id="outlined-basic"
           label="Password"
           type="password"
@@ -114,4 +122,4 @@ const loginModal = props => {
       };
       
       
-      export default loginModal
+      export default LoginModal

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext, createContext } from "react";
 import Navigation from "./components/Navigation";
 import SearchForm from "./components/SearchForm";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -8,6 +8,7 @@ import Home from "./Home";
 import Profile from "./OwnerProfile";
 import axios from "axios";
 import ReservationCard from "./components/ReservationCard";
+import AuthProvider from "./providers/AuthProvider";
 
 const profile = {
   firstName: "Adam",
@@ -35,6 +36,8 @@ const profile = {
   ],
 };
 
+const LoginContext = createContext()
+
 function App() {
   const [user, setUser] = useState([]);
 
@@ -51,8 +54,10 @@ function App() {
         }),
     []
   );
+  
 
   return (
+    <AuthProvider>
     <Router>
       <Navigation />
       <Switch>
@@ -71,13 +76,14 @@ function App() {
           />
         </Route>
         <Route exact path="/profile">
-          <Profile properties={user} />
+            <Profile properties={user} />
         </Route>
         <Route exact path="/login">
-          <Login />
+          <Login/>
         </Route>
       </Switch>
     </Router>
+    </AuthProvider>
   );
 }
 

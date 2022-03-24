@@ -1,12 +1,15 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { Link, NavLink } from 'react-router-dom'
 import useSignUpModal from "../hooks/useSignUpModal"
 import useLoginModal from "../hooks/useLoginModal"
 import Backdrop from "./Backddrop";
 import SignUpWizard from "./SignUpWizard";
 import LoginModal from "./LoginModal";
+import {authContext} from "../providers/AuthProvider";
 
 const Navigation = props => {
+
+  const {user} = useContext(authContext)
 
   const {
     signUpWizardOpen,
@@ -17,7 +20,6 @@ const Navigation = props => {
     loginOpen,
     toggleLogin,
   } = useLoginModal();
-
 
 
   return (
@@ -37,6 +39,7 @@ const Navigation = props => {
 
       {loginOpen && <Backdrop onClose={toggleLogin} />}
       {loginOpen && <LoginModal onClose={toggleLogin} />}
+      {user && user.username}
     </Fragment>
   );
 };
