@@ -52,6 +52,22 @@ export default function CreateAccount(props) {
       </Grid>
       <TextField
         id="outlined-basic"
+        label="First Name"
+        variant="outlined"
+        fullWidth
+        required
+        style={fieldStyle}
+      />
+      <TextField
+        id="outlined-basic"
+        label="Last Name"
+        variant="outlined"
+        fullWidth
+        required
+        style={fieldStyle}
+      />
+      <TextField
+        id="outlined-basic"
         label="Email"
         variant="outlined"
         fullWidth
