@@ -41,7 +41,8 @@ module.exports = db => {
   //this route is to get all cleaners by location and the date where they don't have a booking
   router.get("/", (req, res) => {
     const queryStatement = `
-    SELECT cleaners.id AS cleanerID, first_name AS firstName, last_name AS lastName, city_province, picture_url AS imgURL, cleaners.payrate AS payRate, AVG(rating) AS avgRating, COUNT(rating) AS numRatings FROM users
+    SELECT cleaners.id AS cleanerID, first_name AS firstName, last_name AS lastName, city_province, picture_url AS imgURL, cleaners.payrate AS payRate, AVG(rating) AS avgRating, COUNT(rating) AS numRatings,
+    ARRAY_AGG(ratings) FROM users
     JOIN cleaners ON user_id = users.id
     JOIN locations ON location_id = locations.id
     JOIN reservations ON reservations.cleaner_id = cleaners.id
