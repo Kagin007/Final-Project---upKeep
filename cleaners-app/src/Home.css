@@ -271,3 +271,116 @@ a:active {
 .search-suggestion-item:hover {
   color: var(--primary-color);
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}
+.wave {
+  width: 5px;
+  height: 50px;
+  background: linear-gradient(
+    85deg,
+    var(--secondary-color),
+    var(--light-color-bg)
+  );
+  margin: 10px;
+  animation: wave 1s linear infinite;
+  border-radius: 20px;
+}
+.wave:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.wave:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.wave:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.wave:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.wave:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.wave:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.wave:nth-child(8) {
+  animation-delay: 0.7s;
+}
+.wave:nth-child(9) {
+  animation-delay: 0.8s;
+}
+.wave:nth-child(10) {
+  animation-delay: 0.9s;
+}
+
+@keyframes wave {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+.reservation__card {
+  width: 85%;
+  background: rgba(152, 180, 170, 0.2);
+  margin: 1em auto;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  overflow: hidden;
+  height: 12em;
+}
+
+.reservation__card:hover {
+  transform: translateY(-2px);
+}
+
+.user-sm {
+  background-color: var(--light-color-bg);
+  width: 4em;
+  height: 4em;
+  shape-outside: circle(50% at 50% 50%);
+  clip-path: circle(50% at 50% 50%);
+  position: relative;
+  margin: 0;
+  margin-right: 1em;
+}
+
+.reservation__card--propertyimg {
+  width: 18em;
+}
+.reservation__card--figure {
+  margin: 0;
+  padding: 0;
+}
+
+.reservation__card--left header {
+  display: flex;
+}
+.reservation__card--left {
+  padding: 1em;
+}
+.reservation__card--right {
+  box-sizing: border-box;
+  display: inline-block;
+}
+.reservation__date {
+  margin: 0;
+}
+
+.reservation__address {
+}

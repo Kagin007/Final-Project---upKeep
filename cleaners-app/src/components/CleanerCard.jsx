@@ -3,20 +3,48 @@ import Review from "./Review";
 import Star from "./Star";
 
 const CleanerCard = props => {
+  
+  const {
+    firstname,
+    lastname,
+    imgurl,
+    payrate,
+    avgrating,
+    numratings,
+    onOpen,
+    onClick,
+    tranportMode,
+    reviews,
+  } = props;
+
+  // const reviewObjects = reviews.map(review => {
+  //   if (reviewArray.length > 0) {
+  //     const reviewArray = review.split(",");
+  //     const reviewObj = {
+  //       date: reviewArray[0],
+  //       rating: reviewArray[1],
+  //       message: reviewArray[2],
+  //     };
+  //     return reviewObj;
+  //   }
+  //   return review;
+  // });
+
+  // console.log(reviewObjects);
   return (
     <article className="cleaner__card">
       <div className="cleaner__card__top">
         <header>
           <figure className="user">
             <a href="#">
-              <img className="user-photo" src={props.imgurl} alt="user_photo" />
+              <img className="user-photo" src={imgurl} alt="user_photo" />
               <figcaption className="user-caption">
-                {props.firstname}'s Profile
+                {firstname}'s Profile
               </figcaption>
             </a>
           </figure>
           <h2>
-            {props.firstname} {props.lastname}
+            {firstname} {lastname}
           </h2>
         </header>
         <div className="cleaner__card__middle">
@@ -26,12 +54,10 @@ const CleanerCard = props => {
 
         <main>
           <div>
-            <h3 className="cleaner__card--payrate">
-              ${props.payrate} CAD / hr
-            </h3>
+            <h3 className="cleaner__card--payrate">${payrate} CAD / hr</h3>
             <p className="cleaner__card--transport">
               <strong>Mode of Transportation:</strong>{" "}
-              {props.tranportMode || "Vehicle"}
+              {tranportMode || "Vehicle"}
             </p>
           </div>
           <figure className="cleaner__card--message">
@@ -41,12 +67,12 @@ const CleanerCard = props => {
       </div>
       <br />
       <footer className="cleaner__card__bottom">
-        <button onClick={props.onOpen}>
-          {props.avgrating}
-          <Star size="16px" />({props.numratings} reviews)
-        </button>
+        <a onClick={onOpen}>
+          {Math.round(avgrating * 100) / 100}
+          <Star size="16px" />({numratings} reviews)
+        </a>
 
-        <Button onClick={() => props.onClick()}>Book Now!</Button>
+        <Button onClick={() => onClick()}>Book Now!</Button>
       </footer>
     </article>
   );
