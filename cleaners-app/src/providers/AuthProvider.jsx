@@ -1,13 +1,29 @@
-import { createContext } from "react";
+import { createContext, useState } from 'react';
 
-export const AuthContext = createContext();
-const AuthProvider = props => {
-  const providerData = {};
+export const authContext = createContext();
+
+export default function AuthProvider(props) {
+  const [auth, setAuth] = useState(false);
+  const [user, setUser] = useState(null);
+
+  // Perform login process for the user & save authID, etc
+  const login = function(username, id) {
+    setAuth(true);
+    setUser({ username, id });
+  };
+
+  const logout = function() {
+    setAuth(false);
+    setUser(null);
+  };
+
+  // authContext will expose these items
+  const userData = { auth, user, login, logout };
+
+  // We can use this component to wrap any content we want to share this context
   return (
-    <AuthContext.Provider value={providerData}>
+    <authContext.Provider value={userData}>
       {props.children}
-    </AuthContext.Provider>
+    </authContext.Provider>
   );
 };
-
-export default AuthProvider;
