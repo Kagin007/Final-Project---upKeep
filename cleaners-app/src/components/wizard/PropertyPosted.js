@@ -25,7 +25,7 @@ const companyName = {
   fontSize: "50px",
 };
 
-export default function IAmA(props) {
+export default function PropertyPosted(props) {
   return (
     <Grid>
       <Grid align="center">

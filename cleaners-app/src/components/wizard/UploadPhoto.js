@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+
 import {
   Grid,
   TextField,
@@ -6,10 +7,13 @@ import {
   Typography,
   Link,
   Button,
+  FormGroup
 } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
+import axios from "axios";
 
+//STYLES
 const avatarStyle = {
   backgroundColor: "#98b4aa",
   width: "100px",
@@ -37,7 +41,47 @@ const fieldStyle = {
   backgroundColor: "white"
 };
 
-export default function IAmA(props) {
+
+//POST REQUEST FUNCTIONALITY
+const storePhoto= async(picture_url) => {
+let formField = new FormData();
+
+if (picture_url !== null) {
+  formField.append("picture_url", picture_url);
+}
+
+return axios({
+  method: "post",
+  url: 'http://localhost:8000"/api/register',
+  data: formField,
+}).then((response) => {
+  console.log(response.data);
+ 
+});
+}
+
+export default function UploadPhoto(props) {
+ 
+  const [pictureURL, setPictureURL] = useState(null);
+
+  const onClickEvents = () => {
+    props.increment()
+    upload()
+    };
+  
+  const upload = () => {
+    pictureURL && storePhoto(pictureURL)
+    .then(() => {
+      setPictureURL(null)
+    });
+
+  }
+  const onClickEventsBack = () => {
+    props.decrement()
+    upload();
+  };
+//if user goes back, no way to upload twice
+//
   return (
     <Grid>
       <Grid align="center">
@@ -48,21 +92,26 @@ export default function IAmA(props) {
 
         <h3>Provide a photo of yourself!</h3>
         <DriveFolderUploadIcon style={iconStyle} />
+        <FormGroup>
         <TextField
-          id="outlined-basic"
-          label="Paste a link"
+         type="text"
+         name="picture_url"
+         value={pictureURL}
+         onChange={(e) => setPictureURL(e.target.files[0])}
+          label="Paste a URL link"
           variant="outlined"
           fullWidth
           required
           style={fieldStyle}
         />
+        </FormGroup>
       </Grid>
       <Button
         type="submit"
         fullWidth
         style={buttonStyle}
         color="primary"
-        onClick={props.decrement}
+        onClick={onClickEventsBack}
       >
         BACK
       </Button>
@@ -71,7 +120,8 @@ export default function IAmA(props) {
         fullWidth
         style={buttonStyle}
         color="primary"
-        onClick={props.increment}
+        onClick={onClickEvents}
+
       >
         NEXT
       </Button>

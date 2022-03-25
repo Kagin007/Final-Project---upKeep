@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Avatar, Typography, Link, Button } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
-import RecommendIcon from '@mui/icons-material/Recommend';
+
 
 const avatarStyle = {
   backgroundColor: "#98b4aa",
@@ -28,7 +28,7 @@ const companyName = {
 
 
 
-export default function IAmA(props) {
+export default function CleanerProfile(props) {
   return (
     <Grid>
       <Grid align="center">

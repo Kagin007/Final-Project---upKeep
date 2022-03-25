@@ -1,10 +1,11 @@
-import React from "react";
-import { Grid, Avatar, Typography, Link, Button, TextField} from "@material-ui/core";
+import React, { useState } from "react";
+import { useHistory } from 'react-router'
+import { Grid, Avatar, FormGroup, Typography, Link, Button, TextField} from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
+import axios from "axios";
 
 
 
-export default function PayRate(props) {
   const avatarStyle = {
     backgroundColor: "#98b4aa",
     width: "100px",
@@ -33,6 +34,44 @@ export default function PayRate(props) {
     backgroundColor: "white"
   };
 
+  //POST REQUEST FUNCTIONALITY
+
+
+
+const storePayRate= async() => {
+let formField = new FormData()
+formField.append('payrate', payrate)
+
+
+if(payrate !== "") {
+  formField.append('payrate', payrate)
+}
+
+await axios({
+  method: 'post',
+  url: 'http://localhost:8000"/api/register',
+  data: formField
+}).then((response) => {
+  console.log(response.data)
+  history.push("/")
+})
+}
+
+
+
+export default function PayRate(props) {
+  const history = useHistory()
+  const [payRate, setPayRate] = useState("");
+  
+  const onClickEvents = () => {
+    props.increment,
+    storePayRate()
+  }
+
+  const onClickEventsBack = () => {
+    props.decrement, storeListingDetails();
+  };
+
   return (
     <Grid>
       <Grid align="center">
@@ -43,13 +82,24 @@ export default function PayRate(props) {
 
         <h3>How much do you charge for your services?</h3>
       </Grid>
-      <div>  <TextField style={fieldStyle} id="outlined-basic" label="Enter an hourly rate in Canadian dollars (no decimals)"  variant="outlined" fullWidth required /></div>
+      <FormGroup>  
+      <TextField style={fieldStyle} 
+      type="text"
+      name="payrate"
+      value={payrate}
+      onChange={(e) => setPayRate(e.target.value)}
+      label="Enter an hourly rate in Canadian dollars (no decimals)"  
+      variant="outlined" 
+      fullWidth 
+      required 
+      />
+      </FormGroup> 
       <Button
         type="submit"
         fullWidth
         style={buttonStyle}
         color="primary"
-        onClick={props.decrement}
+        onClick={onClickEvents}
       >
         BACK
       </Button>
@@ -58,7 +108,7 @@ export default function PayRate(props) {
         fullWidth
         style={buttonStyle}
         color="primary"
-        onClick={props.increment}
+        onClick={onClickEventsBack}
       >
         NEXT
       </Button>
@@ -69,3 +119,4 @@ export default function PayRate(props) {
     </Grid>
   );
 }
+

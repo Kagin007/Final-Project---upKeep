@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { useHistory } from 'react-router'
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
-
+import axios from "axios";
 import {
   Grid,
   Avatar,
@@ -41,36 +40,46 @@ const fieldStyle = {
   backgroundColor: "white",
 };
 //POST REQUEST FUNCTIONALITY
-
-const history = useHistory()
-
 const storeUserDetails= async() => {
-let formField = new FormDataEvent()
+let formField = new FormData()
 formField.append('email', email)
 formField.append('password', password)
+console.log(email)
 
 if(email !== "") {
   formField.append('email', email)
 }
 
+if(password !== "") {
+  formField.append('password', password)
+}
+
 await axios({
   method: 'post',
-  url: 'http://localhost:8080"/api',
+  url: 'http://localhost:8000"/api/register',
   data: formField
-}).then((respone) => {
+}).then((response) => {
   console.log(response.data)
-  history.push("/")
+
 })
 }
 
-const onClickEvents = () => {
-  props.increment,
-  storeUserDetails()
-}
 
 export default function CreateAccount(props) {
+ 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+
+const onClickEvents = () => {
+  props.increment,
+  upload()
+}
+
+const onClickEventsBack = () => {
+  props.decrement,
+  storeUserDetails()
+}
 
   return (
     <Grid>
@@ -125,7 +134,7 @@ export default function CreateAccount(props) {
         fullWidth
         style={buttonStyle}
         color="primary"
-        onClick={props.decrement}
+        onClick={onClickEventsBack}
       >
         BACK
       </Button>
