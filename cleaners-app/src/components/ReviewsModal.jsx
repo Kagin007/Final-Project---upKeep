@@ -39,8 +39,8 @@ const ReviewsModal = props => {
   return (
     <section className="modal">
       <header class="modal-header">
-        <div onClick={props.onClose}>
-          <i class="fa-solid fa-xmark modal-exit"></i>
+        <div onClick={props.onClose} className="modal-exit">
+          <i class="fa-solid fa-xmark"></i>
         </div>
         <h3>
           <strong>Reviews</strong>
