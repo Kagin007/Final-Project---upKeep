@@ -42,26 +42,24 @@ const LoginModal = props => {
         backgroundColor: "white"
       };
 
+
+
       const submitHandler = e => {
         e.preventDefault();
         const email = e.target.email.value
         const password = e.target.password.value
-        console.log(email)
-        console.log(password)
           axios
           .post(`/api/login`, {username: `${email}`, password: `${password}`})
           .then(res => {
             login(res.data.username, res.data.id);
+            props.onClose()
           })
           .catch(err => {
             console.log(err);
           });
         }
 
-      
-
     return (
-
         <section className="modal">
           <header className="modal-header">
             <div onClick={props.onClose}>

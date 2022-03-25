@@ -10,31 +10,7 @@ import axios from "axios";
 import ReservationCard from "./components/ReservationCard";
 import AuthProvider from "./providers/AuthProvider";
 
-// const profile = {
-//   firstName: "Adam",
-//   lastName: "Schulte",
-//   email: "123@hotmail.com",
-//   payrate: "123",
-//   joinedOn: "03-22-2022",
-//   properties: [
-//     {
-//       address: "123 juniper st",
-//       city: "York Dale",
-//     },
-//     {
-//       address: " 321 rockwood road",
-//       city: "Kitchener",
-//     },
-//     {
-//       address: " 321 rockwood road",
-//       city: "Kitchener",
-//     },
-//     {
-//       address: " 321 rockwood road",
-//       city: "Kitchener",
-//     },
-//   ],
-// };
+const loggedIn = true
 
 const LoginContext = createContext()
 
@@ -59,9 +35,9 @@ function App() {
             propertyimgurl="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGhvdXNlfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
           />
         </Route>
-        <Route exact path="/profile">
+        {<Route exact path="/profile">
             <Profile/>
-        </Route>
+        </Route>}
         <Route exact path="/login">
           <Login/>
         </Route>

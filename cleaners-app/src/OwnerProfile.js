@@ -11,10 +11,15 @@ import {
   Card,
   CardActions,
   CardContent,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
 } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 import { authContext } from "./providers/AuthProvider";
 import axios from 'axios'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 
 // props from App.js useEffect
 export default function Profile(props) {
@@ -90,6 +95,7 @@ export default function Profile(props) {
 
 
   return (
+    <div>
     <Grid align="center">
       <Paper elevation={10} style={paperStyle}>
         <CardContent>
@@ -98,17 +104,24 @@ export default function Profile(props) {
           </Avatar> 
           <Typography align="center" variant="h5" component="div">
             <h2>
-              Profile
+              {memberData.user.first_name}'s Profile
             </h2>
             
           </Typography>
-
-          {/* this is equvalent to props && props.properties && props.properties[0] */}
-          {/* props?.properties?.[0] ? */}
            
           <>
-            <img className="user-photo" src={memberData.imgurl} alt="user_photo" />
-            <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            <img className="user-photo" src={memberData.imgurl} alt="user_photo" width="200" height="50" border-radius="50%"/>
+            <Accordion>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+      >
+        <Typography>User Information</Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Typography>
+        <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
               First Name:{memberData.user.first_name}
             </Typography>
             <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -120,7 +133,20 @@ export default function Profile(props) {
             <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
               Role: {memberData.role}
             </Typography>
+        </Typography>
+      </AccordionDetails>
+    </Accordion>
 
+            <Accordion>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+      >
+        <Typography>Properties</Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Typography>
             <ul>
             {properties.map((property, index) => {
               return (
@@ -133,27 +159,17 @@ export default function Profile(props) {
               )
             })}
           </ul>
+        </Typography>
+      </AccordionDetails>
+    </Accordion>
+
           
-          </>
-
-{/* <div class="center">
-  <div class="wave"></div>
-  <div class="wave"></div>
-  <div class="wave"></div>
-  <div class="wave"></div>
-  <div class="wave"></div>
-  <div class="wave"></div>
-  <div class="wave"></div>
-  <div class="wave"></div>
-  <div class="wave"></div>
-  <div class="wave"></div>
-</div> */}
-
-                   
+          </>                  
 
 
         </CardContent>
       </Paper>
     </Grid>
+    </div>
   );
 }

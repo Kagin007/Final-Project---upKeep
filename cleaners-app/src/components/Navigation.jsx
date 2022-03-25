@@ -63,8 +63,8 @@ const Navigation = props => {
       </nav>
       <ul className="nav__options">
         <NavLink to="/" className="nav__options--link">Home</NavLink>
-        <NavLink to="/reservations" className="nav__options--link">My Reservations</NavLink>
-        <NavLink to="/profile" className="nav__options--link">My Profile</NavLink>
+        {user && <NavLink to="/reservations" className="nav__options--link">My Reservations</NavLink>}
+        {user && <NavLink to="/profile" className="nav__options--link">My Profile</NavLink>}
         {!user && <li to="#" className="nav__options--link" onClick={toggleLogin}>Log In</li>}
         {!user && <li to="#" className="nav__options--link" onClick={toggleSignUpWizard}>Sign Up</li>}
         {user && <li className="nav__options--link">Logged in as: {`${user.username[0].toUpperCase()}${user.username.substring(1,user.username.length).toLowerCase()}`}</li>}
