@@ -9,6 +9,7 @@ import useModal from "./hooks/useReviewsModal";
 
 function Home(props) {
   const { reviewModalOpen, toggleReviewModal } = useModal();
+  const { properties } = props;
 
   const [cleaners, setCleaners] = useState([]);
   const [selectedDate, setSelectedDate] = useState("");
@@ -20,6 +21,7 @@ function Home(props) {
         onOpen={toggleReviewModal}
         cleaners={cleaners}
         selectedDate={selectedDate}
+        properties={properties}
       />
       {reviewModalOpen && <Backdrop onClose={toggleReviewModal} />}
       {reviewModalOpen && <ReviewsModal onClose={toggleReviewModal} />}

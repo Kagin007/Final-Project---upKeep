@@ -1,6 +1,6 @@
 import classnames from "classnames";
 const InputForm = props => {
-  const { dark, onChange, placeholder, inputValue, name, type } = props;
+  const { dark, onChange, placeholder, inputValue, name, type, date } = props;
   const classes = classnames("primary-input", { "primary-input-dark": dark });
   return (
     <input
@@ -10,6 +10,7 @@ const InputForm = props => {
       placeholder={placeholder}
       value={inputValue}
       name={name}
+      defaultValue={date}
       autoComplete="off"
     ></input>
   );

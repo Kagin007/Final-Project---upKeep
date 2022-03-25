@@ -21,6 +21,7 @@ const CleanerCard = props => {
     selectedDate,
   } = props;
 
+  console.log(properties);
   const submitHandler = e => {
     e.preventDefault();
     //make axios post here to make the reservation
@@ -88,7 +89,7 @@ const CleanerCard = props => {
       </div>
       <div className="cleaner__card cleaner__card__back">
         <header onClick={clickHandler}>
-          <i class="fa-solid fa-xmark modal-exit"></i>
+          <i className="fa-solid fa-xmark modal-exit"></i>
         </header>
         <main className="cleaner__card__back__main">
           <div>
@@ -107,11 +108,7 @@ const CleanerCard = props => {
           <form onSubmit={submitHandler} className="cleaner__card__bookingform">
             <input type="hidden" name={user.id} value={user.id} />
             <SelectProperties properties={properties} dark />
-            <InputForm
-              type="date"
-              dark
-              inputValue={selectedDate || todayDate()}
-            />
+            <InputForm type="date" dark date={selectedDate || todayDate()} />
             <Button>Confirm Booking</Button>
           </form>
         </main>
