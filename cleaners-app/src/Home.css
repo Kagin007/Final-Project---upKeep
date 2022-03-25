@@ -2,6 +2,7 @@
   --primary-color: #495371;
   --secondary-color: #74959a;
   --tertiary-color: #98b4aa;
+  --danger-red-color: #fc4f4f;
   --light-color-bg: #f9e2b6;
   --light-color-text: #f3e9dd;
 }
@@ -44,6 +45,9 @@
   left: 2em;
   z-index: 11;
   color: var(--primary-color);
+}
+.modal-exit:hover {
+  color: var(--danger-red-color);
 }
 
 .nav__bar {
@@ -98,20 +102,30 @@ a:active {
 }
 
 .primary-input {
-  margin: 0 5px;
-  background: rgba(73, 83, 113, 0.2);
-  border-style: none;
-  color: var(--light-color-text);
-}
-.primary-input {
   margin: 0 1em;
   background: rgba(73, 83, 113, 0.2);
   border-style: none;
   height: 2em;
   padding: 0.1em 1em;
   border-radius: 20px;
+  color: var(--light-color-text);
+}
+.primary-select {
+  margin: 0 1em;
+  background: rgba(73, 83, 113, 0.2);
+  border-style: none;
+  height: 2em;
+  padding: 0.1em 1em;
+  border-radius: 20px;
+  color: var(--light-color-text);
 }
 
+.primary-input-dark {
+  color: var(--primary-color);
+}
+.primary-select-dark {
+  color: var(--primary-color);
+}
 .primary-input::placeholder {
   color: var(--light-color-text);
 }
@@ -165,13 +179,52 @@ a:active {
   filter: blur(0.1rem) brightness(30%);
 }
 
+/* later this will change to a different case instead of hover */
+/* .cleaner__card__article:hover .cleaner__card__front {
+  transform: rotateX(-180deg);
+  transition: all 0.8s;
+}
+.cleaner__card__article:hover .cleaner__card__back {
+  transform: rotateX(0);
+  transition: all 0.8s;
+} */
+.cleaner__card__back__main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.cleaner__card__booking-selected .cleaner__card__front {
+  transform: rotateX(-180deg);
+  transition: all 0.8s;
+}
+.cleaner__card__booking-selected .cleaner__card__back {
+  transform: rotateX(0);
+  transition: all 0.8s;
+}
+.cleaner__card__back {
+  transform: rotateX(180deg);
+}
+.cleaner__card__article {
+  perspective: 150rem;
+  position: relative;
+  height: 16em;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 4em;
+}
 .cleaner__card {
-  margin: 5px auto;
-  width: 70%;
+  width: 93%;
   border-radius: 10px;
   padding: 1.5em;
   box-shadow: rgba(73, 83, 113, 0.5) 0px 13.5px 36px 0px;
-  transition: 0.5s;
+  transition: all 0.8s ease;
+  perspective: 150rem;
+  height: inherit;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
 }
 .cleaner__card header {
   display: flex;
@@ -189,9 +242,8 @@ a:active {
 }
 .cleaner__card:hover {
   background: rgba(249, 226, 182, 0.2);
-  width: 72%;
   border-radius: 10px;
-  transition: all 0.6s ease-out;
+  transition: all 0.8s ease-out;
 }
 .cleaner__card--message {
   color: var(--primary-color);

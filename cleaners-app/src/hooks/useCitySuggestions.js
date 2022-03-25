@@ -18,7 +18,9 @@ const useCitySuggestions = () => {
     }
   };
   const onClickHandler = e => {
-    setInputValue(e);
+    if (typeof e === "string") {
+      setInputValue(e);
+    }
     setCitySearch("");
   };
   return {
