@@ -38,7 +38,7 @@ const ReservationCard = props => {
               props.propertyimgurl ||
               "https://imageio.forbes.com/specials-images/imageserve/1026205392/Beautiful-luxury-home-exterior-at-twilight/960x0.jpg?fit=bounds&format=jpg&width=960"
             }
-          />
+           alt="beautifulhousepicture"/>
         </figure>
       </div>
     </article>

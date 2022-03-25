@@ -39,21 +39,14 @@ const profile = {
 const LoginContext = createContext()
 
 function App() {
-  const [user, setUser] = useState([]);
+  // const [user, setUser] = useState([]);
 
-  useEffect(
-    () =>
-      axios
-        .get("/api/v1/users/6")
-        .then(function (response) {
-          // console.log(response)
-          setUser(response.data);
-        })
-        .catch(function (error) {
-          console.log(error);
-        }),
-    []
-  );
+  // useEffect(() =>{ 
+  //   const loggedInUser = localStorage.getItem("user");
+  //   if (loggedInUser) {
+  //     const foundUser = JSON.parse(loggedInUser);
+  //     setUser(foundUser);
+  //   }},[]);
   
 
   return (
@@ -76,7 +69,7 @@ function App() {
           />
         </Route>
         <Route exact path="/profile">
-            <Profile properties={user} />
+            <Profile />
         </Route>
         <Route exact path="/login">
           <Login/>

@@ -21,9 +21,10 @@ const SearchForm = ({setCleaners}) => {
     const city = e.target.city.value;
     if(date && city){
       axios
-      .get(`/api/v1/users?city=${city}&date=${date}`)
+      .get(`/api/users/${city.toLowerCase()}/${date}`)
       .then(res => {
         setCleaners(res.data);
+        console.log(res.data)
       })
       .catch(err => {
         console.log(err);

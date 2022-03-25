@@ -5,16 +5,16 @@ import Star from "./Star";
 const CleanerCard = props => {
   
   const {
-    firstname,
-    lastname,
+    first_name,
+    last_name,
     imgurl,
-    payrate,
-    avgrating,
-    numratings,
+    pay_rate,
+    avg_rating,
+    rating_count,
     onOpen,
     onClick,
-    tranportMode,
-    reviews,
+    // tranportMode,
+    top_comment,
   } = props;
 
   // const reviewObjects = reviews.map(review => {
@@ -39,25 +39,25 @@ const CleanerCard = props => {
             <a href="#">
               <img className="user-photo" src={imgurl} alt="user_photo" />
               <figcaption className="user-caption">
-                {firstname}'s Profile
+                {first_name}'s Profile
               </figcaption>
             </a>
           </figure>
           <h2>
-            {firstname} {lastname}
+            {first_name} {last_name}
           </h2>
         </header>
         <div className="cleaner__card__middle">
           <h5>Top Review</h5>
-          {/* <Review key={props.topReview.id} {...props.topReview} /> */}
+          {top_comment}
         </div>
 
         <main>
           <div>
-            <h3 className="cleaner__card--payrate">${payrate} CAD / hr</h3>
+            <h3 className="cleaner__card--payrate">${pay_rate} CAD / hr</h3>
             <p className="cleaner__card--transport">
               <strong>Mode of Transportation:</strong>{" "}
-              {tranportMode || "Vehicle"}
+              {/* {tranport_Mode || "Vehicle"} */}
             </p>
           </div>
           <figure className="cleaner__card--message">
@@ -68,8 +68,8 @@ const CleanerCard = props => {
       <br />
       <footer className="cleaner__card__bottom">
         <a onClick={onOpen}>
-          {Math.round(avgrating * 100) / 100}
-          <Star size="16px" />({numratings} reviews)
+          {avg_rating}
+          <Star size="16px" />({rating_count} reviews)
         </a>
 
         <Button onClick={() => onClick()}>Book Now!</Button>

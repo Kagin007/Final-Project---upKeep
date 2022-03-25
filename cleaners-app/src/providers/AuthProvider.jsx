@@ -10,15 +10,17 @@ export default function AuthProvider(props) {
   const login = function(username, id) {
     setAuth(true);
     setUser({ username, id });
+    window.localStorage.setItem('user', JSON.stringify({ username, id }))
   };
 
   const logout = function() {
     setAuth(false);
     setUser(null);
+    window.localStorage.clear();
   };
 
   // authContext will expose these items
-  const userData = { auth, user, login, logout };
+  const userData = { auth, user, login, logout, setUser };
 
   // We can use this component to wrap any content we want to share this context
   return (
