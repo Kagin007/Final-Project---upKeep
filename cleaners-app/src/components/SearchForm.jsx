@@ -33,9 +33,7 @@ const SearchForm = ({setCleaners}) => {
     else {
       alert('Please provide Location and Date for the Search.');
     }
-   
   };
-
 
   return (
     <section className="searchform">
