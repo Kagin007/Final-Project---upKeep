@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Grid,
   Avatar,
@@ -8,6 +8,7 @@ import {
   TextField,
 } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
+import Axios from "axios";
 
 const avatarStyle = {
   backgroundColor: "#98b4aa",
@@ -34,11 +35,35 @@ const companyName = {
 
 const fieldStyle = {
   margin: "5px auto",
-  backgroundColor: "white"
+  backgroundColor: "white",
 };
 
-export default function CreateAccount(props) {
- 
+export default function CreateAccount() {
+  const url = "";
+  const [data, setData] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: "",
+  });
+/*
+send to the next page
+prevent from breaking on submit
+send the information
+
+insert button as prop on compiler- 
+
+*/
+  const sendToCompiler = (event) => {
+    event.preventDefault()
+  };
+
+  const handleInput = (event) => {
+    const newData = { ...data };
+    newData[event.target.id] = event.target.value;
+    setData(newData);
+    console.log(newData);
+  };
 
   return (
     <Grid>
@@ -51,31 +76,42 @@ export default function CreateAccount(props) {
         <h3>Create An Account</h3>
       </Grid>
       <TextField
-        id="outlined-basic"
+        onChange={(event) => handleInput(event)}
+        id="first_name"
+        value={data.first_name}
         label="First Name"
         variant="outlined"
+        type="text"
         fullWidth
         required
         style={fieldStyle}
       />
       <TextField
-        id="outlined-basic"
+        onChange={(event) => handle(event)}
+        id="last_name"
+        value={data.last_name}
         label="Last Name"
         variant="outlined"
+        type="text"
         fullWidth
         required
         style={fieldStyle}
       />
       <TextField
-        id="outlined-basic"
+        onChange={(event) => handle(event)}
+        id="email"
+        value={data.email}
         label="Email"
         variant="outlined"
+        type="email"
         fullWidth
         required
         style={fieldStyle}
       />
       <TextField
-        id="outlined-basic"
+        onChange={(event) => handle(event)}
+        id="password"
+        value={data.password}
         label="Password"
         type="password"
         variant="outlined"
@@ -84,7 +120,7 @@ export default function CreateAccount(props) {
         style={fieldStyle}
       />
       <TextField
-        id="outlined-basic"
+        id="confirm_password"
         label="Confirm Password"
         type="password"
         variant="outlined"
