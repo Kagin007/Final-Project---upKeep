@@ -38,28 +38,23 @@ const Navigation = props => {
       setUser(foundUser);
     }},[]);
   
-  // const submitHandler = e => {
-  //   e.preventDefault();
-  //   const date = e.target.date.value;
-  //   const city = e.target.city.value;
-  //   if(date && city){
-  //     axios
-  //     .get(`/api/users/${city.toLowerCase()}/${date}`)
-  //     .then(res => {
-  //       setCleaners(res.data);
-  //       console.log(res.data)
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  //   }
-  //   else {
-  //     alert('Please provide Location and Date for the Search.');
-  //   }
-   
-  // };
+  // const GetProfile = (user) => {
+  //   useEffect(() => {
+  //     if (!user) {
+  //       console.log('Please login')
+  //     } else {
+  //         axios
+  //         .get(`/api/properties/${user}`)
+  //         .then(res => {
+  //           console.log('get property details:', res.data);
+  //         })
+  //         .catch(err => {
+  //           console.log(err);
+  //         });
+  //       }
+  //     }      
+  //   )}
 
-  
 
   return (
     <Fragment>
@@ -83,4 +78,5 @@ const Navigation = props => {
     </Fragment>
   );
 };
+
 export default Navigation;

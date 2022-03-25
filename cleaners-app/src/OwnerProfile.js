@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {
   Grid,
   Paper,
@@ -13,9 +13,17 @@ import {
   CardContent,
 } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
+import { authContext } from "./providers/AuthProvider";
+import axios from 'axios'
 
 // props from App.js useEffect
 export default function Profile(props) {
+
+  const user  = JSON.parse(window.localStorage.getItem('user'))
+
+  const [properties, setProperties] = useState([])
+  const [memberData, setMemberData] = useState({})
+
   const paperStyle = {
     padding: 20,
     width: '70rem',
@@ -32,6 +40,55 @@ export default function Profile(props) {
     color: "white",
   };
 
+
+  useEffect(() => {
+    setTimeout( () => {
+      if (!user) {
+        console.log('Please login')
+      } else {
+          axios
+          .get(`/api/properties/${user.id}`)
+          .then(res => {
+            console.log("properyData:", res.data)
+            setProperties(res.data);
+            
+          })
+          .catch(err => {
+            console.log(err);
+          });
+          axios
+          .get(`/api/member/${user.id}`)
+          .then(res => {
+            console.log("memberData:", res.data)
+            setMemberData(res.data);
+            
+          })
+          .catch(err => {
+            console.log(err);
+          });
+        }  
+    }, 400)    
+  }, []) 
+  
+    if (!memberData.user) {
+      return (
+
+      <div class="center">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+      </div>        
+      )
+    }
+
+
   return (
     <Grid align="center">
       <Paper elevation={10} style={paperStyle}>
@@ -47,38 +104,39 @@ export default function Profile(props) {
           </Typography>
 
           {/* this is equvalent to props && props.properties && props.properties[0] */}
-          {props?.properties?.[0] ? (
+          {/* props?.properties?.[0] ? */}
+           
           <>
+            <img className="user-photo" src={memberData.imgurl} alt="user_photo" />
             <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-              First Name: {props.properties[0].first_name}
+              First Name:{memberData.user.first_name}
             </Typography>
             <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-              Last Name: {props.properties[0].last_name}
+              Last Name: {memberData.user.last_name}
             </Typography>
             <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-              Email: {props.properties[0].email}
+              Email: {memberData.user.email}
             </Typography>
             <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-              Joined on: {props.properties[0].date_joined}
+              Role: {memberData.role}
             </Typography>
 
             <ul>
-            {props.properties.map((property, index) => {
+            {properties.map((property, index) => {
               return (
               <div>
                 <h4>Property {index+1}</h4>
                 <li>Address: {property.address}</li>
                 <li>City: {property.city}</li>
-                <h>...</h>           
+                <h3>...</h3>           
               </div> 
               )
             })}
           </ul>
           
-          </> )
-            : 
+          </>
 
-<div class="center">
+{/* <div class="center">
   <div class="wave"></div>
   <div class="wave"></div>
   <div class="wave"></div>
@@ -89,9 +147,7 @@ export default function Profile(props) {
   <div class="wave"></div>
   <div class="wave"></div>
   <div class="wave"></div>
-</div>
-
-}
+</div> */}
 
                    
 

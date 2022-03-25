@@ -10,44 +10,35 @@ import axios from "axios";
 import ReservationCard from "./components/ReservationCard";
 import AuthProvider from "./providers/AuthProvider";
 
-const profile = {
-  firstName: "Adam",
-  lastName: "Schulte",
-  email: "123@hotmail.com",
-  payrate: "123",
-  joinedOn: "03-22-2022",
-  properties: [
-    {
-      address: "123 juniper st",
-      city: "York Dale",
-    },
-    {
-      address: " 321 rockwood road",
-      city: "Kitchener",
-    },
-    {
-      address: " 321 rockwood road",
-      city: "Kitchener",
-    },
-    {
-      address: " 321 rockwood road",
-      city: "Kitchener",
-    },
-  ],
-};
+// const profile = {
+//   firstName: "Adam",
+//   lastName: "Schulte",
+//   email: "123@hotmail.com",
+//   payrate: "123",
+//   joinedOn: "03-22-2022",
+//   properties: [
+//     {
+//       address: "123 juniper st",
+//       city: "York Dale",
+//     },
+//     {
+//       address: " 321 rockwood road",
+//       city: "Kitchener",
+//     },
+//     {
+//       address: " 321 rockwood road",
+//       city: "Kitchener",
+//     },
+//     {
+//       address: " 321 rockwood road",
+//       city: "Kitchener",
+//     },
+//   ],
+// };
 
 const LoginContext = createContext()
 
 function App() {
-  // const [user, setUser] = useState([]);
-
-  // useEffect(() =>{ 
-  //   const loggedInUser = localStorage.getItem("user");
-  //   if (loggedInUser) {
-  //     const foundUser = JSON.parse(loggedInUser);
-  //     setUser(foundUser);
-  //   }},[]);
-  
 
   return (
     <AuthProvider>
@@ -69,7 +60,7 @@ function App() {
           />
         </Route>
         <Route exact path="/profile">
-            <Profile />
+            <Profile/>
         </Route>
         <Route exact path="/login">
           <Login/>
