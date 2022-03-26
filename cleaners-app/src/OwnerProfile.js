@@ -11,10 +11,13 @@ import {
   Card,
   CardActions,
   CardContent,
+  Accordion,
+  ExpandMoreIcon,
 } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 import { authContext } from "./providers/AuthProvider";
 import axios from "axios";
+import AccordionSummary from '@mui/material/AccordionSummary';
 
 // props from App.js useEffect
 export default function Profile(props) {
@@ -107,12 +110,18 @@ export default function Profile(props) {
               src={memberData.imgurl}
               alt="user_photo"
             />
+      <Accordion>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+      ></AccordionSummary>
             <Typography
               align="left"
               sx={{ fontSize: 14 }}
               color="text.secondary"
               gutterBottom
-            >
+            >            
               First Name:{memberData.user.first_name}
             </Typography>
             <Typography
@@ -139,7 +148,7 @@ export default function Profile(props) {
             >
               Role: {memberData.role}
             </Typography>
-
+            </Accordion>
             <ul>
               {properties.map((property, index) => {
                 return (
