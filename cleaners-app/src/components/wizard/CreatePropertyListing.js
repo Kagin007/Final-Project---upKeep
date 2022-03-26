@@ -44,14 +44,15 @@ const fieldStyle = {
 
 export default function CreatePropertyListing(props) {
 
+
   const sendPropertyData = () => {
-    axios.post('http://localhost:8000/api/properties', props.propertyData)
-    .then(function (response) {
+    axios.post('/api/property', props.propertyData)
+    .then(res => {
       props.increment()
-      console.log("Success", response);
+      console.log("Success", res.data);
     })
-    .catch(function (error) {
-      console.log("Failure", error);
+    .catch(err => {
+      console.log("Failure", err);
     });
     }
 

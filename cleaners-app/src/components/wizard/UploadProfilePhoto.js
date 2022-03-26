@@ -43,12 +43,12 @@ export default function UploadProfilePhoto(props) {
 
   const sendUserData = () => {
   axios.post('/api/users', props.userData)
-  .then(function (response) {
+  .then(res => {
     props.increment()
-    console.log("Success", response);
+    console.log("Success", res.data);
   })
-  .catch(function (error) {
-    console.log("Failure", error);
+  .catch(err => {
+    console.log("Failure", err);
   });
   }
 
