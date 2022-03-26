@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Grid,
   Avatar,
@@ -8,6 +8,7 @@ import {
   TextField,
 } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
+import Axios from "axios";
 
 const avatarStyle = {
   backgroundColor: "#98b4aa",
@@ -34,11 +35,19 @@ const companyName = {
 
 const fieldStyle = {
   margin: "5px auto",
-  backgroundColor: "white"
+  backgroundColor: "white",
 };
 
 export default function CreateAccount(props) {
- 
+
+
+  const handleInput = (event) => {
+    const newData = {...props.userData}
+    newData[event.target.id] = event.target.value
+    props.setUserData(newData)
+    console.log(newData)
+  };
+
 
   return (
     <Grid>
@@ -51,31 +60,42 @@ export default function CreateAccount(props) {
         <h3>Create An Account</h3>
       </Grid>
       <TextField
-        id="outlined-basic"
+        onChange={(event) => handleInput(event)}
+        id="first_name"
+        value={props.userData.first_name}
         label="First Name"
         variant="outlined"
+        type="text"
         fullWidth
         required
         style={fieldStyle}
       />
       <TextField
-        id="outlined-basic"
+        onChange={(event) => handleInput(event)}
+        id="last_name"
+        value={props.userData.last_name}
         label="Last Name"
         variant="outlined"
+        type="text"
         fullWidth
         required
         style={fieldStyle}
       />
       <TextField
-        id="outlined-basic"
+        onChange={(event) => handleInput(event)}
+        id="email"
+        value={props.userData.email}
         label="Email"
         variant="outlined"
+        type="email"
         fullWidth
         required
         style={fieldStyle}
       />
       <TextField
-        id="outlined-basic"
+        onChange={(event) => handleInput(event)}
+        id="password"
+        value={props.userData.password}
         label="Password"
         type="password"
         variant="outlined"
@@ -84,7 +104,7 @@ export default function CreateAccount(props) {
         style={fieldStyle}
       />
       <TextField
-        id="outlined-basic"
+        id="confirm_password"
         label="Confirm Password"
         type="password"
         variant="outlined"

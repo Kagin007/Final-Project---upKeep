@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 //import { Fragment } from "react";
 import IAmA from "./wizard/IAmA";
 import CreateAccount from "./wizard/CreateAccount";
@@ -15,16 +15,35 @@ import UploadPhoto from "./wizard/UploadPhoto"
 
 
  const SignUpWizard = props => {
-  
   const [pageNumber, setPageNumber] = useState(-1)
   const [userSelected, setUserSelected] = useState("")
+
+useEffect(()=> {
+setUserData({...userData, role: userSelected})
+}, [userSelected])
+
+  const [userData, setUserData] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: "",
+    pay_rate: "",
+    picture_url: ""
+  });
+
+  const [propertyData, setPropertyData] = useState({
+    title: "",
+    description: "",
+    address: "",
+    photo: ""
+  })
+  
+
  
   
 
 
-const roleSelected = (userType) => {
-setUserSelected(userType)
-}
+
 
 const decrement = () => {
   setPageNumber(pageNumber => --pageNumber)
@@ -35,23 +54,25 @@ const increment = () => {
 }
 
 const cleanersBucket = [
-  <CreateAccount increment={increment} decrement={decrement}/>,
+  <CreateAccount increment={increment} decrement={decrement} setUserData={setUserData} userData={userData} />,
   <ChooseCity increment={increment} decrement={decrement}/>,
-  <PayRate increment={increment} decrement={decrement}/>,
-  <UploadPhoto increment={increment} decrement={decrement}/>,
+  <PayRate increment={increment} decrement={decrement} setUserData={setUserData} userData={userData}/>,
+  <UploadPhoto increment={increment} decrement={decrement} setUserData={setUserData} userData={userData}/> ,
   <CleanerProfile increment={increment}/>
 ]
 
 const homeOwnersBucket = [
-<CreateAccount increment={increment} decrement={decrement}/>,
-<PostListing increment={increment} decrement={decrement}/>,
+<CreateAccount increment={increment} decrement={decrement} setUserData={setUserData}  userData={userData} />,
+<PostListing increment={increment} decrement={decrement} propertyData={propertyData} setPropertyData={setPropertyData} />,
 <PropertyPosted increment={increment}/>
 ]
 
 const wizards = {
   cleaner: cleanersBucket,
-  homeowner: homeOwnersBucket
+  owner: homeOwnersBucket
 }
+
+
 
   return (
 
@@ -61,7 +82,7 @@ const wizards = {
           <i className="fa-solid fa-xmark modal-exit"></i>
         </div>
         
-        {pageNumber < 0 ? <IAmA roleSelected={roleSelected} increment={increment} /> : wizards[userSelected][pageNumber]}
+        {pageNumber < 0 ? <IAmA pageNumber={pageNumber} roleSelected={setUserSelected} userSelected={userSelected} increment={increment} setUserData={setUserData}  userData={userData}/> : userSelected && userSelected.length !== 0 && wizards[userSelected][pageNumber]}
 
       </header>
       <main className="modal-content">

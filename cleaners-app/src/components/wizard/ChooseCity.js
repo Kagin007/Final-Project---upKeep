@@ -57,16 +57,13 @@ const companyName = {
 
 export default function ChooseCity(props) {
   const theme = useTheme();
-  const [cityName, setPersonName] = React.useState([]);
+  const [cityName, setCityName] = React.useState([]);
 
   const handleChange = (event) => {
     const {
       target: { value },
     } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
+    setCityName(value);
   };
 
   return (
@@ -77,7 +74,7 @@ export default function ChooseCity(props) {
         </Avatar>
         <h1 style={companyName}>upKeeper</h1>
 
-        <h3>Where do you clean?</h3>
+        <h3>Where would you like to work? ({cityName})</h3>
       </Grid>
       <div>
         <FormControl sx={{ m: 1, width: 580 }}>
@@ -87,13 +84,12 @@ export default function ChooseCity(props) {
           <Select
             labelId="demo-multiple-chip-label"
             id="demo-multiple-chip"
-            multiple
             value={cityName}
             onChange={handleChange}
             input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
             renderValue={(selected) => (
               <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-                {selected.map((value) => (
+                {[cityName].map((value) => (
                   <Chip key={value} label={value} />
                 ))}
               </Box>

@@ -1,21 +1,9 @@
-import React from "react";
-import {
-  Grid,
-  
-  Avatar,
-  Typography,
-  Link,
-  Button,
-} from "@material-ui/core";
+import React, { useState } from "react";
+import { Grid, Avatar, Typography, Link, Button } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-
-
-
-
-
 
 const avatarStyle = {
   backgroundColor: "#98b4aa",
@@ -27,7 +15,6 @@ const buttonStyle = {
   margin: "25px 0",
   backgroundColor: "#98b4aa",
   color: "white",
-
 };
 
 const radioStyle = {
@@ -46,23 +33,30 @@ const companyName = {
 };
 
 
-
-
-
 export default function IAmA(props) {
+  const [role, setRole] = useState("");
+
  
+  const handleInput = (event) => {
+    const newData = {...props.userData}
+    newData[event.target.id] = event.target.value
+    props.setUserData(newData)
+    console.log(newData)
+    setRole("owner")
+  };
 
   
+
   
+
   return (
     <Grid>
-    
       <Grid align="center">
         <Avatar style={avatarStyle}>
           <CleaningServicesIcon style={iconStyle} />
         </Avatar>
         <h1 style={companyName}>upKeeper</h1>
-  
+
         <h3>I am a...</h3>
       </Grid>
       <RadioGroup
@@ -72,25 +66,39 @@ export default function IAmA(props) {
         style={radioStyle}
       >
         <FormControlLabel
+          onClick={(event) => handleInput(event)}
+          id="cleaner"
           value="cleaner"
-          control={<Radio onChange={() => props.roleSelected('cleaner')} />}
+          control={<Radio onChange={() => props.roleSelected("cleaner")} />}
           label="Cleaner"
-        
+          type="radio"
+          checked={role === "cleaner"}
         />
         <FormControlLabel
-          value="homeowner"
-          control={<Radio onChange={() => props.roleSelected('homeowner')}/>}
+          onClick={(event) => handleInput(event)}
+          id="owner"
+          value="owner"
+          control={<Radio onChange={() => props.roleSelected("owner")} />}
           label="Home Owner"
+          type="radio"
         />
       </RadioGroup>
-      <Button type="submit" fullWidth style={buttonStyle} color="primary" onClick={props.increment}>
+      <Button
+        disabled={role.length===0}
+        type="submit"
+        fullWidth
+        style={buttonStyle}
+        color="primary"
+        onClick={()=>{if(props.increment){
+          props.increment()
+        }}}
+      >
         NEXT
       </Button>
       <Typography align="center">
         Already have an account?
         <Link href="/login">Sign in here.</Link>
       </Typography>
-    
-  </Grid>
+    </Grid>
   );
 }

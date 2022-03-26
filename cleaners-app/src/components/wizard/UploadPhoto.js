@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Grid,
   TextField,
@@ -9,6 +9,8 @@ import {
 } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
+import axios from "axios"
+
 
 const avatarStyle = {
   backgroundColor: "#98b4aa",
@@ -37,7 +39,27 @@ const fieldStyle = {
   backgroundColor: "white"
 };
 
-export default function IAmA(props) {
+export default function UploadPhoto(props) {
+
+  const sendUserData = () => {
+  axios.post('/api/users', props.userData)
+  .then(function (response) {
+    props.increment()
+    console.log("Success", response);
+  })
+  .catch(function (error) {
+    console.log("Failure", error);
+  });
+  }
+
+  const handleInput = (event) => {
+    const newData = {...props.userData}
+    newData[event.target.id] = event.target.value
+    props.setUserData(newData)
+    console.log(newData)
+  };
+
+
   return (
     <Grid>
       <Grid align="center">
@@ -49,9 +71,12 @@ export default function IAmA(props) {
         <h3>Provide a photo of yourself!</h3>
         <DriveFolderUploadIcon style={iconStyle} />
         <TextField
-          id="outlined-basic"
+          onChange={(event) => handleInput(event)}
+          id="picture_url"
+          value={props.userData.picture_url}
           label="Paste a link"
           variant="outlined"
+          type="text"
           fullWidth
           required
           style={fieldStyle}
@@ -71,9 +96,9 @@ export default function IAmA(props) {
         fullWidth
         style={buttonStyle}
         color="primary"
-        onClick={props.increment}
+        onClick={sendUserData}
       >
-        NEXT
+        SUBMIT
       </Button>
       <Typography align="center">
         Already have an account?
