@@ -18,7 +18,41 @@ import axios from "axios";
 
 // props from App.js useEffect
 export default function Profile(props) {
-  const { properties, memberData } = props;
+  // const { properties, memberData } = props;
+
+    const user  = JSON.parse(window.localStorage.getItem('user'))
+  
+    const [properties, setProperties] = useState([])
+    const [memberData, setMemberData] = useState({})
+  
+    useEffect(() => {
+      setTimeout( () => {
+        if (!user) {
+          console.log('Please login')
+        } else {
+            axios
+            .get(`/api/properties/${user.id}`)
+            .then(res => {
+              console.log("properyData:", res.data)
+              setProperties(res.data);
+              
+            })
+            .catch(err => {
+              console.log(err);
+            });
+            axios
+            .get(`/api/member/${user.id}`)
+            .then(res => {
+              console.log("memberData:", res.data)
+              setMemberData(res.data);
+              
+            })
+            .catch(err => {
+              console.log(err);
+            });
+          }  
+      }, 400)    
+    }, []) 
 
   const paperStyle = {
     padding: 20,
