@@ -1,9 +1,9 @@
 const CitySuggestions = props => {
   return (
     <ul className="search-suggestions">
-      {props.suggestions.map(suggestion => (
+      {props.suggestions.map((suggestion, i) => (
         <li
-          key={suggestion}
+          key={i}
           className="search-suggestion-item"
           onClick={e => {
             props.onClick(e.target.innerHTML);

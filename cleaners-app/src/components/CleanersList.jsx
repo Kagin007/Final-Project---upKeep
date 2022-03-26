@@ -31,7 +31,7 @@ const CleanersList = ({ cleaners, onOpen, selectedDate, properties }) => {
   //   },
   // ];
 
-  // console.log(properties);
+  
   const listOfCleaners = cleaners.map(cleaner => (
     <CleanerCard
       key={cleaner.id}

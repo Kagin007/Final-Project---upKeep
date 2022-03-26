@@ -21,10 +21,22 @@ const CleanerCard = props => {
     selectedDate,
   } = props;
 
-  console.log(properties);
   const submitHandler = e => {
     e.preventDefault();
-    //make axios post here to make the reservation
+    const postUrl = `api/reservations/${e.target.cleanerid.value}`;
+    const reservationPayload = {
+      member_id: e.target.cleanerid.value,
+      property_id: e.target.property.value,
+      booking_date: e.target.requestedDate.value,
+    };
+    axios
+      .post(postUrl, reservationPayload)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
   const [booking, setBooking] = useState(false);
   const clickHandler = () => {
@@ -106,9 +118,14 @@ const CleanerCard = props => {
             </h2>
           </div>
           <form onSubmit={submitHandler} className="cleaner__card__bookingform">
-            <input type="hidden" name={user.id} value={user.id} />
+            <input type="hidden" name="cleanerid" value={user.id} />
             <SelectProperties properties={properties} dark />
-            <InputForm type="date" dark date={selectedDate || todayDate()} />
+            <InputForm
+              name="requestedDate"
+              type="date"
+              dark
+              date={selectedDate || todayDate()}
+            />
             <Button>Confirm Booking</Button>
           </form>
         </main>
