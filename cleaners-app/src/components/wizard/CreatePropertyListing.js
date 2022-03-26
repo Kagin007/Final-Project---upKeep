@@ -42,7 +42,7 @@ const fieldStyle = {
 
 
 
-export default function PostListing(props) {
+export default function CreatePropertyListing(props) {
 
   const sendPropertyData = () => {
     axios.post('http://localhost:8000/api/properties', props.propertyData)

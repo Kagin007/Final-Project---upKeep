@@ -38,7 +38,7 @@ const fieldStyle = {
   backgroundColor: "white",
 };
 
-export default function CreateAccount(props) {
+export default function CreateUserAccount(props) {
 
 
   const handleInput = (event) => {
