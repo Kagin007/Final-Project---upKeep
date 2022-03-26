@@ -8,7 +8,7 @@ import {
   TextField,
 } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
-import Axios from "axios";
+import axios from "axios";
 
 const avatarStyle = {
   backgroundColor: "#98b4aa",
@@ -39,7 +39,19 @@ const fieldStyle = {
 };
 
 export default function CreateUserAccount(props) {
-
+  // const [userId, setuserId] = useState({})
+  
+  const sendUserData = () => {
+    axios.post('/api/register', props.userData)
+    .then(res => {
+      props.increment()
+      console.log("Success", res.data);
+      // setUserId(res.data.id)
+    })
+    .catch(err => {
+      console.log("Failure", err);
+    });
+  }
 
   const handleInput = (event) => {
     const newData = {...props.userData}
@@ -81,6 +93,17 @@ export default function CreateUserAccount(props) {
         required
         style={fieldStyle}
       />
+       <TextField
+        onChange={(event) => handleInput(event)}
+        id="username"
+        value={props.userData.username}
+        label="Username"
+        variant="outlined"
+        type="text"
+        fullWidth
+        required
+        style={fieldStyle}
+      />
       <TextField
         onChange={(event) => handleInput(event)}
         id="email"
@@ -103,16 +126,7 @@ export default function CreateUserAccount(props) {
         required
         style={fieldStyle}
       />
-      <TextField
-        id="confirm_password"
-        label="Confirm Password"
-        type="password"
-        variant="outlined"
-        fullWidth
-        required
-        style={fieldStyle}
-      />
-
+    
       <Button
         type="submit"
         fullWidth
@@ -128,7 +142,7 @@ export default function CreateUserAccount(props) {
         fullWidth
         style={buttonStyle}
         color="primary"
-        onClick={props.increment}
+        onClick={sendUserData}
       >
         NEXT
       </Button>

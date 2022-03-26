@@ -23,7 +23,7 @@ const CleanerCard = props => {
 
   const submitHandler = e => {
     e.preventDefault();
-    const postUrl = `api/reservations/${e.target.cleanerid.value}`;
+    const postUrl = `api/reservations`;
     const reservationPayload = {
       member_id: e.target.cleanerid.value,
       property_id: e.target.property.value,

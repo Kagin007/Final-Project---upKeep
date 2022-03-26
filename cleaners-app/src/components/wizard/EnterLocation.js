@@ -1,14 +1,10 @@
 import React from "react";
-import {
-  Grid,
-  Avatar,
-  Typography,
-  Link,
-  Button,
-  TextField,
-} from "@material-ui/core";
+import { Grid, Avatar, Typography, Link, Button, TextField } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
-import axios from 'axios'
+import axios from "axios";
+
+
+
 
 const avatarStyle = {
   backgroundColor: "#98b4aa",
@@ -17,10 +13,10 @@ const avatarStyle = {
 };
 
 const buttonStyle = {
-  margin: "5px 0",
-  backgroundColor: "#98b4aa",
-  color: "white",
-};
+    margin: "5px 0",
+    backgroundColor: "#98b4aa",
+    color: "white",
+  };
 
 const iconStyle = {
   fontSize: "50px",
@@ -35,18 +31,13 @@ const companyName = {
 
 const fieldStyle = {
   margin: "5px auto",
-  backgroundColor: "white"
+  backgroundColor: "white",
 };
 
+export default function EnterLocation(props) {
 
-
-
-
-export default function CreatePropertyListing(props) {
-
-
-  const sendPropertyData = () => {
-    axios.post('/api/properties', props.propertyData)
+  const sendLocationData = () => {
+    axios.post('/api/location', props.locationData)
     .then(res => {
       props.increment()
       console.log("Success", res.data);
@@ -56,16 +47,14 @@ export default function CreatePropertyListing(props) {
     });
     }
 
-
   const handleInput = (event) => {
-    const newData = {...props.propertyData}
+    const newData = {...props.userData}
     newData[event.target.id] = event.target.value
-    props.setPropertyData(newData)
+    props.setLocationData(newData)
     console.log(newData)
   };
 
-
-  console.log("PROPS", props)
+ 
   return (
     <Grid>
       <Grid align="center">
@@ -73,49 +62,43 @@ export default function CreatePropertyListing(props) {
           <CleaningServicesIcon style={iconStyle} />
         </Avatar>
         <h1 style={companyName}>upKeeper</h1>
-        <h3>Post your listing</h3>
+
+        <h3>What is your address?</h3>
       </Grid>
       <TextField
-         onChange={(event) => handleInput(event)}
-         id="title"
-         value={props.propertyData.title}
-         label="Title"
-        variant="outlined"
-        fullWidth
-        required
-        style={fieldStyle}
-      />
-      <TextField
-         onChange={(event) => handleInput(event)}
-         id="description"
-         value={props.propertyData.description}
-        label="Description"
-        variant="outlined"
-        fullWidth
-        required
-        style={fieldStyle}
-      />
-      <TextField
-       onChange={(event) => handleInput(event)}
-       id="address"
-       value={props.propertyData.address}
+        onChange={(event) => handleInput(event)}
+        id="address"
+        value={props.locationData.address}
         label="Address"
         variant="outlined"
+        type="text"
         fullWidth
         required
         style={fieldStyle}
       />
       <TextField
-         onChange={(event) => handleInput(event)}
-         id="photo_url"
-         value={props.propertyData.photo_url}
-        label="Upload a photo"
+        onChange={(event) => handleInput(event)}
+        id="city"
+        value={props.locationData.city}
+        label="City"
         variant="outlined"
+        type="text"
         fullWidth
         required
         style={fieldStyle}
       />
- <Button
+        <TextField
+        onChange={(event) => handleInput(event)}
+        id="province"
+        value={props.locationData.province}
+        label="Province"
+        variant="outlined"
+        type="text"
+        fullWidth
+        required
+        style={fieldStyle}
+      />
+      <Button
         type="submit"
         fullWidth
         style={buttonStyle}
@@ -124,12 +107,14 @@ export default function CreatePropertyListing(props) {
       >
         BACK
       </Button>
-      <Button type="submit" 
-      fullWidth 
-      style={buttonStyle} 
-      color="primary" 
-      onClick={sendPropertyData}>
-        SUBMIT
+      <Button
+        type="submit"
+        fullWidth
+        style={buttonStyle}
+        color="primary"
+        onClick={sendLocationData}
+      >
+        NEXT
       </Button>
       <Typography align="center">
         Already have an account?
@@ -138,3 +123,4 @@ export default function CreatePropertyListing(props) {
     </Grid>
   );
 }
+
