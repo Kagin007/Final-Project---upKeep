@@ -88,86 +88,81 @@ export default function Profile(props) {
   }
 
   return (
+<div>
     <Grid align="center">
       <Paper elevation={10} style={paperStyle}>
         <CardContent>
           <Avatar style={avatarStyle}>
             <CleaningServicesIcon />
-          </Avatar>
+          </Avatar> 
           <Typography align="center" variant="h5" component="div">
-            <h2>Profile</h2>
+            <h2>
+              {memberData.user.first_name}'s Profile
+            </h2>
+            
           </Typography>
-
-          {/* this is equvalent to props && props.properties && props.properties[0] */}
-          {/* props?.properties?.[0] ? */}
-
+           
           <>
-            <img
-              className="user-photo"
-              src={memberData.imgurl}
-              alt="user_photo"
-            />
-            <Typography
-              align="left"
-              sx={{ fontSize: 14 }}
-              color="text.secondary"
-              gutterBottom
-            >
+            <img className="user-photo" src={memberData.imgurl} alt="user_photo" width="200" height="50" border-radius="50%"/>
+            <Accordion>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+      >
+        <Typography>User Information</Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Typography>
+        <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
               First Name:{memberData.user.first_name}
             </Typography>
-            <Typography
-              align="left"
-              sx={{ fontSize: 14 }}
-              color="text.secondary"
-              gutterBottom
-            >
+            <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
               Last Name: {memberData.user.last_name}
             </Typography>
-            <Typography
-              align="left"
-              sx={{ fontSize: 14 }}
-              color="text.secondary"
-              gutterBottom
-            >
+            <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
               Email: {memberData.user.email}
             </Typography>
-            <Typography
-              align="left"
-              sx={{ fontSize: 14 }}
-              color="text.secondary"
-              gutterBottom
-            >
+            <Typography align="left" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
               Role: {memberData.role}
             </Typography>
+        </Typography>
+      </AccordionDetails>
+    </Accordion>
 
+            <Accordion>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+      >
+        <Typography>Properties</Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Typography>
             <ul>
-              {properties.map((property, index) => {
-                return (
-                  <div>
-                    <h4>Property {index + 1}</h4>
-                    <li>Address: {property.address}</li>
-                    <li>City: {property.city}</li>
-                    <h3>...</h3>
-                  </div>
-                );
-              })}
-            </ul>
-          </>
+            {properties.map((property, index) => {
+              return (
+              <div>
+                <h4>Property {index+1}</h4>
+                <li>Address: {property.address}</li>
+                <li>City: {property.city}</li>
+                <h3>...</h3>           
+              </div> 
+              )
+            })}
+          </ul>
+        </Typography>
+      </AccordionDetails>
+    </Accordion>
 
-          {/* <div className="center">
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-</div> */}
+          
+          </>                  
+
+
         </CardContent>
       </Paper>
     </Grid>
+  </div>
   );
 }
