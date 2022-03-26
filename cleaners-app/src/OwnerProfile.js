@@ -69,10 +69,6 @@ export default function Profile(props) {
             <h2>Profile</h2>
           </Typography>
 
-          {/* this is equvalent to props && props.properties && props.properties[0] */}
-          {/* props?.properties?.[0] ? */}
-
-          <>
             <img
               className="user-photo"
               src={memberData.imgurl}
@@ -110,11 +106,8 @@ export default function Profile(props) {
             >
               Role: {memberData.role}
             </Typography>
-        </Typography>
-      </AccordionDetails>
-    </Accordion>
 
-            <Accordion>
+
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
@@ -122,8 +115,7 @@ export default function Profile(props) {
       >
         <Typography>Properties</Typography>
       </AccordionSummary>
-      <AccordionDetails>
-        <Typography>
+          <AccordionDetails>
             <ul>
               {properties.map((property, index) => {
                 return (
@@ -136,23 +128,10 @@ export default function Profile(props) {
                 );
               })}
             </ul>
-          </>
-
-          {/* <div className="center">
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-</div> */}
-        </CardContent>
+          </AccordionDetails>
+        </CardContent>        
       </Paper>
     </Grid>
-    </div>
+  </div>
   );
 }
