@@ -6,6 +6,7 @@ import classNames from "classnames";
 import InputForm from "./InputForm";
 import SelectProperties from "./SelectProperties";
 import axios from "axios";
+import CSRFToken from "./CSRFtoken";
 
 const CleanerCard = props => {
   const {
@@ -23,14 +24,16 @@ const CleanerCard = props => {
 
   const submitHandler = e => {
     e.preventDefault();
-    const postUrl = `api/reservations/${e.target.cleanerid.value}`;
+    const postUrl = `api/reservations`;
     const reservationPayload = {
+      booking_date: e.target.requestedDate.value,
       member_id: e.target.cleanerid.value,
       property_id: e.target.property.value,
-      booking_date: e.target.requestedDate.value,
     };
     axios
-      .post(postUrl, reservationPayload)
+      .post(postUrl, reservationPayload, {
+        headers: { "X-CSRFToken": e.target.csrfmiddlewaretoken.value },
+      })
       .then(response => {
         console.log(response);
       })
@@ -119,6 +122,7 @@ const CleanerCard = props => {
           </div>
           <form onSubmit={submitHandler} className="cleaner__card__bookingform">
             <input type="hidden" name="cleanerid" value={user.id} />
+            <CSRFToken />
             <SelectProperties properties={properties} dark />
             <InputForm
               name="requestedDate"
