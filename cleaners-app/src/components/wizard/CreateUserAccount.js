@@ -39,19 +39,21 @@ const fieldStyle = {
 };
 
 export default function CreateUserAccount(props) {
-  // const [userId, setuserId] = useState({})
+  const [userId, setUserId] = useState(null)
   
   const sendUserData = () => {
     axios.post('/api/register', props.userData)
     .then(res => {
       props.increment()
       console.log("Success", res.data);
-      // setUserId(res.data.id)
+      setUserId(res.data.id)
     })
     .catch(err => {
       console.log("Failure", err);
     });
   }
+
+  
 
   const handleInput = (event) => {
     const newData = {...props.userData}

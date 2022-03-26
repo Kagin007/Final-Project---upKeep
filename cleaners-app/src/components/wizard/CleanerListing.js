@@ -8,6 +8,7 @@ import {
   TextField,
 } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
+import axios from 'axios'
 
 //FORM STYLES
 const avatarStyle = {
@@ -38,12 +39,23 @@ const fieldStyle = {
   backgroundColor: "white",
 };
 
-export default function PayRate(props) {
+export default function CleanerListing(props) {
+  const sendMemberData = () => {
+    axios.post('/api/member', props.memberData)
+    console.log("MEMBERDATA:", props.memberData)
+    .then(res => {
+      props.increment()
+      console.log("Success", res.data);
+    })
+    .catch(err => {
+      console.log("Failure", err);
+    });
+  }
 
   const handleInput = (event) => {
-    const newData = {...props.userData}
+    const newData = {...props.memberData}
     newData[event.target.id] = event.target.value
-    props.setUserData(newData)
+    props.setMemberData(newData)
     console.log(newData)
   };
 
@@ -55,16 +67,37 @@ export default function PayRate(props) {
         </Avatar>
         <h1 style={companyName}>upKeeper</h1>
 
-        <h3>How much do you charge for your services?</h3>
+        <h3>Create your listing</h3>
       </Grid>
       <div>
-        {" "}
         <TextField
          onChange={(event) => handleInput(event)}
           id="pay_rate"
-          value={props.userData.pay_rate}
+          value={props.memberData.pay_rate}
           type="text"
           label="Enter an hourly rate in Canadian dollars (no decimals)"
+          variant="outlined"
+          fullWidth
+          required
+          style={fieldStyle}
+        />
+         <TextField
+         onChange={(event) => handleInput(event)}
+          id="location"
+          value={props.memberData.location}
+          type="text"
+          label="Where do you want to list your services?"
+          variant="outlined"
+          fullWidth
+          required
+          style={fieldStyle}
+        />
+         <TextField
+         onChange={(event) => handleInput(event)}
+          id="imgurl"
+          value={props.memberData.imgurl}
+          type="text"
+          label="Add a photo (Paste as URL)"
           variant="outlined"
           fullWidth
           required
@@ -85,7 +118,7 @@ export default function PayRate(props) {
         fullWidth
         style={buttonStyle}
         color="primary"
-        onClick={props.increment}
+        onClick={sendMemberData}
       >
         NEXT
       </Button>

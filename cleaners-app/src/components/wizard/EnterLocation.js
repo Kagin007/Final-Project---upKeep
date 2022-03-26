@@ -48,13 +48,12 @@ export default function EnterLocation(props) {
     }
 
   const handleInput = (event) => {
-    const newData = {...props.userData}
+    const newData = {...props.locationData}
     newData[event.target.id] = event.target.value
     props.setLocationData(newData)
     console.log(newData)
   };
 
- 
   return (
     <Grid>
       <Grid align="center">

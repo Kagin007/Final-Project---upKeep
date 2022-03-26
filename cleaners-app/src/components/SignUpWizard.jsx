@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import ChooseRole from "./wizard/ChooseRole";
 import CreateUserAccount from "./wizard/CreateUserAccount";
 import CleanerComplete from "./wizard/CleanerComplete";
-import PayRate from "./wizard/PayRate";
+import CleanerListing from "./wizard/CleanerListing";
 import HomeOwnerComplete from "./wizard/HomeOwnerComplete";
 import CreatePropertyListing from "./wizard/CreatePropertyListing";
 import EnterLocation from "./wizard/EnterLocation";
@@ -24,23 +24,33 @@ const SignUpWizard = (props) => {
     last_name: "",
     email: "",
     password: "",
-    username: "",
+    username: ""
   });
 
   const [propertyData, setPropertyData] = useState({
     title: "",
     description: "",
     address: "",
-    photo: "",
+    photo: ""
   });
 
   const [locationData, setLocationData] = useState({
     address: "",
     city: "",
     province: "",
-    longtitude: 0,
-    latitude: 0,
+    longitude: 0,
+    latitude: 0
   });
+
+
+  const [memberData, setMemberData] = useState({
+    pay_rate: "",
+    role: "",
+    location:"",
+    imgurl: "",
+    user: null
+  });
+
 
   const decrement = () => {
     setPageNumber((pageNumber) => --pageNumber);
@@ -61,11 +71,12 @@ const SignUpWizard = (props) => {
     locationData={locationData} 
     setLocationData={setLocationData} />,
 
-    <PayRate
+    <CleanerListing
       increment={increment}
       decrement={decrement}
-      setUserData={setUserData}
-      userData={userData}
+      memberData={memberData}
+      setMemberData={setMemberData}
+
     />,
     <UploadProfilePhoto
       increment={increment}
