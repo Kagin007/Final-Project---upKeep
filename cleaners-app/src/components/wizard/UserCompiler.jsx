@@ -6,6 +6,6 @@ import CreateAccount from "./CreateAccount"
 export default function UserCompilation() {
 
     return(
-        <CreateAccount/> 
+        
     )
 }

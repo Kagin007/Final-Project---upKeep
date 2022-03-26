@@ -38,32 +38,16 @@ const fieldStyle = {
   backgroundColor: "white",
 };
 
-export default function CreateAccount() {
-  const url = "";
-  const [data, setData] = useState({
-    first_name: "",
-    last_name: "",
-    email: "",
-    password: "",
-  });
-/*
-send to the next page
-prevent from breaking on submit
-send the information
+export default function CreateAccount(props) {
 
-insert button as prop on compiler- 
-
-*/
-  const sendToCompiler = (event) => {
-    event.preventDefault()
-  };
 
   const handleInput = (event) => {
-    const newData = { ...data };
-    newData[event.target.id] = event.target.value;
-    setData(newData);
-    console.log(newData);
+    const newData = {...props.userData}
+    newData[event.target.id] = event.target.value
+    props.setUserData(newData)
+    console.log(newData)
   };
+
 
   return (
     <Grid>
@@ -78,7 +62,7 @@ insert button as prop on compiler-
       <TextField
         onChange={(event) => handleInput(event)}
         id="first_name"
-        value={data.first_name}
+        value={props.userData.first_name}
         label="First Name"
         variant="outlined"
         type="text"
@@ -87,9 +71,9 @@ insert button as prop on compiler-
         style={fieldStyle}
       />
       <TextField
-        onChange={(event) => handle(event)}
+        onChange={(event) => handleInput(event)}
         id="last_name"
-        value={data.last_name}
+        value={props.userData.last_name}
         label="Last Name"
         variant="outlined"
         type="text"
@@ -98,9 +82,9 @@ insert button as prop on compiler-
         style={fieldStyle}
       />
       <TextField
-        onChange={(event) => handle(event)}
+        onChange={(event) => handleInput(event)}
         id="email"
-        value={data.email}
+        value={props.userData.email}
         label="Email"
         variant="outlined"
         type="email"
@@ -109,9 +93,9 @@ insert button as prop on compiler-
         style={fieldStyle}
       />
       <TextField
-        onChange={(event) => handle(event)}
+        onChange={(event) => handleInput(event)}
         id="password"
-        value={data.password}
+        value={props.userData.password}
         label="Password"
         type="password"
         variant="outlined"

@@ -8,6 +8,7 @@ import {
   TextField,
 } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
+import axios from 'axios'
 
 const avatarStyle = {
   backgroundColor: "#98b4aa",
@@ -37,7 +38,33 @@ const fieldStyle = {
   backgroundColor: "white"
 };
 
-export default function CreateAccount(props) {
+
+
+
+
+export default function PostListing(props) {
+
+  const sendPropertyData = () => {
+    axios.post('http://localhost:8000/api/properties', props.propertyData)
+    .then(function (response) {
+      props.increment()
+      console.log("Success", response);
+    })
+    .catch(function (error) {
+      console.log("Failure", error);
+    });
+    }
+
+
+  const handleInput = (event) => {
+    const newData = {...props.propertyData}
+    newData[event.target.id] = event.target.value
+    props.setPropertyData(newData)
+    console.log(newData)
+  };
+
+
+  console.log("PROPS", props)
   return (
     <Grid>
       <Grid align="center">
@@ -45,19 +72,22 @@ export default function CreateAccount(props) {
           <CleaningServicesIcon style={iconStyle} />
         </Avatar>
         <h1 style={companyName}>upKeeper</h1>
-
         <h3>Post your listing</h3>
       </Grid>
       <TextField
-        id="outlined-basic"
-        label="Title"
+         onChange={(event) => handleInput(event)}
+         id="title"
+         value={props.propertyData.title}
+         label="Title"
         variant="outlined"
         fullWidth
         required
         style={fieldStyle}
       />
       <TextField
-        id="outlined-basic"
+         onChange={(event) => handleInput(event)}
+         id="description"
+         value={props.propertyData.description}
         label="Description"
         variant="outlined"
         fullWidth
@@ -65,7 +95,9 @@ export default function CreateAccount(props) {
         style={fieldStyle}
       />
       <TextField
-        id="outlined-basic"
+       onChange={(event) => handleInput(event)}
+       id="address"
+       value={props.propertyData.address}
         label="Address"
         variant="outlined"
         fullWidth
@@ -73,7 +105,9 @@ export default function CreateAccount(props) {
         style={fieldStyle}
       />
       <TextField
-        id="outlined-basic"
+         onChange={(event) => handleInput(event)}
+         id="photo_url"
+         value={props.propertyData.photo_url}
         label="Upload a photo"
         variant="outlined"
         fullWidth
@@ -89,8 +123,12 @@ export default function CreateAccount(props) {
       >
         BACK
       </Button>
-      <Button type="submit" fullWidth style={buttonStyle} color="primary" onClick={props.increment}>
-        NEXT
+      <Button type="submit" 
+      fullWidth 
+      style={buttonStyle} 
+      color="primary" 
+      onClick={sendPropertyData}>
+        SUBMIT
       </Button>
       <Typography align="center">
         Already have an account?
