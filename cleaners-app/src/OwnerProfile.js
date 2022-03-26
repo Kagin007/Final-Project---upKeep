@@ -4,20 +4,21 @@ import {
   Paper,
   Avatar,
   TextField,
-  Typography,
   Link,
   Button,
   Box,
   Card,
   CardActions,
   CardContent,
-  Accordion,
-  ExpandMoreIcon,
 } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 import { authContext } from "./providers/AuthProvider";
 import axios from "axios";
+import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 // props from App.js useEffect
 export default function Profile(props) {
@@ -98,40 +99,46 @@ export default function Profile(props) {
             <CleaningServicesIcon />
           </Avatar>
           <Typography align="center" variant="h5" component="div">
-            <h2>Profile</h2>
+            <h2>{memberData.user.first_name}'s Profile</h2>
           </Typography>
-
-          {/* this is equvalent to props && props.properties && props.properties[0] */}
-          {/* props?.properties?.[0] ? */}
-
           <>
             <img
               className="user-photo"
               src={memberData.imgurl}
               alt="user_photo"
+              width="300"
+              height="300"
             />
       <Accordion>
-      <AccordionSummary
-        expandIcon={<ExpandMoreIcon />}
-        aria-controls="panel1a-content"
-        id="panel1a-header"
-      ></AccordionSummary>
-            <Typography
-              align="left"
-              sx={{ fontSize: 14 }}
-              color="text.secondary"
-              gutterBottom
-            >            
-              First Name:{memberData.user.first_name}
-            </Typography>
-            <Typography
-              align="left"
-              sx={{ fontSize: 14 }}
-              color="text.secondary"
-              gutterBottom
-            >
-              Last Name: {memberData.user.last_name}
-            </Typography>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+          >
+          <Typography>User Info</Typography>
+        </AccordionSummary>
+
+        <AccordionDetails>
+          <Typography
+            align="left"
+            sx={{ fontSize: 14 }}
+            color="text.secondary"
+            gutterBottom
+          >            
+            First Name:{memberData.user.first_name}
+          </Typography>
+        </AccordionDetails>
+        <AccordionDetails>
+          <Typography
+            align="left"
+            sx={{ fontSize: 14 }}
+            color="text.secondary"
+            gutterBottom
+          >
+            Last Name: {memberData.user.last_name}
+          </Typography>
+          </AccordionDetails>
+          <AccordionDetails>
             <Typography
               align="left"
               sx={{ fontSize: 14 }}
@@ -140,6 +147,8 @@ export default function Profile(props) {
             >
               Email: {memberData.user.email}
             </Typography>
+          </AccordionDetails>
+          <AccordionDetails>
             <Typography
               align="left"
               sx={{ fontSize: 14 }}
@@ -148,7 +157,20 @@ export default function Profile(props) {
             >
               Role: {memberData.role}
             </Typography>
-            </Accordion>
+          </AccordionDetails>
+      </Accordion>
+
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+          >
+          <Typography>Properties</Typography>
+        </AccordionSummary>
+          <AccordionDetails>
+
+          
             <ul>
               {properties.map((property, index) => {
                 return (
@@ -161,20 +183,9 @@ export default function Profile(props) {
                 );
               })}
             </ul>
-          </>
-
-          {/* <div className="center">
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-  <div className="wave"></div>
-</div> */}
+          </AccordionDetails>  
+        </Accordion> 
+        </>
         </CardContent>
       </Paper>
     </Grid>
