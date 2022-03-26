@@ -1,6 +1,8 @@
 import React from "react";
 import { Grid, Avatar, Typography, Link, Button } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
+import RecommendIcon from '@mui/icons-material/Recommend';
+
 
 const avatarStyle = {
   backgroundColor: "#98b4aa",
@@ -25,7 +27,11 @@ const companyName = {
   fontSize: "50px",
 };
 
-export default function IAmA(props) {
+
+
+export default function CleanerComplete(props) {
+
+
   return (
     <Grid>
       <Grid align="center">
@@ -33,8 +39,7 @@ export default function IAmA(props) {
           <CleaningServicesIcon style={iconStyle} />
         </Avatar>
         <h1 style={companyName}>upKeeper</h1>
-
-        <h1>Your property listing has been created!</h1>
+        <h1>Your profile has been created!</h1>
         <u>View it here</u>
       </Grid>
 

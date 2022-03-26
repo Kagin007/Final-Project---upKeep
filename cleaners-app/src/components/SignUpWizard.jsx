@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react"
 //import { Fragment } from "react";
-import IAmA from "./wizard/IAmA";
-import CreateAccount from "./wizard/CreateAccount";
-import CleanerProfile from "./wizard/CleanerProfile";
+import ChooseRole from "./wizard/ChooseRole";
+import CreateUserAccount from "./wizard/CreateUserAccount";
+import CleanerComplete from "./wizard/CleanerComplete";
 import PayRate from "./wizard/PayRate";
-import PropertyPosted from "./wizard/PropertyPosted";
-import PostListing from "./wizard/PostListing";
-import ChooseCity from "./wizard/ChooseCity";
-import UploadPhoto from "./wizard/UploadPhoto"
+import HomeOwnerComplete from "./wizard/HomeOwnerComplete";
+import CreatePropertyListing from "./wizard/CreatePropertyListing";
+import  SelectCity from "./wizard/SelectCity";
+import UploadProfilePhoto from "./wizard/UploadProfilePhoto"
 // import CleanersList from "./CleanersList";
 // import Review from "./Review";
 
@@ -54,17 +54,17 @@ const increment = () => {
 }
 
 const cleanersBucket = [
-  <CreateAccount increment={increment} decrement={decrement} setUserData={setUserData} userData={userData} />,
-  <ChooseCity increment={increment} decrement={decrement}/>,
+  <CreateUserAccount increment={increment} decrement={decrement} setUserData={setUserData} userData={userData} />,
+  <SelectCity increment={increment} decrement={decrement}/>,
   <PayRate increment={increment} decrement={decrement} setUserData={setUserData} userData={userData}/>,
-  <UploadPhoto increment={increment} decrement={decrement} setUserData={setUserData} userData={userData}/> ,
-  <CleanerProfile increment={increment}/>
+  <UploadProfilePhoto increment={increment} decrement={decrement} setUserData={setUserData} userData={userData}/> ,
+  <CleanerComplete increment={increment}/>
 ]
 
 const homeOwnersBucket = [
-<CreateAccount increment={increment} decrement={decrement} setUserData={setUserData}  userData={userData} />,
-<PostListing increment={increment} decrement={decrement} propertyData={propertyData} setPropertyData={setPropertyData} />,
-<PropertyPosted increment={increment}/>
+<CreateUserAccount increment={increment} decrement={decrement} setUserData={setUserData}  userData={userData} />,
+<CreatePropertyListing increment={increment} decrement={decrement} propertyData={propertyData} setPropertyData={setPropertyData} />,
+<HomeOwnerComplete increment={increment}/>
 ]
 
 const wizards = {
@@ -82,7 +82,7 @@ const wizards = {
           <i className="fa-solid fa-xmark modal-exit"></i>
         </div>
         
-        {pageNumber < 0 ? <IAmA pageNumber={pageNumber} roleSelected={setUserSelected} userSelected={userSelected} increment={increment} setUserData={setUserData}  userData={userData}/> : userSelected && userSelected.length !== 0 && wizards[userSelected][pageNumber]}
+        {pageNumber < 0 ? <ChooseRole pageNumber={pageNumber} roleSelected={setUserSelected} userSelected={userSelected} increment={increment} setUserData={setUserData}  userData={userData}/> : userSelected && userSelected.length !== 0 && wizards[userSelected][pageNumber]}
 
       </header>
       <main className="modal-content">

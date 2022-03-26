@@ -39,7 +39,7 @@ const fieldStyle = {
   backgroundColor: "white"
 };
 
-export default function UploadPhoto(props) {
+export default function UploadProfilePhoto(props) {
 
   const sendUserData = () => {
   axios.post('/api/users', props.userData)

@@ -55,7 +55,7 @@ const companyName = {
   fontSize: "50px",
 };
 
-export default function ChooseCity(props) {
+export default function SelectCity(props) {
   const theme = useTheme();
   const [cityName, setCityName] = React.useState([]);
 

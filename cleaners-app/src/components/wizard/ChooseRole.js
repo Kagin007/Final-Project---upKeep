@@ -33,7 +33,7 @@ const companyName = {
 };
 
 
-export default function IAmA(props) {
+export default function ChooseRole(props) {
   const [role, setRole] = useState("");
 
  

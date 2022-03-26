@@ -38,22 +38,22 @@ const Navigation = props => {
       setUser(foundUser);
     }},[]);
   
-  // const GetProfile = (user) => {
-  //   useEffect(() => {
-  //     if (!user) {
-  //       console.log('Please login')
-  //     } else {
-  //         axios
-  //         .get(`/api/properties/${user}`)
-  //         .then(res => {
-  //           console.log('get property details:', res.data);
-  //         })
-  //         .catch(err => {
-  //           console.log(err);
-  //         });
-  //       }
-  //     }      
-  //   )}
+  const GetProfile = (user) => {
+    useEffect(() => {
+      if (!user) {
+        console.log('Please login')
+      } else {
+          axios
+          .get(`/api/properties/${user}`)
+          .then(res => {
+            console.log('get property details:', res.data);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+        }
+      }      
+    )}
 
 
   return (
