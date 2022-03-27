@@ -40,15 +40,12 @@ export default function ChooseRole(props) {
  
   const handleInput = (event) => {
     const newData = {...props.userData}
-    newData[event.target.id] = event.target.value
+    newData[role] = event.target.value
     props.setUserData(newData)
     console.log('test', newData)
     setRole("owner")
     props.setMemberData( {...memberData, role: newData.role})
   };
-
-  
-
   
 
   return (
