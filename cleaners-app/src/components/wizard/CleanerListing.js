@@ -47,6 +47,7 @@ export default function CleanerListing(props) {
     .then(res => {
       props.increment()
       console.log("Success", res.data);
+      props.setMemberData( {...props.memberData, location: res.data.id})
     })
     .catch(err => {
       console.log("Failure", err);

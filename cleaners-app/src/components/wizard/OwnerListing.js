@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Grid,
   Avatar,
@@ -10,6 +10,7 @@ import {
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 import axios from 'axios'
 
+//FORM STYLES
 const avatarStyle = {
   backgroundColor: "#98b4aa",
   width: "100px",
@@ -35,36 +36,32 @@ const companyName = {
 
 const fieldStyle = {
   margin: "5px auto",
-  backgroundColor: "white"
+  backgroundColor: "white",
 };
 
-
-
-
-
-export default function CreatePropertyListing(props) {
-
-
-  const sendPropertyData = () => {
-    axios.post('/api/properties', props.propertyData)
+export default function OwnerListing(props) {
+  
+  const sendMemberData = () => {
+    axios.post('/api/member', props.memberData)
+    // console.log("MEMBERDATA:", props.memberData)
     .then(res => {
       props.increment()
       console.log("Success", res.data);
+      props.setMemberData( {...props.memberData, location: res.data.id})
     })
     .catch(err => {
       console.log("Failure", err);
     });
-    }
+  }
 
   const handleInput = (event) => {
-    const newData = {...props.propertyData}
+    const newData = {...props.memberData}
     newData[event.target.id] = event.target.value
-    props.setPropertyData(newData)
+    newData['pay_rate'] = 0
+    props.setMemberData(newData)
     console.log(newData)
   };
 
-
-  console.log("PROPS", props)
   return (
     <Grid>
       <Grid align="center">
@@ -72,49 +69,45 @@ export default function CreatePropertyListing(props) {
           <CleaningServicesIcon style={iconStyle} />
         </Avatar>
         <h1 style={companyName}>upKeeper</h1>
-        <h3>Post your listing</h3>
+
+        <h3>Create your owner profile</h3>
       </Grid>
-      <TextField
+      <div>
+        {/* <TextField
          onChange={(event) => handleInput(event)}
-         id="title"
-         value={props.propertyData.title}
-         label="Title"
-        variant="outlined"
-        fullWidth
-        required
-        style={fieldStyle}
-      />
-      <TextField
+          id="pay_rate"
+          value={props.memberData.pay_rate}
+          type="text"
+          label="Enter an hourly rate in Canadian dollars (no decimals)"
+          variant="outlined"
+          fullWidth
+          required
+          style={fieldStyle}
+        />
+         <TextField
          onChange={(event) => handleInput(event)}
-         id="description"
-         value={props.propertyData.description}
-        label="Description"
-        variant="outlined"
-        fullWidth
-        required
-        style={fieldStyle}
-      />
-      <TextField
-       onChange={(event) => handleInput(event)}
-       id="address"
-       value={props.propertyData.address}
-        label="Address"
-        variant="outlined"
-        fullWidth
-        required
-        style={fieldStyle}
-      />
-      <TextField
+          id="location"
+          value={props.memberData.location}
+          type="text"
+          label="Where do you want to list your services?"
+          variant="outlined"
+          fullWidth
+          required
+          style={fieldStyle}
+        /> */}
+         <TextField
          onChange={(event) => handleInput(event)}
-         id="photo_url"
-         value={props.propertyData.photo_url}
-        label="Upload a photo"
-        variant="outlined"
-        fullWidth
-        required
-        style={fieldStyle}
-      />
- <Button
+          id="imgurl"
+          value={props.memberData.imgurl}
+          type="text"
+          label="Add a photo (Paste as URL)"
+          variant="outlined"
+          fullWidth
+          required
+          style={fieldStyle}
+        />
+      </div>
+      <Button
         type="submit"
         fullWidth
         style={buttonStyle}
@@ -123,12 +116,14 @@ export default function CreatePropertyListing(props) {
       >
         BACK
       </Button>
-      <Button type="submit" 
-      fullWidth 
-      style={buttonStyle} 
-      color="primary" 
-      onClick={sendPropertyData}>
-        SUBMIT
+      <Button
+        type="submit"
+        fullWidth
+        style={buttonStyle}
+        color="primary"
+        onClick={sendMemberData}
+      >
+        NEXT
       </Button>
       <Typography align="center">
         Already have an account?
