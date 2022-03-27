@@ -8,7 +8,7 @@ const ReservationCard = props => {
               <img
                 className="user-photo"
                 src={
-                  props.cleanerimgurl ||
+                  props.member_id.imgurl ||
                   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU"
                 }
                 alt="user_photo"
@@ -16,17 +16,19 @@ const ReservationCard = props => {
             </a>
           </figure>
           <h1>
-            {props.firstname || "Winona"} {props.lastname || "Williams"}
+            {props.member_id.user.first_name || "Winona"}{" "}
+            {props.member_id.user.last_name || "Williams"}
           </h1>
         </header>
         <main>
           {" "}
           <h5 className="reservation__address">
-            {props.address || "662 King St W #101, Toronto, ON M5V 1M7"}
+            {props.property_id.address ||
+              "662 King St W #101, Toronto, ON M5V 1M7"}
           </h5>
           <aside className="reservation__date">
             {" "}
-            {props.date || "June 23, 2021"}
+            {props.booking_date || "June 23, 2021"}
           </aside>{" "}
         </main>
       </div>
@@ -38,7 +40,8 @@ const ReservationCard = props => {
               props.propertyimgurl ||
               "https://imageio.forbes.com/specials-images/imageserve/1026205392/Beautiful-luxury-home-exterior-at-twilight/960x0.jpg?fit=bounds&format=jpg&width=960"
             }
-           alt="beautifulhousepicture"/>
+            alt="beautifulhousepicture"
+          />
         </figure>
       </div>
     </article>
