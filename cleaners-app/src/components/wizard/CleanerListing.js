@@ -40,9 +40,10 @@ const fieldStyle = {
 };
 
 export default function CleanerListing(props) {
+  
   const sendMemberData = () => {
     axios.post('/api/member', props.memberData)
-    console.log("MEMBERDATA:", props.memberData)
+    // console.log("MEMBERDATA:", props.memberData)
     .then(res => {
       props.increment()
       console.log("Success", res.data);

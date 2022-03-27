@@ -35,12 +35,14 @@ const fieldStyle = {
 };
 
 export default function EnterLocation(props) {
-
+  const {memberData} = props;
+  
   const sendLocationData = () => {
     axios.post('/api/location', props.locationData)
     .then(res => {
       props.increment()
       console.log("Success", res.data);
+      props.setMemberData( {...memberData, location: res.data.id})
     })
     .catch(err => {
       console.log("Failure", err);

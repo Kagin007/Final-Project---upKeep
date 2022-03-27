@@ -44,11 +44,11 @@ const SignUpWizard = (props) => {
 
 
   const [memberData, setMemberData] = useState({
+    user: "",
+    location: "",
     pay_rate: "",
     role: "",
-    location:"",
     imgurl: "",
-    user: null
   });
 
 
@@ -65,16 +65,22 @@ const SignUpWizard = (props) => {
       decrement={decrement}
       setUserData={setUserData}
       userData={userData}
+      setMemberData={setMemberData}
+      memberData={memberData}
     />,
     <EnterLocation increment={increment} 
-    decrement={decrement} 
-    locationData={locationData} 
-    setLocationData={setLocationData} />,
+      decrement={decrement} 
+      locationData={locationData} 
+      setLocationData={setLocationData}
+      setMemberData={setMemberData}
+      memberData={memberData}/>,
 
     <CleanerListing
       increment={increment}
       decrement={decrement}
       memberData={memberData}
+      userData={userData}
+      locationData={locationData}
       setMemberData={setMemberData}
 
     />,
@@ -123,6 +129,9 @@ const SignUpWizard = (props) => {
             increment={increment}
             setUserData={setUserData}
             userData={userData}
+            setMemberData={setMemberData}
+            memberData={memberData}
+
           />
         ) : (
           userSelected &&

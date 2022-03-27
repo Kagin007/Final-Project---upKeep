@@ -35,14 +35,16 @@ const companyName = {
 
 export default function ChooseRole(props) {
   const [role, setRole] = useState("");
+  const {memberData} = props;
 
  
   const handleInput = (event) => {
     const newData = {...props.userData}
     newData[event.target.id] = event.target.value
     props.setUserData(newData)
-    console.log(newData)
+    console.log('test', newData)
     setRole("owner")
+    props.setMemberData( {...memberData, role: newData.role})
   };
 
   
@@ -73,6 +75,7 @@ export default function ChooseRole(props) {
           label="Cleaner"
           type="radio"
           checked={role === "cleaner"}
+          
         />
         <FormControlLabel
           onClick={(event) => handleInput(event)}
