@@ -6,6 +6,7 @@ import CleanerComplete from "./wizard/CleanerComplete";
 import CleanerListing from "./wizard/CleanerListing";
 import HomeOwnerComplete from "./wizard/HomeOwnerComplete";
 import CreatePropertyListing from "./wizard/CreatePropertyListing";
+import OwnerListing from "./wizard/OwnerListing";
 import EnterLocation from "./wizard/EnterLocation";
 import UploadProfilePhoto from "./wizard/UploadProfilePhoto";
 // import CleanersList from "./CleanersList";
@@ -99,13 +100,31 @@ const SignUpWizard = (props) => {
       decrement={decrement}
       setUserData={setUserData}
       userData={userData}
+      setMemberData={setMemberData}
+      memberData={memberData}
     />,
-    <CreatePropertyListing
-      increment={increment}
-      decrement={decrement}
-      propertyData={propertyData}
-      setPropertyData={setPropertyData}
+    // Dont think we want to create properties during signup? -adam
+    <EnterLocation increment={increment} 
+    decrement={decrement} 
+    locationData={locationData} 
+    setLocationData={setLocationData}
+    setMemberData={setMemberData}
+    memberData={memberData}
     />,
+    <OwnerListing
+    increment={increment}
+    decrement={decrement}
+    memberData={memberData}
+    userData={userData}
+    locationData={locationData}
+    setMemberData={setMemberData}
+    />,
+    // <CreatePropertyListing
+    //   increment={increment}
+    //   decrement={decrement}
+    //   propertyData={propertyData}
+    //   setPropertyData={setPropertyData}
+    // />,
     <HomeOwnerComplete increment={increment} />,
   ];
 
