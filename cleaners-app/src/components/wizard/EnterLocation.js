@@ -1,14 +1,10 @@
-import React, { useState } from "react";
-import {
-  Grid,
-  Avatar,
-  Typography,
-  Link,
-  Button,
-  TextField,
-} from "@material-ui/core";
+import React from "react";
+import { Grid, Avatar, Typography, Link, Button, TextField } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 import axios from "axios";
+
+
+
 
 const avatarStyle = {
   backgroundColor: "#98b4aa",
@@ -17,10 +13,10 @@ const avatarStyle = {
 };
 
 const buttonStyle = {
-  margin: "5px 0",
-  backgroundColor: "#98b4aa",
-  color: "white",
-};
+    margin: "5px 0",
+    backgroundColor: "#98b4aa",
+    color: "white",
+  };
 
 const iconStyle = {
   fontSize: "50px",
@@ -38,26 +34,25 @@ const fieldStyle = {
   backgroundColor: "white",
 };
 
-export default function CreateUserAccount(props) {
-  // const [userId, setUserId] = useState(null)
+export default function EnterLocation(props) {
   const {memberData} = props;
   
-  const sendUserData = () => {
-    axios.post('/api/register', props.userData)
+  const sendLocationData = () => {
+    axios.post('/api/location', props.locationData)
     .then(res => {
       props.increment()
       console.log("Success", res.data);
-      props.setMemberData( {...memberData, user: res.data.id})
+      props.setMemberData( {...memberData, location: res.data.id})
     })
     .catch(err => {
       console.log("Failure", err);
     });
-  }  
+    }
 
   const handleInput = (event) => {
-    const newData = {...props.userData}
+    const newData = {...props.locationData}
     newData[event.target.id] = event.target.value
-    props.setUserData(newData)
+    props.setLocationData(newData)
     console.log(newData)
   };
 
@@ -69,13 +64,13 @@ export default function CreateUserAccount(props) {
         </Avatar>
         <h1 style={companyName}>upKeeper</h1>
 
-        <h3>Create An Account</h3>
+        <h3>What is your address?</h3>
       </Grid>
       <TextField
         onChange={(event) => handleInput(event)}
-        id="first_name"
-        value={props.userData.first_name}
-        label="First Name"
+        id="address"
+        value={props.locationData.address}
+        label="Address"
         variant="outlined"
         type="text"
         fullWidth
@@ -84,49 +79,26 @@ export default function CreateUserAccount(props) {
       />
       <TextField
         onChange={(event) => handleInput(event)}
-        id="last_name"
-        value={props.userData.last_name}
-        label="Last Name"
+        id="city"
+        value={props.locationData.city}
+        label="City"
         variant="outlined"
         type="text"
         fullWidth
         required
         style={fieldStyle}
       />
-       <TextField
+        <TextField
         onChange={(event) => handleInput(event)}
-        id="username"
-        value={props.userData.username}
-        label="Username"
+        id="province"
+        value={props.locationData.province}
+        label="Province"
         variant="outlined"
         type="text"
         fullWidth
         required
         style={fieldStyle}
       />
-      <TextField
-        onChange={(event) => handleInput(event)}
-        id="email"
-        value={props.userData.email}
-        label="Email"
-        variant="outlined"
-        type="email"
-        fullWidth
-        required
-        style={fieldStyle}
-      />
-      <TextField
-        onChange={(event) => handleInput(event)}
-        id="password"
-        value={props.userData.password}
-        label="Password"
-        type="password"
-        variant="outlined"
-        fullWidth
-        required
-        style={fieldStyle}
-      />
-    
       <Button
         type="submit"
         fullWidth
@@ -136,13 +108,12 @@ export default function CreateUserAccount(props) {
       >
         BACK
       </Button>
-
       <Button
         type="submit"
         fullWidth
         style={buttonStyle}
         color="primary"
-        onClick={sendUserData}
+        onClick={sendLocationData}
       >
         NEXT
       </Button>
@@ -153,3 +124,4 @@ export default function CreateUserAccount(props) {
     </Grid>
   );
 }
+

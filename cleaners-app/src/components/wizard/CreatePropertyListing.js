@@ -46,7 +46,7 @@ export default function CreatePropertyListing(props) {
 
 
   const sendPropertyData = () => {
-    axios.post('/api/property', props.propertyData)
+    axios.post('/api/properties', props.propertyData)
     .then(res => {
       props.increment()
       console.log("Success", res.data);

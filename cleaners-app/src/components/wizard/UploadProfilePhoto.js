@@ -41,16 +41,7 @@ const fieldStyle = {
 
 export default function UploadProfilePhoto(props) {
 
-  const sendUserData = () => {
-  axios.post('/api/users', props.userData)
-  .then(res => {
-    props.increment()
-    console.log("Success", res.data);
-  })
-  .catch(err => {
-    console.log("Failure", err);
-  });
-  }
+
 
   const handleInput = (event) => {
     const newData = {...props.userData}
@@ -96,9 +87,9 @@ export default function UploadProfilePhoto(props) {
         fullWidth
         style={buttonStyle}
         color="primary"
-        onClick={sendUserData}
+        onClick={props.increment}
       >
-        SUBMIT
+        NEXT
       </Button>
       <Typography align="center">
         Already have an account?
