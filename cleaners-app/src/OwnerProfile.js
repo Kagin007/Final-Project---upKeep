@@ -10,6 +10,7 @@ import {
   Card,
   CardActions,
   CardContent,
+  FormControl,
 } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 import { authContext } from "./providers/AuthProvider";
@@ -19,6 +20,12 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+<<<<<<< HEAD
+=======
+import CreatePropertyListing from "./components/wizard/CreatePropertyListing";
+import ExpandMore from "@mui/icons-material/ExpandMore";
+import {getCookie} from "./components/CSRFtoken";
+>>>>>>> 6e57641c0fad67dfd8844b90411e45760c1cfa52
 
 // props from App.js useEffect
 export default function Profile(props) {
@@ -29,6 +36,40 @@ export default function Profile(props) {
   const [properties, setProperties] = useState([]);
   const [memberData, setMemberData] = useState({});
 
+<<<<<<< HEAD
+=======
+  const [newProperty, setNewProperty] = useState({
+    address: "",
+    city: "",
+    country: "Canada",
+    imgurl: "",
+    longitude: 0,
+    latitude: 0,
+    member_id: user.id,
+  });
+
+  const sendPropertyData = () => {
+    const token = getCookie("csrftoken")
+    axios
+      .post(`/api/properties/${user.id}`, newProperty, {
+        headers: { "X-CSRFToken": token },
+      })
+      .then((res) => {
+        console.log("Success", res.data);
+      })
+      .catch((err) => {
+        console.log("Failure", err);
+      });
+  };
+
+  const handleInput = (event) => {
+    const newData = { ...newProperty };
+    newData[event.target.id] = event.target.value;
+    setNewProperty(newData);
+    console.log(newProperty);
+  };
+
+>>>>>>> 6e57641c0fad67dfd8844b90411e45760c1cfa52
   useEffect(() => {
     setTimeout(() => {
       if (!user) {
@@ -36,20 +77,37 @@ export default function Profile(props) {
       } else {
         axios
           .get(`/api/properties/${user.id}`)
+<<<<<<< HEAD
           .then(res => {
             console.log("properyData:", res.data);
             setProperties(res.data);
           })
           .catch(err => {
+=======
+          .then((res) => {
+            console.log("properyData:", res.data);
+            setProperties(res.data);
+          })
+          .catch((err) => {
+>>>>>>> 6e57641c0fad67dfd8844b90411e45760c1cfa52
             console.log(err);
           });
         axios
           .get(`/api/member/${user.id}`)
+<<<<<<< HEAD
           .then(res => {
             console.log("memberData:", res.data);
             setMemberData(res.data);
           })
           .catch(err => {
+=======
+          .then((res) => {
+            console.log("memberData:", res.data);
+            setMemberData(res.data);
+            // setPropertyData({...property})
+          })
+          .catch((err) => {
+>>>>>>> 6e57641c0fad67dfd8844b90411e45760c1cfa52
             console.log(err);
           });
       }
@@ -70,6 +128,22 @@ export default function Profile(props) {
     margin: "10px 0",
     backgroundColor: "#98b4aa",
     color: "white",
+  };
+
+  const iconStyle = {
+    fontSize: "50px",
+  };
+
+  const companyName = {
+    fontFamily: "Julius Sans One",
+    justifyContent: "center",
+    color: "#495371",
+    fontSize: "50px",
+  };
+
+  const fieldStyle = {
+    margin: "5px auto",
+    backgroundColor: "white",
   };
 
   if (!memberData.user) {
@@ -161,6 +235,73 @@ export default function Profile(props) {
             <Accordion>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
+<<<<<<< HEAD
+=======
+                aria-controls="panella-content"
+                id="panel1a-header"
+              >
+                <Typography>Add Property</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Grid>
+                  <Grid align="center">
+                    <Avatar style={avatarStyle}>
+                      <CleaningServicesIcon style={iconStyle} />
+                    </Avatar>
+                    <h1 style={companyName}>upKeeper</h1>
+                    <h3>Post your listing</h3>
+                  </Grid>
+
+                  <TextField
+                    onChange={(event) => handleInput(event)}
+                    id="address"
+                    value={newProperty.address}
+                    label="Address"
+                    variant="outlined"
+                    fullWidth
+                    required
+                    style={fieldStyle}
+                  />
+                  <TextField
+                    onChange={(event) => handleInput(event)}
+                    id="city"
+                    value={newProperty.city}
+                    label="City"
+                    variant="outlined"
+                    fullWidth
+                    required
+                    style={fieldStyle}
+                  />
+                  <TextField
+                    onChange={(event) => handleInput(event)}
+                    id="imgurl"
+                    value={newProperty.imgurl}
+                    label="Upload a photo"
+                    variant="outlined"
+                    fullWidth
+                    required
+                    style={fieldStyle}
+                  />
+                  <Button
+                    type="submit"
+                    fullWidth
+                    style={buttonStyle}
+                    color="primary"
+                    onClick={sendPropertyData}
+                  >
+                    SUBMIT
+                  </Button>
+                  <Typography align="center">
+                    Already have an account?
+                    <Link href="/login">Sign in here.</Link>
+                  </Typography>
+                </Grid>
+              </AccordionDetails>
+            </Accordion>
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+>>>>>>> 6e57641c0fad67dfd8844b90411e45760c1cfa52
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
