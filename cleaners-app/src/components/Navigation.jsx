@@ -56,19 +56,22 @@ const Navigation = props => {
     )}
 
 
+    const navColour = {
+      color: "#f3e9dd"
+    }
+
   return (
     <Fragment>
       <nav className="nav__bar">
         <h1 className="nav__logo">upKeeper</h1>
       </nav>
       <ul className="nav__options">
-        <NavLink to="/" className="nav__options--link">Home</NavLink>
-        <NavLink to="/reservations" className="nav__options--link">My Reservations</NavLink>
-        <NavLink to="/profile" className="nav__options--link">My Profile</NavLink>
-        {!user && <li to="#" className="nav__options--link" onClick={toggleLogin}>Log In</li>}
-        {!user && <li to="#" className="nav__options--link" onClick={toggleSignUpWizard}>Sign Up</li>}
-        {user && <li className="nav__options--link">Logged in as: {`${user.username[0].toUpperCase()}${user.username.substring(1,user.username.length).toLowerCase()}`}</li>}
-        {user && <li to="#" className="nav__options--link" onClick={()=>exit()}>Logout</li>}
+        <NavLink to="/reservations" className="nav__options--link" style={navColour}>My Reservations</NavLink>
+        <NavLink to="/profile" className="nav__options--link" style={navColour}>My Profile</NavLink>
+        {!user && <li to="#" className="nav__options--link" onClick={toggleLogin} style={navColour}>Log In</li>}
+        {!user && <li to="#" className="nav__options--link" onClick={toggleSignUpWizard} style={navColour}>Sign Up</li>}
+        {user && <li className="nav__options--link" style={navColour}>Logged in as: {`${user.username[0].toUpperCase()}${user.username.substring(1,user.username.length).toLowerCase()}`}</li>}
+        {user && <li to="#" className="nav__options--link" onClick={()=>exit()} style={navColour}>Logout</li>}
       </ul>
       {signUpWizardOpen && <Backdrop onClose={toggleSignUpWizard} />}
       {signUpWizardOpen && <SignUpWizard onClose={toggleSignUpWizard} />}

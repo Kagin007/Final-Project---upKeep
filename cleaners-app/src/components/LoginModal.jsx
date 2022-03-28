@@ -10,6 +10,9 @@ import {
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 import axios from "axios";
 import { authContext } from "../providers/AuthProvider";
+import useSignUpModal from "../hooks/useSignUpModal"
+
+
 
 const LoginModal = props => {
   const { login } = useContext(authContext);
