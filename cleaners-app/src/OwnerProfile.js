@@ -23,9 +23,6 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CreatePropertyListing from "./components/wizard/CreatePropertyListing";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import {getCookie} from "./components/CSRFtoken";
-import CreatePropertyListing from "./components/wizard/CreatePropertyListing";
-import ExpandMore from "@mui/icons-material/ExpandMore";
-import {getCookie} from "./components/CSRFtoken";
 
 
 // props from App.js useEffect
