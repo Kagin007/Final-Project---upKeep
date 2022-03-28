@@ -79,7 +79,7 @@ const LoginModal = props => {
             <TextField
               name="email"
               id="outlined-basic"
-              label="Email"
+              label="Username"
               variant="outlined"
               fullWidth
               required
