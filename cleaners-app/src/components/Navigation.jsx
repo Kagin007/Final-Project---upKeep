@@ -64,7 +64,6 @@ const Navigation = props => {
       <ul className="nav__options">
         <NavLink to="/" className="nav__options--link">Home</NavLink>
         <NavLink to="/reservations" className="nav__options--link">My Reservations</NavLink>
-        {/* <NavLink to="/properties" className="nav__options--link">My Properties</NavLink> */}
         <NavLink to="/profile" className="nav__options--link">My Profile</NavLink>
         {!user && <li to="#" className="nav__options--link" onClick={toggleLogin}>Log In</li>}
         {!user && <li to="#" className="nav__options--link" onClick={toggleSignUpWizard}>Sign Up</li>}

@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./Login";
 import Home from "./Home";
 import Profile from "./OwnerProfile";
-import Properties from "./CreateProperty"
+// import Properties from "./CreateProperty"
 import axios from "axios";
 import AuthProvider from "./providers/AuthProvider";
 import ReservationsList from "./components/ReservationsList";
@@ -53,13 +53,13 @@ function App() {
           <Route exact path="/reservations">
             <ReservationsList />
           </Route>
-          <Route exact path="/properties">
+          {/* <Route exact path="/properties">
             <Properties
               properties={properties}
               setProperties={setProperties}
               memberData={memberData}
             />
-          </Route>
+          </Route> */}
           <Route exact path="/profile">
             <Profile
               properties={properties}

@@ -19,6 +19,8 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import CreatePropertyListing from "./components/wizard/CreatePropertyListing";
+import ExpandMore from "@mui/icons-material/ExpandMore";
 
 // props from App.js useEffect
 export default function Profile(props) {
@@ -27,7 +29,31 @@ export default function Profile(props) {
     const user  = JSON.parse(window.localStorage.getItem('user'))
   
     const [properties, setProperties] = useState([])
-    const [memberData, setMemberData] = useState({})
+    const [memberData, setMemberData] = useState({
+      city: "",
+      country: "Canada",
+      imgurl: "",
+      longitude: 0,
+      latitude: 0,
+      member_id: null
+    })
+
+    const sendPropertyData = () => {
+      axios.post('/api/properties', props.propertyData)
+      .then(res => {
+        console.log("Success", res.data);
+      })
+      .catch(err => {
+        console.log("Failure", err);
+      });
+      }
+  
+    const handleInput = (event) => {
+      const newData = {...props.propertyData}
+      newData[event.target.id] = event.target.value
+      props.setPropertyData(newData)
+      console.log(newData)
+    };
   
     useEffect(() => {
       setTimeout( () => {
@@ -72,6 +98,22 @@ export default function Profile(props) {
     margin: "10px 0",
     backgroundColor: "#98b4aa",
     color: "white",
+  };
+  
+  const iconStyle = {
+    fontSize: "50px",
+  };
+  
+  const companyName = {
+    fontFamily: "Julius Sans One",
+    justifyContent: "center",
+    color: "#495371",
+    fontSize: "50px",
+  };
+  
+  const fieldStyle = {
+    margin: "5px auto",
+    backgroundColor: "white"
   };
 
   if (!memberData.user) {
@@ -163,6 +205,80 @@ export default function Profile(props) {
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
+          aria-controls="panella-content"
+          id="panel1a-header"
+          >
+            <Typography>
+              Add Property
+            </Typography>
+        </AccordionSummary>
+          <AccordionDetails>
+          <Grid>
+      <Grid align="center">
+        <Avatar style={avatarStyle}>
+          <CleaningServicesIcon style={iconStyle} />
+        </Avatar>
+        <h1 style={companyName}>upKeeper</h1>
+        <h3>Post your listing</h3>
+      </Grid>
+      <TextField
+         onChange={(event) => handleInput(event)}
+         id="title"
+        //  value={props.propertyData.title}
+         label="Title"
+        variant="outlined"
+        fullWidth
+        required
+        style={fieldStyle}
+      />
+      <TextField
+         onChange={(event) => handleInput(event)}
+         id="description"
+        //  value={props.propertyData.description}
+        label="Description"
+        variant="outlined"
+        fullWidth
+        required
+        style={fieldStyle}
+      />
+      <TextField
+       onChange={(event) => handleInput(event)}
+       id="address"
+      //  value={props.propertyData.address}
+        label="Address"
+        variant="outlined"
+        fullWidth
+        required
+        style={fieldStyle}
+      />
+      <TextField
+         onChange={(event) => handleInput(event)}
+         id="photo_url"
+        //  value={props.propertyData.photo_url}
+        label="Upload a photo"
+        variant="outlined"
+        fullWidth
+        required
+        style={fieldStyle}
+      />
+      <Button type="submit" 
+      fullWidth 
+      style={buttonStyle} 
+      color="primary"
+      >
+      // onClick={sendPropertyData}>
+        SUBMIT
+      </Button>
+      <Typography align="center">
+        Already have an account?
+        <Link href="/login">Sign in here.</Link>
+      </Typography>
+    </Grid>
+          </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
           >
@@ -170,7 +286,7 @@ export default function Profile(props) {
         </AccordionSummary>
           <AccordionDetails>
 
-          
+
             <ul>
               {properties.map((property, index) => {
                 return (
