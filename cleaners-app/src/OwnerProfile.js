@@ -20,12 +20,13 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-<<<<<<< HEAD
-=======
 import CreatePropertyListing from "./components/wizard/CreatePropertyListing";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import {getCookie} from "./components/CSRFtoken";
->>>>>>> 6e57641c0fad67dfd8844b90411e45760c1cfa52
+import CreatePropertyListing from "./components/wizard/CreatePropertyListing";
+import ExpandMore from "@mui/icons-material/ExpandMore";
+import {getCookie} from "./components/CSRFtoken";
+
 
 // props from App.js useEffect
 export default function Profile(props) {
@@ -36,8 +37,7 @@ export default function Profile(props) {
   const [properties, setProperties] = useState([]);
   const [memberData, setMemberData] = useState({});
 
-<<<<<<< HEAD
-=======
+
   const [newProperty, setNewProperty] = useState({
     address: "",
     city: "",
@@ -69,7 +69,6 @@ export default function Profile(props) {
     console.log(newProperty);
   };
 
->>>>>>> 6e57641c0fad67dfd8844b90411e45760c1cfa52
   useEffect(() => {
     setTimeout(() => {
       if (!user) {
@@ -77,37 +76,21 @@ export default function Profile(props) {
       } else {
         axios
           .get(`/api/properties/${user.id}`)
-<<<<<<< HEAD
-          .then(res => {
-            console.log("properyData:", res.data);
-            setProperties(res.data);
-          })
-          .catch(err => {
-=======
           .then((res) => {
             console.log("properyData:", res.data);
             setProperties(res.data);
           })
           .catch((err) => {
->>>>>>> 6e57641c0fad67dfd8844b90411e45760c1cfa52
             console.log(err);
           });
         axios
           .get(`/api/member/${user.id}`)
-<<<<<<< HEAD
-          .then(res => {
-            console.log("memberData:", res.data);
-            setMemberData(res.data);
-          })
-          .catch(err => {
-=======
           .then((res) => {
             console.log("memberData:", res.data);
             setMemberData(res.data);
             // setPropertyData({...property})
           })
           .catch((err) => {
->>>>>>> 6e57641c0fad67dfd8844b90411e45760c1cfa52
             console.log(err);
           });
       }
@@ -235,8 +218,7 @@ export default function Profile(props) {
             <Accordion>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
-<<<<<<< HEAD
-=======
+
                 aria-controls="panella-content"
                 id="panel1a-header"
               >
@@ -301,7 +283,6 @@ export default function Profile(props) {
             <Accordion>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
->>>>>>> 6e57641c0fad67dfd8844b90411e45760c1cfa52
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
