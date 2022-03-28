@@ -72,7 +72,7 @@ export default function ChooseRole(props) {
           control={<Radio onChange={() => props.roleSelected("cleaner")} />}
           label="Cleaner"
           type="radio"
-          checked={role === "cleaner"}
+          // checked={role === "cleaner"}
           
         />
         <FormControlLabel
