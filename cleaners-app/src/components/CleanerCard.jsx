@@ -58,7 +58,8 @@ const CleanerCard = props => {
   const articleClasses = classNames("cleaner__card__article", {
     "cleaner__card__booking-selected": booking,
   });
-
+  console.log('props:', props )
+  // console.log(user)
   return (
     <article className={articleClasses}>
       <div className="cleaner__card cleaner__card__front">
@@ -121,7 +122,7 @@ const CleanerCard = props => {
             </h2>
           </div>
           <form onSubmit={submitHandler} className="cleaner__card__bookingform">
-            <input type="hidden" name="cleanerid" value={user.id} />
+            <input type="hidden" name="cleanerid" value={props.id} />
             <CSRFToken />
             <SelectProperties properties={properties} dark />
             <InputForm
