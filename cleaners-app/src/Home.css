@@ -141,6 +141,7 @@ a:active {
   height: 2em;
   padding: 0.1em 1em;
   color: var(--light-color-text);
+  backface-visibility: hidden;
 }
 
 .primary-btn:hover {
