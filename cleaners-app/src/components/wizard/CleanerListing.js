@@ -69,7 +69,7 @@ export default function CleanerListing(props) {
         </Avatar>
         <h1 style={companyName}>upKeeper</h1>
 
-        <h3>Create your listing</h3>
+        <h3>Create your cleaning profile</h3>
       </Grid>
       <div>
         <TextField
@@ -78,17 +78,6 @@ export default function CleanerListing(props) {
           value={props.memberData.pay_rate}
           type="text"
           label="Enter an hourly rate in Canadian dollars (no decimals)"
-          variant="outlined"
-          fullWidth
-          required
-          style={fieldStyle}
-        />
-         <TextField
-         onChange={(event) => handleInput(event)}
-          id="location"
-          value={props.memberData.location}
-          type="text"
-          label="Where do you want to list your services?"
           variant="outlined"
           fullWidth
           required
