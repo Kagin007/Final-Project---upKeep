@@ -112,15 +112,6 @@ export default function OwnerListing(props) {
         fullWidth
         style={buttonStyle}
         color="primary"
-        onClick={props.decrement}
-      >
-        BACK
-      </Button>
-      <Button
-        type="submit"
-        fullWidth
-        style={buttonStyle}
-        color="primary"
         onClick={sendMemberData}
       >
         NEXT
