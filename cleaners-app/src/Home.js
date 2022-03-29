@@ -9,19 +9,24 @@ import useModal from "./hooks/useReviewsModal";
 
 function Home(props) {
   const { reviewModalOpen, toggleReviewModal } = useModal();
-  const { properties } = props;
+  const { properties, toasterFunction } = props;
 
   const [cleaners, setCleaners] = useState([]);
   const [selectedDate, setSelectedDate] = useState("");
 
   return (
     <div className="Home">
-      <SearchForm setCleaners={setCleaners} setSelectedDate={setSelectedDate} />
+      <SearchForm
+        setCleaners={setCleaners}
+        setSelectedDate={setSelectedDate}
+        toasterFunction={toasterFunction}
+      />
       <CleanersList
         onOpen={toggleReviewModal}
         cleaners={cleaners}
         selectedDate={selectedDate}
         properties={properties}
+        toasterFunction={toasterFunction}
       />
       {reviewModalOpen && <Backdrop onClose={toggleReviewModal} />}
       {reviewModalOpen && <ReviewsModal onClose={toggleReviewModal} />}

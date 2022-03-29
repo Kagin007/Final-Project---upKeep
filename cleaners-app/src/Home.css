@@ -464,3 +464,14 @@ li {
   position: relative;
   margin: 0;
 }
+
+.toast-exit {
+  position: absolute;
+  top: 1.77em;
+  left: 1em;
+  z-index: 11;
+  color: var(--primary-color);
+}
+.toast-exit:hover {
+  color: var(--danger-red-color);
+}

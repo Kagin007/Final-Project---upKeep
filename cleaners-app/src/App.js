@@ -1,4 +1,10 @@
-import React, { useEffect, useState, useContext, createContext } from "react";
+import React, {
+  useEffect,
+  useState,
+  useRef,
+  useContext,
+  createContext,
+} from "react";
 import Navigation from "./components/Navigation";
 import SearchForm from "./components/SearchForm";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -10,11 +16,13 @@ import Profile from "./OwnerProfile";
 import axios from "axios";
 import AuthProvider from "./providers/AuthProvider";
 import ReservationsList from "./components/ReservationsList";
+import { ToastPortal } from "./components/ToastPortal";
 
 function App() {
   const user = JSON.parse(window.localStorage.getItem("user"));
   const [properties, setProperties] = useState([]);
   const [memberData, setMemberData] = useState({});
+  const toastRef = useRef();
 
   useEffect(() => {
     setTimeout(() => {
@@ -23,18 +31,18 @@ function App() {
       } else {
         axios
           .get(`/api/properties/${user.id}`)
-          .then((res) => {
+          .then(res => {
             setProperties(res.data);
           })
-          .catch((err) => {
+          .catch(err => {
             console.log(err);
           });
         axios
           .get(`/api/member/${user.id}`)
-          .then((res) => {
+          .then(res => {
             setMemberData(res.data);
           })
-          .catch((err) => {
+          .catch(err => {
             console.log(err);
           });
       }
@@ -51,17 +59,27 @@ function App() {
     backgroundImage: `url(${background})`,
     backgroundSize: "cover",
     height: "100vh",
-    backgroundPosition: "right"
+    backgroundPosition: "right",
   };
   return (
     <container className="container">
       <div style={backgroundStyle}>
+        <ToastPortal ref={toastRef} />
         <AuthProvider>
           <Router>
-            <Navigation />
+            <Navigation
+              toasterFunction={message => {
+                toastRef.current.addMessage({ message });
+              }}
+            />
             <Switch>
               <Route exact path="/">
-                <Home properties={properties} />
+                <Home
+                  properties={properties}
+                  toasterFunction={message => {
+                    toastRef.current.addMessage({ message });
+                  }}
+                />
               </Route>
               <Route exact path="/reservations">
                 <ReservationsList />
