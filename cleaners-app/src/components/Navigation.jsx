@@ -57,7 +57,7 @@ const Navigation = props => {
 
 
     const navColour = {
-      color: "#f3e9dd"
+      color: "white"
     }
 
   return (

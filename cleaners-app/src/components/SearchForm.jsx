@@ -5,7 +5,15 @@ import CitySuggestions from "./CitySuggestions";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
+
+const textStyle = {
+  color: "white"
+}
+
 const SearchForm = ({ setCleaners, setSelectedDate }) => {
+
+  
+
   const {
     onSearchHandler,
     onClickHandler,
@@ -36,7 +44,7 @@ const SearchForm = ({ setCleaners, setSelectedDate }) => {
   return (
     <section className="searchform" onClick={onClickHandler}>
       <header>
-        <h2>Search for Cleaners in Your Area:</h2>
+        <h2 style={textStyle}>Search for Cleaners in Your Area:</h2>
       </header>
       <form onSubmit={submitHandler} autoComplete="off">
         <InputForm

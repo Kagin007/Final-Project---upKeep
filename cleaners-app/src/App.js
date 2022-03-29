@@ -3,6 +3,9 @@ import Navigation from "./components/Navigation";
 import SearchForm from "./components/SearchForm";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import background from "./img/background.jpg";
+import familybbq from "./img/family-bbq.jpg";
+import embrace from "./img/embrace.jpg";
+import greetingcleaners from "./img/greeting-cleaners.jpeg";
 import Login from "./Login";
 import Home from "./Home";
 import Profile from "./OwnerProfile";
@@ -10,6 +13,7 @@ import Profile from "./OwnerProfile";
 import axios from "axios";
 import AuthProvider from "./providers/AuthProvider";
 import ReservationsList from "./components/ReservationsList";
+
 
 function App() {
   const user = JSON.parse(window.localStorage.getItem("user"));
@@ -41,11 +45,7 @@ function App() {
     }, 400);
   }, []);
 
-  // const containerStyle = {
-  //   height: "100vh",
-  //   width: "100vw",
-  //   objectFit: "cover",
-  // };
+
 
   const backgroundStyle = {
     backgroundImage: `url(${background})`,
@@ -54,8 +54,9 @@ function App() {
     backgroundPosition: "right"
   };
   return (
+
     <container className="container">
-      <div style={backgroundStyle}>
+      <div name="slide" style={backgroundStyle}>
         <AuthProvider>
           <Router>
             <Navigation />

@@ -51,7 +51,14 @@
 }
 
 .nav__bar {
-  background: var(--light-color-bg);
+  /* background: var(--light-color-bg); */
+  /* background-color: #000000;
+background-image: url("https://www.transparenttextures.com/patterns/fresh-snow.png"); */
+/* background-color: #141310;
+background-image: url("https://www.transparenttextures.com/patterns/purty-wood.png"); */
+
+background-color: #000000;
+background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
 }
 a,
 a:visited,
@@ -63,9 +70,11 @@ a:active {
   text-align: center;
   padding: 0.8em;
   margin: 0;
-  font-family: "Julius Sans One", sans-serif;
-  font-size: 3.5em;
-  color: var(--primary-color);
+  font-family: 'Syncopate', sans-serif;
+  font-weight: 1100;
+  font-size: 4.5em;
+  /* color: var(--primary-color); */
+  color: white;
   letter-spacing: 0.2em;
 }
 .nav__options {
@@ -73,22 +82,33 @@ a:active {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  background-color: var(--tertiary-color);
+  /* background-color: #198794; */
+  background-color: #5F6898;
+  background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
+/* background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png"); */
+  /* var(--tertiary-color); */
   padding: 1em 0;
-  color: var(--light-color-text);
+  /* color: var(--light-color-text); */
+  color: white;
 }
+
 .nav__options--link {
   list-style-type: none;
   font-size: 1.1em;
   cursor: pointer;
+  color: white;
 }
 .nav__options--link:hover {
-  color: var(--primary-color);
+  /* color: var(--primary-color); */
+  color:white
 }
 
 .searchform {
   padding: 1em 2em 3em;
-  background-color: var(--tertiary-color);
+  /* background-color: var(--tertiary-color); */
+  /* background-color: #198794; */
+  background-color: #7D7E7E;
+  opacity: 0.75;
   width: 60%;
   margin: 0 auto;
   margin-top: 2em;
@@ -109,16 +129,19 @@ a:active {
   height: 2em;
   padding: 0.1em 1em;
   border-radius: 20px;
-  color: var(--light-color-text);
+  /* color: var(--light-color-text); */
+  color: white
 }
 .primary-select {
   margin: 0 1em;
-  background: rgba(73, 83, 113, 0.2);
+  /* background: rgba(73, 83, 113, 0.2); */
+  background: white;
   border-style: none;
   height: 2em;
   padding: 0.1em 1em;
   border-radius: 20px;
-  color: var(--light-color-text);
+  /* color: var(--light-color-text); */
+  
 }
 
 .primary-input-dark {
@@ -135,13 +158,15 @@ a:active {
 }
 
 .primary-btn {
-  background-color: var(--primary-color);
+  /* background-color: var(--primary-color); */
+  background-color: #666868;
   border-style: none;
   opacity: 0.8;
   border-radius: 20px;
   height: 2em;
   padding: 0.1em 1em;
-  color: var(--light-color-text);
+  /* color: var(--light-color-text); */
+  color: white;
   backface-visibility: hidden;
 }
 
