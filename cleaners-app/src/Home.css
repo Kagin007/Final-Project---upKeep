@@ -80,6 +80,7 @@ a:active {
 .nav__options--link {
   list-style-type: none;
   font-size: 1.1em;
+  cursor: pointer;
 }
 .nav__options--link:hover {
   color: var(--primary-color);
