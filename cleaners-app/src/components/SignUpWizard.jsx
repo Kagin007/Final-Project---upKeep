@@ -8,7 +8,7 @@ import HomeOwnerComplete from "./wizard/HomeOwnerComplete";
 import CreatePropertyListing from "./wizard/CreatePropertyListing";
 import OwnerListing from "./wizard/OwnerListing";
 import EnterLocation from "./wizard/EnterLocation";
-import UploadProfilePhoto from "./wizard/UploadProfilePhoto";
+// import UploadProfilePhoto from "./wizard/UploadProfilePhoto";
 // import CleanersList from "./CleanersList";
 // import Review from "./Review";
 
@@ -25,6 +25,7 @@ const SignUpWizard = (props) => {
     last_name: "",
     email: "",
     password: "",
+    password2: "",
     username: ""
   });
 
@@ -85,12 +86,12 @@ const SignUpWizard = (props) => {
       setMemberData={setMemberData}
 
     />,
-    <UploadProfilePhoto
-      increment={increment}
-      decrement={decrement}
-      setUserData={setUserData}
-      userData={userData}
-    />,
+    // <UploadProfilePhoto
+    //   increment={increment}
+    //   decrement={decrement}
+    //   setUserData={setUserData}
+    //   userData={userData}
+    // />,
     <CleanerComplete increment={increment} />,
   ];
 

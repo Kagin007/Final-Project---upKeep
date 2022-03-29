@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Grid,
   Avatar,
@@ -9,6 +9,8 @@ import {
 } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 import axios from "axios";
+import { authContext } from "../../providers/AuthProvider";
+
 
 const avatarStyle = {
   backgroundColor: "#98b4aa",
@@ -41,6 +43,8 @@ const fieldStyle = {
 export default function CreateUserAccount(props) {
   // const [userId, setUserId] = useState(null)
   const {memberData} = props;
+  const { setCredentials, credentials } = useContext(authContext);
+  const [errorMessage, setErrorMessage] = useState({})
   
   const sendUserData = () => {
     axios.post('/api/register', props.userData)
@@ -48,8 +52,12 @@ export default function CreateUserAccount(props) {
       props.increment()
       console.log("Success", res.data);
       props.setMemberData( {...memberData, user: res.data.id})
+      setCredentials({username: props.userData.username, password: props.userData.password})
     })
     .catch(err => {
+      if (err.response) {
+        setErrorMessage(err.response.data)
+      }
       console.log("Failure", err);
     });
   }  
@@ -61,7 +69,9 @@ export default function CreateUserAccount(props) {
     console.log(newData)
   };
 
+
   return (
+
     <Grid>
       <Grid align="center">
         <Avatar style={avatarStyle}>
@@ -126,7 +136,25 @@ export default function CreateUserAccount(props) {
         required
         style={fieldStyle}
       />
-    
+
+            <TextField
+        onChange={(event) => handleInput(event)}
+        id="password2"
+        value={props.userData.password2}
+        label="Password"
+        type="password"
+        variant="outlined"
+        fullWidth
+        required
+        style={fieldStyle}
+      />
+
+      <ul> {Object.keys(errorMessage).map((key) => {
+
+        return (<li> {errorMessage[key]} </li>);
+      })}
+      </ul>
+
       <Button
         type="submit"
         fullWidth
@@ -136,6 +164,7 @@ export default function CreateUserAccount(props) {
       >
         BACK
       </Button>
+
 
       <Button
         type="submit"

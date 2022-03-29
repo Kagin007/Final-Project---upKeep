@@ -10,12 +10,11 @@ import {
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 import axios from "axios";
 import { authContext } from "../providers/AuthProvider";
-import useSignUpModal from "../hooks/useSignUpModal"
+import {getCookie} from "./components/CSRFtoken";
 
+const RatingModal = props => {
 
-
-const LoginModal = props => {
-  const { login } = useContext(authContext);
+  const user = JSON.parse(window.localStorage.getItem("user"));
 
   const avatarStyle = {
     backgroundColor: "#98b4aa",
@@ -45,21 +44,32 @@ const LoginModal = props => {
     backgroundColor: "white",
   };
 
-  const submitHandler = e => {
-    e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    console.log(email);
-    console.log(password);
+  const [newRating, setNewRating] = useState({
+    reservation_id: props.reservation_id,
+    member_id: props.cleaner_id,
+    message: "",
+    rating: "",
+  });
+
+  const sendRatingData = () => {
+    const token = getCookie("csrftoken")
     axios
-      .post(`/api/login`, { username: `${email}`, password: `${password}` })
-      .then(res => {
-        login(res.data.username, res.data.id);
-        props.onClose();
+      .post(`/api/ratings/${user.id}`, newRating, {
+        headers: { "X-CSRFToken": token },
       })
-      .catch(err => {
-        console.log(err);
+      .then((res) => {
+        console.log("Success", res.data);
+      })
+      .catch((err) => {
+        console.log("Failure", err);
       });
+  };
+
+  const handleInput = (event) => {
+    const newData = { ...newRating };
+    newData[event.target.id] = event.target.value;
+    setNewRating(newData);
+    console.log(newRating);
   };
 
   return (
@@ -76,43 +86,42 @@ const LoginModal = props => {
             </Avatar>
             <h1 style={companyName}>upKeeper</h1>
 
-            <h3>Login</h3>
+            <h3>Rating Card</h3>
           </Grid>
-          <form onSubmit={submitHandler}>
+          {/* <form onSubmit={submitHandler}> */}
             <TextField
-              name="email"
+              onChange={(event) => handleInput(event)}
+              name="message"
               id="outlined-basic"
-              label="Username"
+              label="Message"
+              value={newRating.message}
               variant="outlined"
               fullWidth
               required
               style={fieldStyle}
             />
             <TextField
-              name="password"
+              onChange={(event) => handleInput(event)}
+              name="rating"
               id="outlined-basic"
-              label="Password"
-              type="password"
+              label="rating"
+              value={newRating.rating}
               variant="outlined"
               fullWidth
               required
               style={fieldStyle}
             />
 
-            <Button
-              type="submit"
-              fullWidth
-              style={buttonStyle}
-              color="primary"
-              onClick={props.increment}
-            >
-              SUMBIT
-            </Button>
-          </form>
-          <Typography align="center">
-            Don't yet have an account?
-            <Link href="/#">Sign up here</Link>
-          </Typography>
+          <Button
+            type="submit"
+            fullWidth
+            style={buttonStyle}
+            color="primary"
+            onClick={sendRatingData}
+          >
+            SUBMIT
+          </Button>
+          {/* </form> */}
         </Grid>
       </header>
       <main className="modal-content"></main>
@@ -120,4 +129,4 @@ const LoginModal = props => {
   );
 };
 
-export default LoginModal;
+export default RatingModal;
