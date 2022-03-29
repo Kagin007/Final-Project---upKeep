@@ -6,9 +6,7 @@ import Toast from "../Toast";
 import { v4 as uuidv4 } from "uuid";
 
 export const ToastPortal = forwardRef(({ autoClose, autoCloseTime }, ref) => {
-  const [toasts, setToasts] = useState([
-    { id: "123fjksdjfds", message: "This is a test" },
-  ]);
+  const [toasts, setToasts] = useState([]);
   const { loaded, portalId } = useToastPortal();
   const removeToast = id => {
     setToasts(toasts.filter(toast => toast.id !== id));
