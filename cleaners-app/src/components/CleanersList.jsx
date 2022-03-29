@@ -1,6 +1,12 @@
 import CleanerCard from "./CleanerCard";
 
-const CleanersList = ({ cleaners, onOpen, selectedDate, properties }) => {
+const CleanersList = ({
+  cleaners,
+  onOpen,
+  selectedDate,
+  properties,
+  toasterFunction,
+}) => {
   // const sampleData = [
   //   {
   //     id: 1,
@@ -31,7 +37,6 @@ const CleanersList = ({ cleaners, onOpen, selectedDate, properties }) => {
   //   },
   // ];
 
-  
   const listOfCleaners = cleaners.map(cleaner => (
     <CleanerCard
       key={cleaner.id}
@@ -39,6 +44,7 @@ const CleanersList = ({ cleaners, onOpen, selectedDate, properties }) => {
       onOpen={onOpen}
       selectedDate={selectedDate}
       properties={[...properties]}
+      toasterFunction={toasterFunction}
     />
   ));
 

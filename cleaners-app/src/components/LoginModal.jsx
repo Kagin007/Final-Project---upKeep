@@ -10,11 +10,10 @@ import {
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 import axios from "axios";
 import { authContext } from "../providers/AuthProvider";
-import useSignUpModal from "../hooks/useSignUpModal"
-
-
+import useSignUpModal from "../hooks/useSignUpModal";
 
 const LoginModal = props => {
+  const { toasterFunction } = props;
   const { login } = useContext(authContext);
 
   const avatarStyle = {
@@ -55,6 +54,9 @@ const LoginModal = props => {
       .post(`/api/login`, { username: `${email}`, password: `${password}` })
       .then(res => {
         login(res.data.username, res.data.id);
+        toasterFunction(
+          `Welcome ${res.data.username}! You have successfully logged in.`
+        );
         props.onClose();
       })
       .catch(err => {

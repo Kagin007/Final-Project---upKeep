@@ -20,6 +20,7 @@ const CleanerCard = props => {
     properties,
     bookingdate,
     selectedDate,
+    toasterFunction,
   } = props;
 
   const submitHandler = e => {
@@ -35,9 +36,15 @@ const CleanerCard = props => {
         headers: { "X-CSRFToken": e.target.csrfmiddlewaretoken.value },
       })
       .then(response => {
+        toasterFunction(
+          `Your Booking has been successfully created for ${e.target.requestedDate.value}`
+        );
         console.log(response);
       })
       .catch(function (error) {
+        toasterFunction(
+          `Unfortunately, there is an issue with completing the booking.`
+        );
         console.log(error);
       });
   };

@@ -5,7 +5,7 @@ import CitySuggestions from "./CitySuggestions";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const SearchForm = ({ setCleaners, setSelectedDate }) => {
+const SearchForm = ({ setCleaners, setSelectedDate, toasterFunction }) => {
   const {
     onSearchHandler,
     onClickHandler,
@@ -29,7 +29,7 @@ const SearchForm = ({ setCleaners, setSelectedDate }) => {
           console.log(err);
         });
     } else {
-      alert("Please provide Location and Date for the Search.");
+      toasterFunction("Please provide Location and Date for the Search.");
     }
   };
 
