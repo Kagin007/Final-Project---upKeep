@@ -151,7 +151,7 @@ export default function CreateUserAccount(props) {
 
       <ul> {Object.keys(errorMessage).map((key) => {
 
-        return (<li> {errorMessage[key]} </li>);
+        return (<li>{key}: {errorMessage[key]} </li>);
       })}
       </ul>
 
