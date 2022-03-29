@@ -22,8 +22,7 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CreatePropertyListing from "./components/wizard/CreatePropertyListing";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import {getCookie} from "./components/CSRFtoken";
-
+import { getCookie } from "./components/CSRFtoken";
 
 // props from App.js useEffect
 export default function Profile(props) {
@@ -66,31 +65,29 @@ export default function Profile(props) {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      if (!user) {
-        console.log("Please login");
-      } else {
-        axios
-          .get(`/api/properties/${user.id}`)
-          .then(res => {
-            console.log("properyData:", res.data);
-            setProperties(res.data);
-          })
-          .catch(err => {
-            console.log(err);
-          });
-        axios
-          .get(`/api/member/${user.id}`)
-          .then(res => {
-            console.log("memberData:", res.data);
-            setMemberData(res.data);
-            // setPropertyData({...property})
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      }
-    }, 400);
+    if (!user) {
+      console.log("Please login");
+    } else {
+      axios
+        .get(`/api/properties/${user.id}`)
+        .then(res => {
+          console.log("properyData:", res.data);
+          setProperties(res.data);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+      axios
+        .get(`/api/member/${user.id}`)
+        .then(res => {
+          console.log("memberData:", res.data);
+          setMemberData(res.data);
+          // setPropertyData({...property})
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   }, []);
 
   const paperStyle = {

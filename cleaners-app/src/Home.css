@@ -10,6 +10,7 @@
 .App {
   margin: 0;
 }
+
 .backdrop {
   position: fixed;
   z-index: 1;

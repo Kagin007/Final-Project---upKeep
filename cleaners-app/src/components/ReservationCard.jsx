@@ -1,4 +1,5 @@
 const ReservationCard = props => {
+  console.log(props);
   return (
     <article className="reservation__card">
       <div className="reservation__card--left">

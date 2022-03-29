@@ -58,8 +58,7 @@ const CleanerCard = props => {
   const articleClasses = classNames("cleaner__card__article", {
     "cleaner__card__booking-selected": booking,
   });
-  console.log('props:', props )
-  // console.log(user)
+  console.log("props:", props);
   return (
     <article className={articleClasses}>
       <div className="cleaner__card cleaner__card__front">
@@ -131,7 +130,7 @@ const CleanerCard = props => {
               dark
               date={selectedDate || todayDate()}
             />
-            <Button>Confirm Booking</Button>
+            <Button onClick={clickHandler}>Confirm Booking</Button>
           </form>
         </main>
       </div>

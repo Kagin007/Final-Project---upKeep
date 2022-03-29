@@ -22,7 +22,6 @@ const ReservationsList = () => {
           } else {
             setOwnerReservations(res.data);
             setCleanerReservations(null);
-            console.log(res.data);
           }
         })
         .catch(err => {
