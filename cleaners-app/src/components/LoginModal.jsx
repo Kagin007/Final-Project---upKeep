@@ -10,6 +10,9 @@ import {
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 import axios from "axios";
 import { authContext } from "../providers/AuthProvider";
+import useSignUpModal from "../hooks/useSignUpModal"
+
+
 
 const LoginModal = props => {
   const { login } = useContext(authContext);
@@ -79,7 +82,7 @@ const LoginModal = props => {
             <TextField
               name="email"
               id="outlined-basic"
-              label="Email"
+              label="Username"
               variant="outlined"
               fullWidth
               required
