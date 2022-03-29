@@ -44,7 +44,7 @@ export default function CreateUserAccount(props) {
   // const [userId, setUserId] = useState(null)
   const {memberData} = props;
   const { setCredentials, credentials } = useContext(authContext);
-  const [errorMessage, setErrorMessage] = useState('TEST!')
+  const [errorMessage, setErrorMessage] = useState({})
   
   const sendUserData = () => {
     axios.post('/api/register', props.userData)
@@ -71,6 +71,7 @@ export default function CreateUserAccount(props) {
 
 
   return (
+
     <Grid>
       <Grid align="center">
         <Avatar style={avatarStyle}>
@@ -147,8 +148,12 @@ export default function CreateUserAccount(props) {
         style={fieldStyle}
       />
 
-      {errorMessage && <p> {errorMessage} </p>}
-    
+      <ul> {Object.keys(errorMessage).map((key) => {
+
+        return (<li> {errorMessage[key]} </li>);
+      })}
+      </ul>
+
       <Button
         type="submit"
         fullWidth
