@@ -29,7 +29,6 @@ const companyName = {
 };
 
 
-
 export default function CleanerComplete(props) {
   const { credentials, login } = useContext(authContext);
 
