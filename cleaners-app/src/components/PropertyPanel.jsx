@@ -10,7 +10,23 @@ const PropertyPanel = props => {
       </h2>
       <ul>
         {appointments.map((appointment, i) => (
-          <li key={i}>{appointment["booking_date"]}</li>
+          <li key={i}>
+            {" "}
+            <figure className="user-xsm">
+              <a href="#">
+                <img
+                  className="user-photo"
+                  src={appointment.member_id.user.imgurl}
+                  alt="user_photo"
+                />
+              </a>
+            </figure>
+            {`${
+              appointment.member_id.user.first_name +
+              " " +
+              appointment.member_id.user.last_name
+            }-${appointment["booking_date"]}`}
+          </li>
         ))}
       </ul>
     </div>

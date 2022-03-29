@@ -28,7 +28,6 @@ const companyName = {
 };
 
 
-
 export default function CleanerComplete(props) {
 
 

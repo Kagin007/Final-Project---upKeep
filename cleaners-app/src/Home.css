@@ -441,7 +441,6 @@ a:active {
 
 .reservations__property-panel {
   margin: 1em auto;
-  height: 20em;
   width: 85%;
   border-radius: 20px;
   background-color: rgba(249, 226, 182, 0.5);
@@ -452,4 +451,14 @@ a:active {
 }
 li {
   list-style-type: none;
+}
+
+.user-xsm {
+  background-color: var(--light-color-bg);
+  width: 2em;
+  height: 2em;
+  shape-outside: circle(50% at 50% 50%);
+  clip-path: circle(50% at 50% 50%);
+  position: relative;
+  margin: 0;
 }

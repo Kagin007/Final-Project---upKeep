@@ -22,11 +22,7 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CreatePropertyListing from "./components/wizard/CreatePropertyListing";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import {getCookie} from "./components/CSRFtoken";
-import CreatePropertyListing from "./components/wizard/CreatePropertyListing";
-import ExpandMore from "@mui/icons-material/ExpandMore";
-import {getCookie} from "./components/CSRFtoken";
-
+import { getCookie } from "./components/CSRFtoken";
 
 // props from App.js useEffect
 export default function Profile(props) {
@@ -36,7 +32,6 @@ export default function Profile(props) {
 
   const [properties, setProperties] = useState([]);
   const [memberData, setMemberData] = useState({});
-
 
   const [newProperty, setNewProperty] = useState({
     address: "",
@@ -49,20 +44,20 @@ export default function Profile(props) {
   });
 
   const sendPropertyData = () => {
-    const token = getCookie("csrftoken")
+    const token = getCookie("csrftoken");
     axios
       .post(`/api/properties/${user.id}`, newProperty, {
         headers: { "X-CSRFToken": token },
       })
-      .then((res) => {
+      .then(res => {
         console.log("Success", res.data);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log("Failure", err);
       });
   };
 
-  const handleInput = (event) => {
+  const handleInput = event => {
     const newData = { ...newProperty };
     newData[event.target.id] = event.target.value;
     setNewProperty(newData);
@@ -76,21 +71,21 @@ export default function Profile(props) {
       } else {
         axios
           .get(`/api/properties/${user.id}`)
-          .then((res) => {
+          .then(res => {
             console.log("properyData:", res.data);
             setProperties(res.data);
           })
-          .catch((err) => {
+          .catch(err => {
             console.log(err);
           });
         axios
           .get(`/api/member/${user.id}`)
-          .then((res) => {
+          .then(res => {
             console.log("memberData:", res.data);
             setMemberData(res.data);
             // setPropertyData({...property})
           })
-          .catch((err) => {
+          .catch(err => {
             console.log(err);
           });
       }
@@ -218,7 +213,6 @@ export default function Profile(props) {
             <Accordion>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
-
                 aria-controls="panella-content"
                 id="panel1a-header"
               >
@@ -235,7 +229,7 @@ export default function Profile(props) {
                   </Grid>
 
                   <TextField
-                    onChange={(event) => handleInput(event)}
+                    onChange={event => handleInput(event)}
                     id="address"
                     value={newProperty.address}
                     label="Address"
@@ -245,7 +239,7 @@ export default function Profile(props) {
                     style={fieldStyle}
                   />
                   <TextField
-                    onChange={(event) => handleInput(event)}
+                    onChange={event => handleInput(event)}
                     id="city"
                     value={newProperty.city}
                     label="City"
@@ -255,7 +249,7 @@ export default function Profile(props) {
                     style={fieldStyle}
                   />
                   <TextField
-                    onChange={(event) => handleInput(event)}
+                    onChange={event => handleInput(event)}
                     id="imgurl"
                     value={newProperty.imgurl}
                     label="Upload a photo"
