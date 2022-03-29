@@ -136,6 +136,7 @@ export default function CreateUserAccount(props) {
         required
         style={fieldStyle}
       />
+
             <TextField
         onChange={(event) => handleInput(event)}
         id="password2"

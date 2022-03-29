@@ -24,6 +24,7 @@ import CreatePropertyListing from "./components/wizard/CreatePropertyListing";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import {getCookie} from "./components/CSRFtoken";
 
+
 // props from App.js useEffect
 export default function Profile(props) {
   // const { properties, memberData } = props;
@@ -32,6 +33,7 @@ export default function Profile(props) {
 
   const [properties, setProperties] = useState([]);
   const [memberData, setMemberData] = useState({});
+
 
   const [newProperty, setNewProperty] = useState({
     address: "",
@@ -153,7 +155,7 @@ export default function Profile(props) {
           </Typography>
           <>
             <img
-              className="user-photo"
+              className="user-photo profile-pic"
               src={memberData.imgurl}
               alt="user_photo"
               width="300"
@@ -213,6 +215,7 @@ export default function Profile(props) {
             <Accordion>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
+
                 aria-controls="panella-content"
                 id="panel1a-header"
               >
