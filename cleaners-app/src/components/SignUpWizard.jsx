@@ -25,6 +25,7 @@ const SignUpWizard = (props) => {
     last_name: "",
     email: "",
     password: "",
+    password2: "",
     username: ""
   });
 

@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Grid, Avatar, Typography, Link, Button } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 import RecommendIcon from '@mui/icons-material/Recommend';
-
+import { authContext } from "../../providers/AuthProvider";
+import axios from 'axios';
 
 const avatarStyle = {
   backgroundColor: "#98b4aa",
@@ -30,6 +31,25 @@ const companyName = {
 
 
 export default function CleanerComplete(props) {
+  const { credentials, login } = useContext(authContext);
+
+  const submitHandler = () => {
+    console.log(credentials)
+    axios
+      .post(`/api/login`, credentials)
+      .then(res => {
+        console.log(res.data.username, res.data.id)
+        login(res.data.username, res.data.id);
+        props.onClose();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  const test = () => {
+    console.log('credentials', credentials)
+  }
 
 
   return (
@@ -42,8 +62,10 @@ export default function CleanerComplete(props) {
         <h1>Your profile has been created!</h1>
         <u>View it here</u>
       </Grid>
-
-      <Button type="submit" fullWidth style={buttonStyle} color="primary" href="/">
+      <Button fullWidth style={buttonStyle} color="primary" onClick={test}>
+        clickme
+      </Button>
+      <Button fullWidth style={buttonStyle} color="primary" onClick={submitHandler}>
         CLOSE
       </Button>
       <Typography align="center">
