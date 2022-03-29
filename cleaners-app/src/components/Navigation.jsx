@@ -66,6 +66,7 @@ const Navigation = props => {
         <h1 className="nav__logo">upKeeper</h1>
       </nav>
       <ul className="nav__options">
+        <NavLink to="/" className="nav__options--link">Home</NavLink>
         <NavLink to="/reservations" className="nav__options--link" style={navColour}>My Reservations</NavLink>
         <NavLink to="/profile" className="nav__options--link" style={navColour}>My Profile</NavLink>
         {!user && <li to="#" className="nav__options--link" onClick={toggleLogin} style={navColour}>Log In</li>}
