@@ -39,16 +39,12 @@ export default function CleanerComplete(props) {
       .then(res => {
         console.log(res.data.username, res.data.id)
         login(res.data.username, res.data.id);
-        props.onClose();
+        // props.toggleSignUpWizard();
       })
       .catch(err => {
         console.log(err);
       });
   };
-
-  const test = () => {
-    console.log('credentials', credentials)
-  }
 
 
   return (
@@ -61,9 +57,6 @@ export default function CleanerComplete(props) {
         <h1>Your profile has been created!</h1>
         <u>View it here</u>
       </Grid>
-      <Button fullWidth style={buttonStyle} color="primary" onClick={test}>
-        clickme
-      </Button>
       <Button fullWidth style={buttonStyle} color="primary" onClick={submitHandler}>
         CLOSE
       </Button>

@@ -38,7 +38,7 @@ export default function HomeOwnerComplete(props) {
         <u>View it here</u>
       </Grid>
 
-      <Button type="submit" fullWidth style={buttonStyle} color="primary" href="/">
+      <Button type="submit" fullWidth style={buttonStyle} color="primary" href="/"> onClick=close()
         CLOSE
       </Button>
       <Typography align="center">
