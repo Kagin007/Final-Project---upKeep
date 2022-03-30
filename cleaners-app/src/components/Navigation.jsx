@@ -20,7 +20,7 @@ const Navigation = ({ toasterFunction }) => {
       .get("/api/logout")
       .then(() => {
         logout();
-        toasterFunction(`Have a wonderful!`);
+        toasterFunction(`Have a good one!`);
       })
       .catch(err => console.log(err));
   };
