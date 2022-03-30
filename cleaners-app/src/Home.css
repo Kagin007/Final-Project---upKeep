@@ -11,6 +11,10 @@
   margin: 0;
 }
 
+.section-cleaner-list {
+  display: flex;
+  flex-direction: row;
+}
 .backdrop {
   position: fixed;
   z-index: 1;

@@ -6,6 +6,7 @@ import CleanersList from "./components/CleanersList";
 import Backdrop from "./components/Backddrop";
 import ReviewsModal from "./components/ReviewsModal";
 import useModal from "./hooks/useReviewsModal";
+import Map from "./components/Map";
 
 function Home(props) {
   const { reviewModalOpen, toggleReviewModal } = useModal();
@@ -21,6 +22,7 @@ function Home(props) {
         setSelectedDate={setSelectedDate}
         toasterFunction={toasterFunction}
       />
+      <Map />
       <CleanersList
         onOpen={toggleReviewModal}
         cleaners={cleaners}
@@ -28,6 +30,7 @@ function Home(props) {
         properties={properties}
         toasterFunction={toasterFunction}
       />
+
       {reviewModalOpen && <Backdrop onClose={toggleReviewModal} />}
       {reviewModalOpen && <ReviewsModal onClose={toggleReviewModal} />}
     </div>
