@@ -39,7 +39,7 @@ export default function CleanerComplete(props) {
       .then(res => {
         console.log(res.data.username, res.data.id)
         login(res.data.username, res.data.id);
-        // props.toggleSignUpWizard();
+        props.onClose()
       })
       .catch(err => {
         console.log(err);

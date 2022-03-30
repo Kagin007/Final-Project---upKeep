@@ -92,7 +92,7 @@ const SignUpWizard = (props) => {
     //   setUserData={setUserData}
     //   userData={userData}
     // />,
-    <CleanerComplete increment={increment} />,
+    <CleanerComplete increment={increment} onClose={props.onClose} />,
   ];
 
   const homeOwnersBucket = [
