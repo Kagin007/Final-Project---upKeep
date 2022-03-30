@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Grid, Avatar, Typography, Link, Button } from "@material-ui/core";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
+import { authContext } from "../../providers/AuthProvider";
+import axios from 'axios';
 
 const avatarStyle = {
   backgroundColor: "#98b4aa",
@@ -25,7 +27,24 @@ const companyName = {
   fontSize: "50px",
 };
 
+
 export default function HomeOwnerComplete(props) {
+  const { credentials, login } = useContext(authContext);
+
+  const submitHandler = () => {
+    console.log(credentials)
+    axios
+      .post(`/api/login`, credentials)
+      .then(res => {
+        console.log(res.data.username, res.data.id)
+        login(res.data.username, res.data.id);
+        props.onClose()
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   return (
     <Grid>
       <Grid align="center">
@@ -37,8 +56,9 @@ export default function HomeOwnerComplete(props) {
         <h1>Your profile and property listing have been created!</h1>
         <u>View it here</u>
       </Grid>
-
-      <Button type="submit" fullWidth style={buttonStyle} color="primary" href="/"> onClick=close()
+{/* href="/"
+type="submit" */}
+      <Button  fullWidth style={buttonStyle} color="primary" onClick={submitHandler}> 
         CLOSE
       </Button>
       <Typography align="center">

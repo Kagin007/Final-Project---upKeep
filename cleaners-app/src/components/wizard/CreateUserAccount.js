@@ -71,7 +71,6 @@ export default function CreateUserAccount(props) {
 
 
   return (
-
     <Grid>
       <Grid align="center">
         <Avatar style={avatarStyle}>

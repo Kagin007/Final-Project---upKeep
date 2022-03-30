@@ -126,7 +126,7 @@ const SignUpWizard = (props) => {
     //   propertyData={propertyData}
     //   setPropertyData={setPropertyData}
     // />,
-    <HomeOwnerComplete increment={increment} />,
+    <HomeOwnerComplete increment={increment} onClose={props.onClose}/>,
   ];
 
   const wizards = {
