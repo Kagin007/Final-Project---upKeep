@@ -66,13 +66,13 @@ const Navigation = props => {
         <h1 className="nav__logo">upKeeper</h1>
       </nav>
       <ul className="nav__options">
-        <NavLink to="/" className="nav__options--link" style={navColour}>Home</NavLink>
-        <NavLink to="/reservations" className="nav__options--link" style={navColour}>My Reservations</NavLink>
-        <NavLink to="/profile" className="nav__options--link" style={navColour}>My Profile</NavLink>
-        {!user && <li to="#" className="nav__options--link" onClick={toggleLogin} style={navColour}>Log In</li>}
-        {!user && <li to="#" className="nav__options--link" onClick={toggleSignUpWizard} style={navColour}>Sign Up</li>}
-        {user && <li className="nav__options--link" style={navColour}>Logged in as: {`${user.username[0].toUpperCase()}${user.username.substring(1,user.username.length).toLowerCase()}`}</li>}
-        {user && <li to="#" className="nav__options--link" onClick={()=>exit()} style={navColour}>Logout</li>}
+        <NavLink to="/" className="nav__options--link" style={navColour}><b>Home</b></NavLink>
+        <NavLink to="/reservations" className="nav__options--link" style={navColour}><b>My Reservations</b></NavLink>
+        <NavLink to="/profile" className="nav__options--link" style={navColour}><b>My Profile</b></NavLink>
+        {!user && <li to="#" className="nav__options--link" onClick={toggleLogin} style={navColour}><b>Log In</b></li>}
+        {!user && <li to="#" className="nav__options--link" onClick={toggleSignUpWizard} style={navColour}><b>Sign Up</b></li>}
+        {user && <li className="nav__options--link" style={navColour}> <b>Logged in as: <i>{`${user.username[0].toUpperCase()}${user.username.substring(1,user.username.length).toLowerCase()}`}</i></b></li>}
+        {user && <li to="#" className="nav__options--link" onClick={()=>exit()} style={navColour}><b>Logout</b></li>}
       </ul>
       {signUpWizardOpen && <Backdrop onClose={toggleSignUpWizard} />}
       {signUpWizardOpen && <SignUpWizard onClose={toggleSignUpWizard} />}

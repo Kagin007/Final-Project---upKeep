@@ -243,7 +243,7 @@ export default function Profile(props) {
                 <Grid>
                   <Grid align="center">
                     <h1 style={companyName}>upKeeper</h1>
-                    <h3 style={textStyle}>Post your listing</h3>
+                    <h3 style={textStyle}>Create a new listing</h3>
                   </Grid>
 
                   <TextField
@@ -303,10 +303,10 @@ export default function Profile(props) {
                   {properties.map((property, index) => {
                     return (
                       <div>
-                        <h4>Property {index + 1}</h4>
-                        <li>Address: {property.address}</li>
-                        <li>City: {property.city}</li>
-                        <h3>...</h3>
+                        <h4 style={textStyle}><b>Property {index + 1}</b></h4>
+                        <li style={textStyle}>Address: {property.address}</li>
+                        <li style={textStyle}>City: {property.city}</li>
+                        <h3 style={textStyle}>...</h3>
                       </div>
                     );
                   })}
