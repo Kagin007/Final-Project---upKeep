@@ -122,6 +122,11 @@ export default function Profile(props) {
     backgroundColor: "white",
   };
 
+
+  const textStyle = {
+    fontFamily: 'Manrope',
+  }
+
   if (!memberData.user) {
     return (
       <div className="center">
@@ -141,13 +146,13 @@ export default function Profile(props) {
 
   return (
     <Grid align="center">
-      <Paper elevation={10} style={paperStyle}>
+      <Paper elevation={10} style={paperStyle} >
         <CardContent>
           <Avatar style={avatarStyle}>
             <CleaningServicesIcon />
           </Avatar>
           <Typography align="center" variant="h5" component="div">
-            <h2>{memberData.user.first_name}'s Profile</h2>
+            <h2 style={textStyle}>{memberData.user.first_name}'s Profile</h2>
           </Typography>
           <>
             <img
@@ -163,7 +168,7 @@ export default function Profile(props) {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography>User Info</Typography>
+                <Typography style={textStyle}><b>User Info</b></Typography>
               </AccordionSummary>
 
               <AccordionDetails>
@@ -172,8 +177,9 @@ export default function Profile(props) {
                   sx={{ fontSize: 14 }}
                   color="text.secondary"
                   gutterBottom
+                  style={textStyle}
                 >
-                  First Name:{memberData.user.first_name}
+                  <b>First Name: </b> {memberData.user.first_name}
                 </Typography>
               </AccordionDetails>
               <AccordionDetails>
@@ -182,8 +188,9 @@ export default function Profile(props) {
                   sx={{ fontSize: 14 }}
                   color="text.secondary"
                   gutterBottom
+                  style={textStyle}
                 >
-                  Last Name: {memberData.user.last_name}
+                  <b>Last Name:</b> {memberData.user.last_name}
                 </Typography>
               </AccordionDetails>
               <AccordionDetails>
@@ -192,8 +199,9 @@ export default function Profile(props) {
                   sx={{ fontSize: 14 }}
                   color="text.secondary"
                   gutterBottom
+                  style={textStyle}
                 >
-                  Email: {memberData.user.email}
+                  <b>Email:</b> {memberData.user.email}
                 </Typography>
               </AccordionDetails>
               <AccordionDetails>
@@ -202,8 +210,9 @@ export default function Profile(props) {
                   sx={{ fontSize: 14 }}
                   color="text.secondary"
                   gutterBottom
+                  style={textStyle}
                 >
-                  Role: {memberData.role}
+                  <b>Role:</b> {memberData.role}
                 </Typography>
               </AccordionDetails>
             </Accordion>
@@ -214,16 +223,13 @@ export default function Profile(props) {
                 aria-controls="panella-content"
                 id="panel1a-header"
               >
-                <Typography>Add Property</Typography>
+                <Typography style={textStyle} ><b>Add Property</b></Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Grid>
                   <Grid align="center">
-                    <Avatar style={avatarStyle}>
-                      <CleaningServicesIcon style={iconStyle} />
-                    </Avatar>
                     <h1 style={companyName}>upKeeper</h1>
-                    <h3>Post your listing</h3>
+                    <h3 >Post your listing</h3>
                   </Grid>
 
                   <TextField
@@ -235,6 +241,7 @@ export default function Profile(props) {
                     fullWidth
                     required
                     style={fieldStyle}
+                    
                   />
                   <TextField
                     onChange={event => handleInput(event)}
@@ -265,10 +272,6 @@ export default function Profile(props) {
                   >
                     SUBMIT
                   </Button>
-                  <Typography align="center">
-                    Already have an account?
-                    <Link href="/login">Sign in here.</Link>
-                  </Typography>
                 </Grid>
               </AccordionDetails>
             </Accordion>
@@ -278,17 +281,17 @@ export default function Profile(props) {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography>Properties</Typography>
+                <Typography style={textStyle}><b>Properties</b></Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <ul>
                   {properties.map((property, index) => {
                     return (
                       <div>
-                        <h4>Property {index + 1}</h4>
-                        <li>Address: {property.address}</li>
-                        <li>City: {property.city}</li>
-                        <h3>...</h3>
+                        <h4 style={textStyle}>Property {index + 1}</h4>
+                        <li style={textStyle}>Address: {property.address}</li>
+                        <li style={textStyle}>City: {property.city}</li>
+                        <h3 style={textStyle}>...</h3>
                       </div>
                     );
                   })}
