@@ -38,6 +38,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   overflow-y: auto;
+  background-image: url("https://www.transparenttextures.com/patterns/egg-shell.png");
 }
 .modal-content {
   display: flex;
