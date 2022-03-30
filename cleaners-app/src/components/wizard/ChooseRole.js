@@ -57,8 +57,8 @@ export default function ChooseRole(props) {
           <CleaningServicesIcon style={iconStyle} />
         </Avatar>
         <h1 style={companyName}>upKeeper</h1>
+<h2>I am a...</h2>
 
-        <h3>I am a...</h3>
       </Grid>
       <RadioGroup
         row

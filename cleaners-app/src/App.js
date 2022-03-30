@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import background from "./img/background.jpg";
 import familybbq from "./img/family-bbq.jpg";
 import embrace from "./img/embrace.jpg";
-import greetingcleaners from "./img/greeting-cleaners.jpeg";
+import wipecounter from "./img/wipecounter.jpg";
 import Login from "./Login";
 import Home from "./Home";
 import Profile from "./OwnerProfile";
@@ -48,9 +48,9 @@ function App() {
 
 
   const backgroundStyle = {
-    backgroundImage: `url(${background})`,
+    backgroundImage: `url(${wipecounter})`,
     backgroundSize: "cover",
-    height: "100vh",
+    minHeight: "100vh",
     backgroundPosition: "right"
   };
   return (

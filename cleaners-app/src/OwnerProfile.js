@@ -22,8 +22,8 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CreatePropertyListing from "./components/wizard/CreatePropertyListing";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import {getCookie} from "./components/CSRFtoken";
-import texture from "./img/texture.png"
+import { getCookie } from "./components/CSRFtoken";
+import texture from "./img/texture.png";
 
 // props from App.js useEffect
 export default function Profile(props) {
@@ -50,15 +50,15 @@ export default function Profile(props) {
       .post(`/api/properties/${user.id}`, newProperty, {
         headers: { "X-CSRFToken": token },
       })
-      .then(res => {
+      .then((res) => {
         console.log("Success", res.data);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log("Failure", err);
       });
   };
 
-  const handleInput = event => {
+  const handleInput = (event) => {
     const newData = { ...newProperty };
     newData[event.target.id] = event.target.value;
     setNewProperty(newData);
@@ -72,21 +72,21 @@ export default function Profile(props) {
       } else {
         axios
           .get(`/api/properties/${user.id}`)
-          .then(res => {
+          .then((res) => {
             console.log("properyData:", res.data);
             setProperties(res.data);
           })
-          .catch(err => {
+          .catch((err) => {
             console.log(err);
           });
         axios
           .get(`/api/member/${user.id}`)
-          .then(res => {
+          .then((res) => {
             console.log("memberData:", res.data);
             setMemberData(res.data);
             // setPropertyData({...property})
           })
-          .catch(err => {
+          .catch((err) => {
             console.log(err);
           });
       }
@@ -98,12 +98,12 @@ export default function Profile(props) {
     width: "70rem",
     margin: "20px auto",
     backgroundColor: "#707070",
-    backgroundImage: `url(${texture})`
+    backgroundImage: `url(${texture})`,
   };
 
   const avatarStyle = {
     backgroundColor: "#98b4aa",
-    fontSize: "50px"
+    fontSize: "50px",
   };
 
   const buttonStyle = {
@@ -116,14 +116,19 @@ export default function Profile(props) {
     fontSize: "100em",
   };
 
+  const nameStyle = {
+    color: "white",
+    fontFamily: "Syncopate",
+  };
+
   const textStyle = {
-    fontFamily: 'Syncopate',
+    fontFamily: "Syncopate",
     color: "#495371",
-    fontWeight: "120%"
-  }
+    fontWeight: "120%",
+  };
 
   const companyName = {
-   fontFamily: 'Syncopate',
+    fontFamily: "Syncopate",
     justifyContent: "center",
     color: "#495371",
     fontSize: "50px",
@@ -152,13 +157,12 @@ export default function Profile(props) {
   }
 
   return (
-    <Grid align="center" >
+    <Grid align="center">
       <Paper elevation={10} style={paperStyle}>
         <CardContent>
-          <Avatar style={avatarStyle}>
-          </Avatar>
+          <Avatar style={avatarStyle}></Avatar>
           <Typography align="center" variant="h5" component="div">
-            <h2 style={companyName}>{memberData.user.first_name}'s Profile</h2>
+            <h2 style={nameStyle}>{memberData.user.first_name}'s Profile</h2>
           </Typography>
           <>
             <img
@@ -174,7 +178,9 @@ export default function Profile(props) {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography style={textStyle}><u>User Info</u></Typography>
+                <Typography style={textStyle}>
+                  <u>User Info</u>
+                </Typography>
               </AccordionSummary>
 
               <AccordionDetails>
@@ -185,7 +191,7 @@ export default function Profile(props) {
                   gutterBottom
                   style={textStyle}
                 >
-                  <b>First Name:</b>  {memberData.user.first_name}
+                  <b>First Name:</b> {memberData.user.first_name}
                 </Typography>
               </AccordionDetails>
               <AccordionDetails>
@@ -229,18 +235,19 @@ export default function Profile(props) {
                 aria-controls="panella-content"
                 id="panel1a-header"
               >
-                <Typography style={textStyle}><u>Add Property</u></Typography>
+                <Typography style={textStyle}>
+                  <u>Add Property</u>
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Grid>
                   <Grid align="center">
-                   
                     <h1 style={companyName}>upKeeper</h1>
                     <h3 style={textStyle}>Post your listing</h3>
                   </Grid>
 
                   <TextField
-                    onChange={event => handleInput(event)}
+                    onChange={(event) => handleInput(event)}
                     id="address"
                     value={newProperty.address}
                     label="Address"
@@ -250,7 +257,7 @@ export default function Profile(props) {
                     style={fieldStyle}
                   />
                   <TextField
-                    onChange={event => handleInput(event)}
+                    onChange={(event) => handleInput(event)}
                     id="city"
                     value={newProperty.city}
                     label="City"
@@ -260,7 +267,7 @@ export default function Profile(props) {
                     style={fieldStyle}
                   />
                   <TextField
-                    onChange={event => handleInput(event)}
+                    onChange={(event) => handleInput(event)}
                     id="imgurl"
                     value={newProperty.imgurl}
                     label="Upload a photo"
@@ -287,7 +294,9 @@ export default function Profile(props) {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography style={textStyle} ><u>Properties</u></Typography>
+                <Typography style={textStyle}>
+                  <u>Properties</u>
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <ul>
