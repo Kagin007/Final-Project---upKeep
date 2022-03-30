@@ -19,6 +19,7 @@ const buttonStyle = {
 
 const radioStyle = {
   justifyContent: "center",
+
 };
 
 const iconStyle = {
@@ -26,7 +27,7 @@ const iconStyle = {
 };
 
 const companyName = {
-  fontFamily: "Julius Sans One",
+  fontFamily: 'Syncopate',
   justifyContent: "center",
   color: "#495371",
   fontSize: "50px",

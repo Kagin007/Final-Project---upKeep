@@ -22,7 +22,8 @@
 .modal {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   border-radius: 6px;
-  background-color: var(--light-color-text);
+  background-color: #707070;
+background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
   padding: 2em;
   text-align: center;
   width: 65%;
@@ -49,6 +50,7 @@
 .modal-exit:hover {
   color: var(--danger-red-color);
 }
+
 
 .nav__bar {
   /* background: var(--light-color-bg); */

@@ -29,7 +29,7 @@ const iconStyle = {
 };
 
 const companyName = {
-  fontFamily: "Julius Sans One",
+  fontFamily: 'Syncopate',
   justifyContent: "center",
   color: "#495371",
   fontSize: "50px",
@@ -141,7 +141,7 @@ export default function CreateUserAccount(props) {
         onChange={(event) => handleInput(event)}
         id="password2"
         value={props.userData.password2}
-        label="Password"
+        label="Confirm assword"
         type="password"
         variant="outlined"
         fullWidth

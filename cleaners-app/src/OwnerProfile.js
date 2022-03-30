@@ -23,7 +23,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CreatePropertyListing from "./components/wizard/CreatePropertyListing";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import {getCookie} from "./components/CSRFtoken";
-
+import texture from "./img/texture.png"
 
 // props from App.js useEffect
 export default function Profile(props) {
@@ -97,10 +97,13 @@ export default function Profile(props) {
     padding: 20,
     width: "70rem",
     margin: "20px auto",
+    backgroundColor: "#707070",
+    backgroundImage: `url(${texture})`
   };
 
   const avatarStyle = {
     backgroundColor: "#98b4aa",
+    fontSize: "50px"
   };
 
   const buttonStyle = {
@@ -110,11 +113,17 @@ export default function Profile(props) {
   };
 
   const iconStyle = {
-    fontSize: "50px",
+    fontSize: "100em",
   };
 
+  const textStyle = {
+    fontFamily: 'Syncopate',
+    color: "#495371",
+    fontWeight: "120%"
+  }
+
   const companyName = {
-    fontFamily: "Julius Sans One",
+   fontFamily: 'Syncopate',
     justifyContent: "center",
     color: "#495371",
     fontSize: "50px",
@@ -143,14 +152,13 @@ export default function Profile(props) {
   }
 
   return (
-    <Grid align="center">
+    <Grid align="center" >
       <Paper elevation={10} style={paperStyle}>
         <CardContent>
           <Avatar style={avatarStyle}>
-            <CleaningServicesIcon />
           </Avatar>
           <Typography align="center" variant="h5" component="div">
-            <h2>{memberData.user.first_name}'s Profile</h2>
+            <h2 style={companyName}>{memberData.user.first_name}'s Profile</h2>
           </Typography>
           <>
             <img
@@ -166,7 +174,7 @@ export default function Profile(props) {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography>User Info</Typography>
+                <Typography style={textStyle}><u>User Info</u></Typography>
               </AccordionSummary>
 
               <AccordionDetails>
@@ -175,8 +183,9 @@ export default function Profile(props) {
                   sx={{ fontSize: 14 }}
                   color="text.secondary"
                   gutterBottom
+                  style={textStyle}
                 >
-                  First Name:{memberData.user.first_name}
+                  <b>First Name:</b>  {memberData.user.first_name}
                 </Typography>
               </AccordionDetails>
               <AccordionDetails>
@@ -185,8 +194,9 @@ export default function Profile(props) {
                   sx={{ fontSize: 14 }}
                   color="text.secondary"
                   gutterBottom
+                  style={textStyle}
                 >
-                  Last Name: {memberData.user.last_name}
+                  <b>Last Name:</b> {memberData.user.last_name}
                 </Typography>
               </AccordionDetails>
               <AccordionDetails>
@@ -195,8 +205,9 @@ export default function Profile(props) {
                   sx={{ fontSize: 14 }}
                   color="text.secondary"
                   gutterBottom
+                  style={textStyle}
                 >
-                  Email: {memberData.user.email}
+                  <b>Email:</b> {memberData.user.email}
                 </Typography>
               </AccordionDetails>
               <AccordionDetails>
@@ -205,8 +216,9 @@ export default function Profile(props) {
                   sx={{ fontSize: 14 }}
                   color="text.secondary"
                   gutterBottom
+                  style={textStyle}
                 >
-                  Role: {memberData.role}
+                  <b>Role:</b> {memberData.role}
                 </Typography>
               </AccordionDetails>
             </Accordion>
@@ -217,16 +229,14 @@ export default function Profile(props) {
                 aria-controls="panella-content"
                 id="panel1a-header"
               >
-                <Typography>Add Property</Typography>
+                <Typography style={textStyle}><u>Add Property</u></Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Grid>
                   <Grid align="center">
-                    <Avatar style={avatarStyle}>
-                      <CleaningServicesIcon style={iconStyle} />
-                    </Avatar>
+                   
                     <h1 style={companyName}>upKeeper</h1>
-                    <h3>Post your listing</h3>
+                    <h3 style={textStyle}>Post your listing</h3>
                   </Grid>
 
                   <TextField
@@ -268,10 +278,6 @@ export default function Profile(props) {
                   >
                     SUBMIT
                   </Button>
-                  <Typography align="center">
-                    Already have an account?
-                    <Link href="/login">Sign in here.</Link>
-                  </Typography>
                 </Grid>
               </AccordionDetails>
             </Accordion>
@@ -281,7 +287,7 @@ export default function Profile(props) {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography>Properties</Typography>
+                <Typography style={textStyle} ><u>Properties</u></Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <ul>
