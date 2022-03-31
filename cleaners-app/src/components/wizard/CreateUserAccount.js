@@ -140,7 +140,7 @@ export default function CreateUserAccount(props) {
         onChange={(event) => handleInput(event)}
         id="password2"
         value={props.userData.password2}
-        label="Password"
+        label=" Confirm Password"
         type="password"
         variant="outlined"
         fullWidth

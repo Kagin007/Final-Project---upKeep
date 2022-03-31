@@ -20,7 +20,7 @@ const Navigation = ({ toasterFunction }) => {
       .get("/api/logout")
       .then(() => {
         logout();
-        toasterFunction(`Have a wonderful!`);
+        toasterFunction(`Have a good one!`);
       })
       .catch(err => console.log(err));
   };
@@ -63,17 +63,17 @@ const Navigation = ({ toasterFunction }) => {
       </nav>
       <ul className="nav__options">
         <NavLink to="/" className="nav__options--link" style={navColour}>
-          Home
+          <b>Home</b>
         </NavLink>
         <NavLink
           to="/reservations"
           className="nav__options--link"
           style={navColour}
         >
-          My Reservations
+          <b>My Reservations</b>
         </NavLink>
         <NavLink to="/profile" className="nav__options--link" style={navColour}>
-          My Profile
+          <b>My Profile</b>
         </NavLink>
         {!user && (
           <li
@@ -82,7 +82,7 @@ const Navigation = ({ toasterFunction }) => {
             onClick={toggleLogin}
             style={navColour}
           >
-            Log In
+            <b>Log In</b>
           </li>
         )}
         {!user && (
@@ -92,15 +92,15 @@ const Navigation = ({ toasterFunction }) => {
             onClick={toggleSignUpWizard}
             style={navColour}
           >
-            Sign Up
+            <b>Sign Up</b>
           </li>
         )}
         {user && (
           <li className="nav__options--link" style={navColour}>
-            Logged in as:{" "}
-            {`${user.username[0].toUpperCase()}${user.username
+            <b>Logged in as:{" "}
+            <i>{`${user.username[0].toUpperCase()}${user.username
               .substring(1, user.username.length)
-              .toLowerCase()}`}
+              .toLowerCase()}`}</i></b>
           </li>
         )}
         {user && (
@@ -110,7 +110,7 @@ const Navigation = ({ toasterFunction }) => {
             onClick={() => exit()}
             style={navColour}
           >
-            Logout
+            <b>Logout</b>
           </li>
         )}
       </ul>

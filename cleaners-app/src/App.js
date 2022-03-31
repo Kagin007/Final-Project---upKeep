@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 import SearchForm from "./components/SearchForm";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import background from "./img/background.jpg";
+import wipecounter2 from "./img/wipecounter2.jpg"
 import Login from "./Login";
 import Home from "./Home";
 import Profile from "./OwnerProfile";
@@ -56,10 +57,10 @@ function App() {
   // };
 
   const backgroundStyle = {
-    backgroundImage: `url(${background})`,
+    backgroundImage: `url(${wipecounter2})`,
     backgroundSize: "cover",
-    height: "100vh",
-    backgroundPosition: "right",
+    minHeight: "100vh",
+    backgroundPosition: "right"
   };
   return (
     <container className="container">
