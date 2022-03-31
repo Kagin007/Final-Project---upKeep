@@ -25,7 +25,7 @@ function Messenger() {
       <h1>Message {user}</h1>
       <form>
         <label>name</label>
-        <input type="text" name="name" />
+        <input type="text" name="namee" />
 
         <label>Email</label>
         <input type="email" name="user_email" />
